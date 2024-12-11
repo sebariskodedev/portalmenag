@@ -1,0 +1,60 @@
+version: '4'
+services:
+    sample-app:
+      build:
+        context: .
+        dockerfile: ./docker/Dockerfile
+      # image: 'laravel'
+      container_name: sample-app
+      ports:
+        - "8080:80"
+        - "6001:6001"
+      volumes:
+        - ./laravel:/var/www/html
+        - ./docker/custom.php.ini:/usr/local/etc/php/php.ini
+        # - ./docker/vhost.conf:/etc/apache2/sites-available/000-default.conf
+        # - ./docker/custom.php.ini:/etc//apache2/conf.d/custom.php.ini
+      networks: 
+        - sample-app_network
+
+    #mysql
+    sample-app_database:
+        container_name: sample-app_database
+        image: mysql:8.0
+        restart: unless-stopped
+        tty: true
+        environment: 
+            MYSQL_DATABASE: sample-app_database
+            MYSQL_ROOT_PASSWORD: karyakampak
+            MYSQL_USER: karyadidk
+            MYSQL_PASSWORD: karyakampak
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+            TZ: Asia/Jakarta
+        volumes: 
+            - ./docker/mysql/dbdata:/var/lib/mysql
+            # - ./docker/container/my.cnf:/etc/mysql/my.cnf
+            # - ./docker/container/mysql/log:/var/log/mysql
+        ports: 
+            - "3309:3306"
+        networks: 
+            - sample-app_network
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: sample-app_database_pma
+        links:
+        - sample-app_database
+        environment:
+            PMA_HOST: sample-app_database
+            PMA_PORT: 3306
+            PMA_ARBITRARY: 1
+        restart: unless-stopped
+        ports:
+        - 8081:80
+        networks: 
+            - sample-app_network
+
+networks: 
+    sample-app_network:
+        driver: bridge
