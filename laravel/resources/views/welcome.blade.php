@@ -1682,7 +1682,7 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
           <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-xl-10">
               <div class="text-center">
-                <a class="cta-btn" href="#"><h3>Struktur Organisasi</h3></a>
+                <a class="cta-btn" href="{{ route('struktur-organisasi', ['id' => 1]) }}"><h3>Struktur Organisasi</h3></a>
               </div>
             </div>
           </div>
@@ -1709,22 +1709,22 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
             <div class="container p-5">
                 <ol class="organizational-chart">
                     <li>
-                    <div class="eselon1" onclick="window.location.href='{{ route('welcome') }}'">
+                    <div class="eselon1" onclick="window.location.href='{{ url('struktur-organisasi', ['id' => 4]) }}'">
                         <h3>ESELON 1</h3>
                     </div>
                     <ol style="width: 100%;">
                         <li class="ol-eselon2">
-                        <div class="eselon2" onclick="window.location.href='{{ route('welcome') }}'">
+                        <div class="eselon2" onclick="window.location.href='{{ route('struktur-organisasi', ['id' => 5]) }}'">
                             <h4>SEKRETARIAT</h4>
                         </div>
                         </li>
                         <li class="ol-eselon2">
-                        <div class="eselon2" onclick="window.location.href='{{ route('welcome') }}'">
+                        <div class="eselon2" onclick="window.location.href='{{ route('struktur-organisasi', ['id' => 2]) }}'">
                             <h4>DIREKTORAT PENDIDIKAN</h4>
                         </div>
                         </li>
                         <li class="ol-eselon2">
-                        <div class="eselon2" onclick="window.location.href='{{ route('welcome') }}'">
+                        <div class="eselon2" onclick="window.location.href='{{ route('struktur-organisasi', ['id' => 3]) }}'">
                             <h4>DIREKTORAT URUSAN</h4>
                         </div>
                         </li>

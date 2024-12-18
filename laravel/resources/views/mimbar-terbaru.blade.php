@@ -192,7 +192,7 @@
             </h3>
             <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
             <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">read more</a>
+            <a href="#" class="read-more">selengkapnya</a>
           </div>
         </div>
 
@@ -207,7 +207,7 @@
             </h3>
             <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
             <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">read more</a>
+            <a href="#" class="read-more">selengkapnya</a>
           </div>
         </div>
 
@@ -222,7 +222,7 @@
             </h3>
             <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
             <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">read more</a>
+            <a href="#" class="read-more">selengkapnya</a>
           </div>
         </div>
 
@@ -237,7 +237,7 @@
             </h3>
             <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
             <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">read more</a>
+            <a href="#" class="read-more">selengkapnya</a>
           </div>
         </div>
 
@@ -252,7 +252,7 @@
             </h3>
             <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
             <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">read more</a>
+            <a href="#" class="read-more">selengkapnya</a>
           </div>
         </div>
 
@@ -267,7 +267,7 @@
             </h3>
             <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
             <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">read more</a>
+            <a href="#" class="read-more">selengkapnya</a>
           </div>
         </div>
       </div>

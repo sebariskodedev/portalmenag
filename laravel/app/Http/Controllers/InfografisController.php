@@ -164,7 +164,10 @@ class InfografisController extends Controller
      */
     public function getInfografis()
     {
+        $infografiss = Infografis::orderBy('id', 'asc')->get();
 
-        return view('infografis');
+        return view('infografis', [
+            'infografiss' => $infografiss
+        ]);
     }
 }

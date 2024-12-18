@@ -48,7 +48,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
       <div class="d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="/" class="logo d-flex align-items-center">
           <img src="{{ asset('assets/img/logo.png') }}" alt="">
           <span class="d-none d-lg-block">NiceAdmin</span>
         </a>
@@ -259,6 +259,13 @@
             </li>
           </ul>
         </li><!-- End RB Nav -->
+
+        <li class="nav-item">
+        <a id="menu-struktur" class="nav-link collapsed" href="/admin/struktur">
+            <i class="bi bi-grid"></i>
+            <span>Struktur Organisasi</span>
+        </a>
+        </li><!-- End Settings Nav -->
 
         <li class="nav-item">
         <a id="menu-setting" class="nav-link collapsed" href="/admin/settings">

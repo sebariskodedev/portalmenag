@@ -28,60 +28,16 @@
           </ul><!-- End Portfolio Filters --> --}}
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Judul Maklumat</h4>
-                <a href="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://bkpsdm.tanahlautkab.go.id/asset/foto_berita/218392930_4050696825026673_2763056444971296314_n.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Judul Maklumat</h4>
-                <a href="https://bkpsdm.tanahlautkab.go.id/asset/foto_berita/218392930_4050696825026673_2763056444971296314_n.jpg" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://cdn.setneg.go.id/_multimedia/photo/20230914/00410041WhatsApp_Image_2023-09-14_at_10.47.43.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Judul Maklumat</h4>
-                <a href="https://cdn.setneg.go.id/_multimedia/photo/20230914/00410041WhatsApp_Image_2023-09-14_at_10.47.43.jpeg" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://kesehatan.jogjakota.go.id/images/news/img_20230929125427_maklumat-pelayanan-dinas-kesehatan.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Judul Maklumat</h4>
-                <a href="https://kesehatan.jogjakota.go.id/images/news/img_20230929125427_maklumat-pelayanan-dinas-kesehatan.png" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://desabongkasa.badungkab.go.id/storage/desabongkasa/image/MAKLUMAT%20FOTO.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Judul Maklumat</h4>
-                <a href="https://desabongkasa.badungkab.go.id/storage/desabongkasa/image/MAKLUMAT%20FOTO.jpg" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://cdn.setneg.go.id/_multimedia/photo/20230914/59295929WhatsApp_Image_2023-09-14_at_10.47.29.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Judul Maklumat</h4>
-                <a href="https://cdn.setneg.go.id/_multimedia/photo/20230914/59295929WhatsApp_Image_2023-09-14_at_10.47.29.jpeg" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
+            @foreach ($infografiss as $data)
+              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+                <img src="{{ asset('infografis/' . $data->gambar) }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>{{ $data->judul }}</h4>
+                  <a href="{{ asset('infografis/' . $data->gambar) }}" title="{{ $data->judul }}" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div><!-- End Portfolio Item -->
+            @endforeach
 
           </div><!-- End Portfolio Container -->
 

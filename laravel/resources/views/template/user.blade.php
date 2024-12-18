@@ -99,25 +99,92 @@
         border-radius: 5px; /* Optional: add border radius */
     }
 
-    @media screen and (max-width: 600px) {
-    .search-container {
-        float: right;
-    }
-    input[type=text], .search-container {
-        float: none;
-        display: block;
-        text-align: left;
-        width: 100%;
-        margin: 0;
-        padding: 6px;
-    }
-    .search-container button {
-        display: none;
-    }
-    input[type=text] {
-        border: 1px solid #ccc;  
-    }
-    }
+    /* @media screen and (max-width: 600px) {
+      .search-container {
+          float: right;
+      }
+      input[type=text], .search-container {
+          float: none;
+          display: block;
+          text-align: left;
+          width: 100%;
+          margin: 0;
+          padding: 6px;
+      }
+      .search-container button {
+          display: none;
+      }
+      input[type=text] {
+          border: 1px solid #ccc;  
+      }
+    } */
+
+
+#wrap form input[type="text"] {
+  height: 30px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  color: #555;
+  /* padding: 3px; */
+  padding-right: 25px;
+  width: 0px;
+  background: white;
+  transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+  cursor: pointer;
+}
+
+#wrap form input[type="text"]:focus:hover {
+  border-bottom: 1px solid #BBB;
+}
+
+#wrap form input[type="text"]:focus {
+  width: 180px;
+  border-bottom: 1px solid #BBB;
+  cursor: text;
+}
+
+
+
+/* Phone (Mobile) */
+@media (max-width: 600px) {
+  #wrap form input[type="text"]:focus {
+    width: 80%;
+  }
+  #wrap form input[type="text"] {
+    font-size: 16px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 1024px) {
+  #wrap form input[type="text"]:focus {
+    width: 50%;
+  }
+  #wrap form input[type="text"] {
+    font-size: 16px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+
+}
+
+#wrap form input[type="submit"]:hover {
+  opacity: 0.8;
+}
+
+#wrap form button {
+  /* margin-right: -600px; */
+  text-indent: -20px;
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 100px; /* Adjust the value for different roundness */
+}
     </style>
 
   @yield('style')  <!-- This will be replaced by the content of the child views -->
@@ -131,8 +198,11 @@
 
       <a href="{{ route('welcome') }}" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 style="color: white;" class="sitename">Bimas Katolik</h1>
+        <img src="{{ asset('sample/logo.png') }}" alt="" >
+        <!-- <div> -->
+          <span style="color: white; font-size: 12px;">DIREKTORAT JENDERAL<br>BIMBINGAN MASYARAKAT KATOLIK<br>KEMENTERIAN AGAMA REPUBLIK INDONESIA</span>
+        <!-- </div> -->
+        <!-- <h1 style="color: white;" class="sitename">Bimas Katolik</h1> -->
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -152,18 +222,17 @@
           </li>
           <li class="dropdown"><a style="color: white;" href="#"><span>Bantuan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a style="color: white;" href="#">Informasi Bantuan</a></li>
-              <li><a style="color: white;" href="#">Bantuan Tersalurkan</a></li>
+              <li><a style="color: white;" href="{{ route('bantuan-informasi') }}">Informasi Bantuan</a></li>
+              <li><a style="color: white;" href="{{ route('bantuan-tersalurkan') }}">Bantuan Tersalurkan</a></li>
             </ul>
           </li>
           <li><a style="color: white;" href="{{ route('infografis') }}">Infografis</a></li>
           <li><a style="color: white;" href="{{ route('dumas') }}">Dumas</a></li>
           <li class="dropdown"><a style="color: white;" href="#"><span>Tentang Kami</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a style="color: white;" href="#">Struktur Organisasi</a></li>
+              <li><a style="color: white;" href="{{ route('struktur-organisasi', ['id' => 1]) }}">Struktur Organisasi</a></li>
               <li><a style="color: white;" href="{{ route('informasi-regulasi') }}">Informasi/Regulasi Penting</a></li>
               <li><a style="color: white;" href="{{ route('reformasi-birokrasi') }}">Reformasi Birokrasi</a></li>
-              <li><a style="color: white;" href="#">PPID</a></li>
               <!-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
                   <li><a href="#">Deep Dropdown 1</a></li>
@@ -175,19 +244,26 @@
               </li> -->
             </ul>
           </li>
+          <li><a style="color: white;" href="#">PPID</a></li>
+
+          <!-- <div class="search-container btn-getstarted" style="background-color: transparent;">
+            <form action="/search">
+                <input type="text" placeholder="Search.." name="query">
+                <button><i class="bi bi-search"></i></button>
+            </form>
+          </div> -->
+          <div id="wrap">
+            <form action="/search" autocomplete="on">
+              <input id="search" name="search" type="text" placeholder="Search..">
+              <button type="button" id="searchButton"><i class="bi bi-search"></i></button>
+            </form>
+          </div>
           <li>
         </ul>
         <i style="color: white;" class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
         <!-- <a class="btn-getstarted" href="index.html#about">Get Started</a> -->
-
-        <div class="search-container btn-getstarted" style="background-color: transparent;">
-        <form action="/search">
-            <input type="text" placeholder="Search.." name="query">
-            <button><i class="bi bi-search"></i></button>
-        </form>
-        </div>
 
     </div>
   </header>
@@ -254,6 +330,28 @@
   <script src="{{ asset('assets/js/main.js') }}"></script>
 
     @yield('script')  <!-- This will be replaced by the content of the child views -->
+
+
+    <script>
+  // Get the form elements
+  const searchInput = document.getElementById('search');
+  const searchButton = document.getElementById('searchButton');
+  const searchForm = document.getElementById('searchForm');
+
+  // When the button is clicked
+  searchButton.addEventListener('click', function(event) {
+    // If the input is not focused, focus it
+    if (document.activeElement !== searchInput) {
+      searchInput.focus();
+    } else {
+      // If the input is already focused, submit the form
+      searchForm.submit();
+    }
+  });
+  
+  // Optional: Automatically focus the input when the page loads
+  // searchInput.focus();  // Uncomment if you want the input to auto-focus on page load
+</script>
 
 </body>
 

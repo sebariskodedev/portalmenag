@@ -15,6 +15,8 @@ use App\Http\Controllers\ReformasiController;
 use App\Http\Controllers\UkerController;
 use App\Http\Controllers\StandardPelayananController;
 use App\Http\Controllers\DumasController;
+use App\Http\Controllers\StrukturController;
+use App\Http\Controllers\BantuanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,7 +48,11 @@ Route::resource('/pelayanan/standard', StandardPelayananController::class)->midd
 
 Route::resource('/admin/infografis', InfografisController::class)->middleware('auth');
 Route::resource('/dumas/subjek', DumasController::class)->middleware('auth');
+Route::resource('/admin/struktur', StrukturController::class)->middleware('auth');
 Route::get('/dumas/aduan', [DumasController::class, 'aduan'])->middleware('auth');
+
+
+Route::resource('/informasi/berita', InformasiController::class)->middleware('auth');
 
 
 
@@ -70,6 +76,9 @@ Route::get('/berita-terbaru', [InformasiController::class, 'getInformasiTerbaru'
 Route::get('/renungan-terbaru', [RenunganController::class, 'getRenunganTerbaru'])->name('renungan-terbaru');
 Route::get('/mimbar-terbaru', [MimbarController::class, 'getMimbarTerbaru'])->name('mimbar-terbaru');
 
+Route::get('/bantuan-informasi', [BantuanController::class, 'getInformasiBantuan'])->name('bantuan-informasi');
+Route::get('/bantuan-tersalurkan', [BantuanController::class, 'getBantuanTersalurkan'])->name('bantuan-tersalurkan');
+
 Route::get('/article-page', [InformasiController::class, 'getInformasi'])->name('article-page');
 
 
@@ -84,3 +93,6 @@ Route::get('/informasi-regulasi-action/{kategori}/{id}', [RegulasiController::cl
 Route::get('/reformasi-birokrasi', [ReformasiController::class, 'index'])->name('reformasi-birokrasi');
 Route::get('/reformasi-birokrasi/action/{id}', [ReformasiController::class, 'action'])->name('reformasi-birokrasi-action');
 Route::get('/reformasi-birokrasi/action/child/{id}', [ReformasiController::class, 'actionChild'])->name('reformasi-birokrasi-action-child');
+
+
+Route::get('/struktur-organisasi/{id}', [StrukturController::class, 'getStruktur'])->name('struktur-organisasi');
