@@ -185,15 +185,27 @@
   padding: 6px;
   border-radius: 100px; /* Adjust the value for different roundness */
 }
+
+#theme-toggle{
+    float: right;
+    /* margin-right: 16px; */
+    background: white;
+    border: none;
+    cursor: pointer;
+    /* padding: 6px; */
+    width: 40px;
+    height: 40px;
+    border-radius: 100px; /* Adjust the value for different roundness */
+}
     </style>
 
   @yield('style')  <!-- This will be replaced by the content of the child views -->
 
 </head>
 
-<body class="index-page" style="">
+<body class="index-page dinamyc-color" style="">
 
-  <header id="header" class="header d-flex align-items-center sticky-top" style="background-color: #005faf;">
+  <header id="header" class="header d-flex align-items-center sticky-top dinamyc-color-header" style="background-color: #005faf;">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="{{ route('welcome') }}" class="logo d-flex align-items-center me-auto">
@@ -265,20 +277,28 @@
 
         <!-- <a class="btn-getstarted" href="index.html#about">Get Started</a> -->
 
+
+    <!-- Add this button right here -->
+
     </div>
+
+    <div class="search-container btn-getstarted" style="background-color: transparent;">
+      <button id="theme-toggle" class=""><i id="theme-icon" class="bi bi-moon"></i></button>
+    </div>
+    
   </header>
 
     @yield('content')  <!-- This will be replaced by the content of the child views -->
 
-  <footer id="footer" class="footer light-background">
+  <footer id="footer" class="footer light-background dinamyc-color-footer">
 
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a style="color: white;" href="{{ route('welcome') }}" class="logo d-flex align-items-center">
-            <span class="sitename">Bimas Katolik</span>
+            <span class="sitename text-dinamyc-color-primary">Bimas Katolik</span>
           </a>
-          <p>Bimas Katolik Kemenag adalah situs resmi yang dikelola oleh Bimbingan Masyarakat Katolik di bawah Kementerian Agama Republik Indonesia. Website ini bertujuan untuk memberikan informasi terkait kegiatan, program, dan layanan bagi umat Katolik di Indonesia.</p>
+          <p class="text-dinamyc-color">Bimas Katolik Kemenag adalah situs resmi yang dikelola oleh Bimbingan Masyarakat Katolik di bawah Kementerian Agama Republik Indonesia. Website ini bertujuan untuk memberikan informasi terkait kegiatan, program, dan layanan bagi umat Katolik di Indonesia.</p>
           <div class="social-links d-flex mt-4">
             <a href=""><i class="bi bi-twitter-x"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
@@ -288,10 +308,10 @@
         </div>
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-        <h4>Hubungi Kami</h4>
-        <p>Jl. M.H. Thamrin No.6, RT.2/RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340</p>
-        <p class="mt-4"><strong>Telepon:</strong> <span>(+62) 213812344</span></p>
-        <p><strong>Email:</strong> <span>bimaskatolik@kemenag.go.id</span></p>
+        <h4 class=" text-dinamyc-color-primary">Hubungi Kami</h4>
+        <p class="text-dinamyc-color">Jl. M.H. Thamrin No.6, RT.2/RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340</p>
+        <p class="mt-4 text-dinamyc-color"><strong>Telepon:</strong> <span>(+62) 213812344</span></p>
+        <p class="text-dinamyc-color"><strong>Email:</strong> <span>bimaskatolik@kemenag.go.id</span></p>
         </div>
 
         <div class="col-lg-4 col-12 footer-links">
@@ -351,6 +371,128 @@
   
   // Optional: Automatically focus the input when the page loads
   // searchInput.focus();  // Uncomment if you want the input to auto-focus on page load
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const iconElement = document.getElementById("theme-icon");
+    const toggleButton = document.getElementById('theme-toggle');
+    const xxx = document.getElementsByClassName('dinamyc-color');
+    const yyy = document.getElementsByClassName('dinamyc-color-header');
+    const zzz = document.getElementsByClassName('dinamyc-color-footer');
+    const htmlElement = document.documentElement;
+    const kkk = document.getElementsByClassName('dinamyc-color-card');
+
+
+    const aaa = document.getElementsByClassName('text-dinamyc-color-primary');
+    const bbb = document.getElementsByClassName('text-dinamyc-color');
+    
+
+    // Check and apply saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        iconElement.classList.remove("bi-moon");
+        iconElement.classList.add("bi-sun"); // Change to moon icon
+        console.log("Dark");
+        htmlElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        for (let i = 0; i < xxx.length; i++) {
+          xxx[i].style.background = "#161d31";
+        }
+        for (let i = 0; i < yyy.length; i++) {
+          yyy[i].style.background = "#283046";
+        }
+        for (let i = 0; i < zzz.length; i++) {
+          zzz[i].style.background = "#151720";
+        }
+        for (let i = 0; i < kkk.length; i++) {
+          kkk[i].style.background = "#283046";
+        }
+        for (let i = 0; i < aaa.length; i++) {
+          aaa[i].style.color = "white";
+        }
+        for (let i = 0; i < bbb.length; i++) {
+          bbb[i].style.color = "#9397a1";
+        }
+    } else {
+        iconElement.classList.remove("bi-sun");
+        iconElement.classList.add("bi-moon"); // Change to moon icon
+        console.log("Light");
+        htmlElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        for (let i = 0; i < xxx.length; i++) {
+          xxx[i].style.background = "white";
+        }
+        for (let i = 0; i < yyy.length; i++) {
+          yyy[i].style.background = "#005faf";
+        }
+        for (let i = 0; i < zzz.length; i++) {
+          zzz[i].style.background = "#f6fafd";
+        }
+        for (let i = 0; i < kkk.length; i++) {
+          kkk[i].style.background = "white";
+        }
+        for (let i = 0; i < aaa.length; i++) {
+          aaa[i].style.color = "#114265";
+        }
+        for (let i = 0; i < bbb.length; i++) {
+          bbb[i].style.color = "#545454";
+        }
+    }
+
+    toggleButton.addEventListener('click', () => {
+
+
+      if (htmlElement.classList.contains('dark')) {
+        iconElement.classList.remove("bi-moon");
+        iconElement.classList.add("bi-sun"); // Change to moon icon
+        console.log("Light");
+        htmlElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        for (let i = 0; i < xxx.length; i++) {
+          xxx[i].style.background = "white";
+        }
+        for (let i = 0; i < yyy.length; i++) {
+          yyy[i].style.background = "#005faf";
+        }
+        for (let i = 0; i < zzz.length; i++) {
+          zzz[i].style.background = "#f6fafd";
+        }
+        for (let i = 0; i < kkk.length; i++) {
+          kkk[i].style.background = "white";
+        }
+        for (let i = 0; i < aaa.length; i++) {
+          aaa[i].style.color = "#114265";
+        }
+        for (let i = 0; i < bbb.length; i++) {
+          bbb[i].style.color = "#545454";
+        }
+      } else {
+        iconElement.classList.remove("bi-sun");
+        iconElement.classList.add("bi-moon"); // Change to moon icon
+        console.log("Dark");
+        htmlElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        for (let i = 0; i < xxx.length; i++) {
+          xxx[i].style.background = "#161d31";
+        }
+        for (let i = 0; i < yyy.length; i++) {
+          yyy[i].style.background = "#283046";
+        }
+        for (let i = 0; i < zzz.length; i++) {
+          zzz[i].style.background = "#151720";
+        }
+        for (let i = 0; i < kkk.length; i++) {
+          kkk[i].style.background = "#283046";
+        }
+        for (let i = 0; i < aaa.length; i++) {
+          aaa[i].style.color = "white";
+        }
+        for (let i = 0; i < bbb.length; i++) {
+          bbb[i].style.color = "#9397a1";
+        }
+      }
+    });
+  });
 </script>
 
 </body>

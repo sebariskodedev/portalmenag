@@ -61,6 +61,7 @@
     border-radius: 15px; /* Optional: rounded corners */
     cursor: pointer; /* Change cursor to pointer (finger) */
     background-color: #005faf; /* Changes background on hover */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); */
 }
 
 /* Hover effect */
@@ -81,6 +82,7 @@
   align-items: center; /* Center items horizontally */
   border-radius: 15px; /* Optional: rounded corners */
   cursor: pointer; /* Change cursor to pointer (finger) */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); */
 }
 
 .ol-eselon2 {
@@ -587,6 +589,7 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 .card-container {
   position: relative;
   /* background-color: red; */
+  background-color: transparent;
   width: 100%;
   margin-top: -100px;
   display: flex;         /* Enables flexbox, which aligns items horizontally by default */
@@ -597,11 +600,14 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 .card-item {
   position: relative;
   width: 100%;
-  background-color: #e5e5e5;
+  /* background-color: #e5e5e5; */
+  background-color: transparent;
   display: flex;         /* Enables flexbox, which aligns items horizontally by default */
   justify-content: center; /* Center items horizontally */
   align-items: bottom;     /* (Optional) Center items vertically */
   bottom: 0;
+  border-radius: 20px;
+  /* box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); */
 }
 
 .card-landing {
@@ -615,6 +621,8 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
   color: white;
   padding: 0;
   margin: 1px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
   /* border: 1px solid grey; */
 }
 
@@ -765,7 +773,7 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 .post-slide {
   background: #fff;
   border-radius: 15px;
-  box-shadow: 0px 14px 22px -9px #bbcbd8;
+  /* box-shadow: 0px 14px 22px -9px #bbcbd8; */
 }
 .post-slide .post-img {
   position: relative;
@@ -896,6 +904,13 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 }
 
 
+
+.xxx {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* x-offset, y-offset, blur-radius, spread-radius, color */
+}
+
 /* .post-slide {
   background-color: red;
 } */
@@ -905,7 +920,7 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 @endsection
 
 @section('content')
-<div class="slider-banner">
+<div class="slider-banner dinamyc-color">
   <input type="radio" name="slider" id="slideA" checked/>
   <div class="slider-image">
     <img src="{{ asset('images/banner_slider_1.jpg') }}" />
@@ -944,8 +959,8 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 </div>
 
 <div class="card-container">
-  <div class="card-item">
-    <div class="card-landing">
+  <div class="card-item" style="background-color: transparent;">
+    <div class="card-landing dinamyc-color-card">
       <div class="icon-title">
         <img src="{{ asset('images/Icon_Layanan.png') }}" />
       </div>
@@ -957,7 +972,7 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
         <div class="capt-title"><h4 style="color: white;">Layanan</h4></div>
       </div>
     </div>
-    <div class="card-landing">
+    <div class="card-landing dinamyc-color-card">
       <div class="icon-title">
         <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/data-512.png" />
       </div>
@@ -969,7 +984,7 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
       <div class="capt-title"><h4 style="color: white;">Data</h4></div>
       </div>
     </div>
-    <div class="card-landing">
+    <div class="card-landing dinamyc-color-card">
       <div class="icon-title">
         <img src="{{ asset('images/Icon_Bantuan.png') }}" />
       </div>
@@ -985,23 +1000,23 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 </div>
 
 
-<main class="main" style="margin-top: 50px;">
+<main class="main dinamyc-color" style="margin-top: 50px;">
 
 <!-- About Section -->
-<section id="about" class="about section">
+<section id="about" class="about section dinamyc-color">
 
-<div class="container container-x section-title" data-aos="fade-up">
-    <h3 class="item">Informasi</h3>
+<div class="container container-x section-title dinamyc-color" data-aos="fade-up">
+    <h3 class="item text-dinamyc-color-primary">Informasi</h3>
 </div>
 
-<div class="container">
+<div class="container dinamyc-color">
 
-<div class="row gy-4">
+<div class="row gy-4 dinamyc-color">
 
-<div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
+<div class="col-lg-4 dinamyc-color" data-aos="fade-up" data-aos-delay="200">
+        <div class="container dinamyc-color" data-aos="fade-up" data-aos-delay="100">
 
-            <div class="swiper init-swiper" data-speed="600" data-delay="5000" data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
+            <div class="xxx swiper init-swiper dinamyc-color" data-speed="600" data-delay="5000" data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
             <script type="application/json" class="swiper-config">
                 {
                 "loop": true,
@@ -1030,51 +1045,51 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
             <div class="swiper-wrapper">
 
                 <div class="swiper-slide">
-                  <div class="post-slide">
+                  <div class="post-slide dinamyc-color-card">
                     <div class="post-img">
                       <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
                       <a href="{{ route('berita-terbaru') }}" class="over-layer"><i class="fa fa-link"></i></a>
                     </div>
-                    <div class="post-content">
+                    <div class="post-content dinamyc-color-card">
                       <h3 class="post-title">
-                        <a href="{{ route('berita-terbaru') }}">Lorem ipsum dolor sit amet.</a>
+                        <a class="text-dinamyc-color-primary" href="{{ route('berita-terbaru') }}">Lorem ipsum dolor sit amet.</a>
                       </h3>
-                      <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
+                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
                       <a href="{{ route('berita-terbaru') }}" class="read-more">Berita Terbaru</a>
                     </div>
                   </div>
                 </div><!-- End testimonial item -->
 
                 <div class="swiper-slide">
-                  <div class="post-slide">
+                  <div class="post-slide dinamyc-color-card">
                     <div class="post-img">
                       <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
                       <a href="{{ route('berita-terbaru') }}" class="over-layer"><i class="fa fa-link"></i></a>
                     </div>
-                    <div class="post-content">
+                    <div class="post-content dinamyc-color-card">
                       <h3 class="post-title">
-                        <a href="{{ route('berita-terbaru') }}">Lorem ipsum dolor sit amet.</a>
+                        <a class="text-dinamyc-color-primary" href="{{ route('berita-terbaru') }}">Lorem ipsum dolor sit amet.</a>
                       </h3>
-                      <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
+                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
                       <a href="{{ route('berita-terbaru') }}" class="read-more">Berita Terbaru</a>
                     </div>
                   </div>
                 </div><!-- End testimonial item -->
 
                 <div class="swiper-slide">
-                  <div class="post-slide">
+                  <div class="post-slide dinamyc-color-card">
                     <div class="post-img">
                       <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
                       <a href="{{ route('berita-terbaru') }}" class="over-layer"><i class="fa fa-link"></i></a>
                     </div>
-                    <div class="post-content">
+                    <div class="post-content dinamyc-color-card">
                       <h3 class="post-title">
-                        <a href="{{ route('berita-terbaru') }}">Lorem ipsum dolor sit amet.</a>
+                        <a class="text-dinamyc-color-primary" href="{{ route('berita-terbaru') }}">Lorem ipsum dolor sit amet.</a>
                       </h3>
-                      <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
+                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
                       <a href="{{ route('berita-terbaru') }}" class="read-more">Berita Terbaru</a>
                     </div>
                   </div>
@@ -1087,10 +1102,10 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
         </div>
 </div>
 
-<div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
+<div class="col-lg-4 dinamyc-color" data-aos="fade-up" data-aos-delay="200">
+        <div class="container dinamyc-color" data-aos="fade-up" data-aos-delay="100">
 
-            <div class="swiper init-swiper" data-speed="600" data-delay="5000" data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
+            <div class="xxx swiper init-swiper dinamyc-color" data-speed="600" data-delay="5000" data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
             <script type="application/json" class="swiper-config">
                 {
                 "loop": true,
@@ -1119,51 +1134,51 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
             <div class="swiper-wrapper">
 
                 <div class="swiper-slide">
-                  <div class="post-slide">
+                  <div class="post-slide dinamyc-color-card">
                     <div class="post-img">
                       <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
                       <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
                     </div>
-                    <div class="post-content">
+                    <div class="post-content dinamyc-color-card">
                       <h3 class="post-title">
-                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                        <a class=" text-dinamyc-color-primary" href="#">Lorem ipsum dolor sit amet.</a>
                       </h3>
-                      <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
+                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
                       <a href="#" class="read-more">Renungan Terbaru</a>
                     </div>
                   </div>
                 </div><!-- End testimonial item -->
 
                 <div class="swiper-slide">
-                  <div class="post-slide">
+                  <div class="post-slide dinamyc-color-card">
                     <div class="post-img">
                       <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
                       <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
                     </div>
-                    <div class="post-content">
+                    <div class="post-content dinamyc-color-card">
                       <h3 class="post-title">
-                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                        <a class=" text-dinamyc-color-primary" href="#">Lorem ipsum dolor sit amet.</a>
                       </h3>
-                      <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
+                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
                       <a href="#" class="read-more">Renungan Terbaru</a>
                     </div>
                   </div>
                 </div><!-- End testimonial item -->
 
                 <div class="swiper-slide">
-                  <div class="post-slide">
+                  <div class="post-slide dinamyc-color-card">
                     <div class="post-img">
                       <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
                       <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
                     </div>
-                    <div class="post-content">
+                    <div class="post-content dinamyc-color-card">
                       <h3 class="post-title">
-                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                        <a class=" text-dinamyc-color-primary" href="#">Lorem ipsum dolor sit amet.</a>
                       </h3>
-                      <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
+                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
                       <a href="#" class="read-more">Renungan Terbaru</a>
                     </div>
                   </div>
@@ -1178,10 +1193,10 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 
 
 
-<div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
+<div class="col-lg-4 dinamyc-color" data-aos="fade-up" data-aos-delay="200">
+        <div class="container dinamyc-color" data-aos="fade-up" data-aos-delay="100">
 
-            <div class="swiper init-swiper" data-speed="600" data-delay="5000" data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
+            <div class="xxx swiper init-swiper dinamyc-color" data-speed="600" data-delay="5000" data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
             <script type="application/json" class="swiper-config">
                 {
                 "loop": true,
@@ -1210,51 +1225,51 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
             <div class="swiper-wrapper">
 
                 <div class="swiper-slide">
-                  <div class="post-slide">
+                  <div class="post-slide dinamyc-color-card">
                     <div class="post-img">
                       <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
                       <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
                     </div>
-                    <div class="post-content">
+                    <div class="post-content dinamyc-color-card">
                       <h3 class="post-title">
-                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                        <a class="text-dinamyc-color-primary" href="#">Lorem ipsum dolor sit amet.</a>
                       </h3>
-                      <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
+                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
                       <a href="#" class="read-more">Mimbar Terbaru</a>
                     </div>
                   </div>
                 </div><!-- End testimonial item -->
 
                 <div class="swiper-slide">
-                  <div class="post-slide">
+                  <div class="post-slide dinamyc-color-card">
                     <div class="post-img">
                       <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
                       <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
                     </div>
-                    <div class="post-content">
+                    <div class="post-content dinamyc-color-card">
                       <h3 class="post-title">
-                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                        <a class="text-dinamyc-color-primary" href="#">Lorem ipsum dolor sit amet.</a>
                       </h3>
-                      <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
+                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
                       <a href="#" class="read-more">Mimbar Terbaru</a>
                     </div>
                   </div>
                 </div><!-- End testimonial item -->
 
                 <div class="swiper-slide">
-                  <div class="post-slide">
+                  <div class="post-slide dinamyc-color-card">
                     <div class="post-img">
                       <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
                       <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
                     </div>
-                    <div class="post-content">
+                    <div class="post-content dinamyc-color-card">
                       <h3 class="post-title">
-                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                        <a class="text-dinamyc-color-primary" href="#">Lorem ipsum dolor sit amet.</a>
                       </h3>
-                      <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
+                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
                       <a href="#" class="read-more">Mimbar Terbaru</a>
                     </div>
                   </div>
@@ -1274,15 +1289,15 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 </section><!-- /About Section -->
 
     {{-- <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section">
-        <div class="container container-x section-title" data-aos="fade-up">
+    <section id="testimonials" class="testimonials section dinamyc-color">
+        <div class="container container-x section-title dinamyc-color" data-aos="fade-up">
             <h3 class="item">Berita Terbaru</h3>
             <a href="{{ route('berita-terbaru') }}" class="item informasi-lengkap">Selengkapnya<i class="bi bi-chevron-right"></i></a>
         </div>
 
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="container dinamyc-color" data-aos="fade-up" data-aos-delay="100">
 
-            <div class="swiper init-swiper" data-speed="600" data-delay="5000" data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
+            <div class="swiper init-swiper dinamyc-color" data-speed="600" data-delay="5000" data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
             <script type="application/json" class="swiper-config">
                 {
                 "loop": true,
@@ -1660,14 +1675,14 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
     </section><!-- /Testimonials Section --> --}}
 
     <!-- About Section -->
-    <section id="about" class="about section">
+    <section id="about" class="about section dinamyc-color">
 
         <div class="container">
           <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-xl-10">
               <div class="text-center">
-                <h3>Tentang Ditjen Bimas Katolik</h3>
-                <p>Direktorat Jenderal Bimbingan Masyarakat Katolik adalah unsur pelaksana yang berada di bawah dan bertanggung jawab kepada Menteri Agama. Direktorat Jenderal Bimbingan Masyarakat Katolik dipimpin oleh seorang Direktur Jenderal Direktorat Jenderal Bimbingan Masyarakat Katolik mempunyai tugas menyelenggarakan perumusan dan pelaksanaan kebijakan di bidang bimbingan masyarakat Katolik sesuai dengan ketentuan peraturan perundang-undangan.</p>
+                <h3 class="text-dinamyc-color-primary">Tentang Ditjen Bimas Katolik</h3>
+                <p class="text-dinamyc-color">Direktorat Jenderal Bimbingan Masyarakat Katolik adalah unsur pelaksana yang berada di bawah dan bertanggung jawab kepada Menteri Agama. Direktorat Jenderal Bimbingan Masyarakat Katolik dipimpin oleh seorang Direktur Jenderal Direktorat Jenderal Bimbingan Masyarakat Katolik mempunyai tugas menyelenggarakan perumusan dan pelaksanaan kebijakan di bidang bimbingan masyarakat Katolik sesuai dengan ketentuan peraturan perundang-undangan.</p>
               </div>
             </div>
           </div>
@@ -1676,13 +1691,13 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
     </section><!-- /About Section -->
 
     <!-- About Section -->
-    <section id="about" class="about section">
+    <section id="about" class="about section dinamyc-color">
 
         <div class="container">
           <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
             <div class="col-xl-10">
               <div class="text-center">
-                <a class="cta-btn" href="{{ route('struktur-organisasi', ['id' => 1]) }}"><h3>Struktur Organisasi</h3></a>
+                <a class="cta-btn" href="{{ route('struktur-organisasi', ['id' => 1]) }}"><h3 class="text-dinamyc-color-primary">Struktur Organisasi</h3></a>
               </div>
             </div>
           </div>
