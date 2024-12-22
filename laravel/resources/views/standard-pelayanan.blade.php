@@ -32,7 +32,7 @@
 	 position: relative;
 	 border-top-left-radius: 5px;
 	 border-top-right-radius: 5px;
-	 background-color: #e5e5e5;
+	 background-color: #9397a1;
 }
  .tab .tab-head li:hover {
 	 background-color: #e5e5e5;
@@ -40,7 +40,7 @@
 }
  .tab .tab-head li.active {
 	 border: 1px solid #ccc;
-	 background-color: #fff;
+	 background-color: #ffffff;
 	 color: #333;
 	 border-bottom: 1px solid #fff;
 	 display: block;
@@ -161,206 +161,60 @@
 @endsection
 
 @section('content')
-<main class="main">
+<main class="main dinamyc-color">
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+    <section id="portfolio" class="portfolio section dinamyc-color">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Standard Pelayanan DJKN</h2>
+        <h2 class="text-dinamyc-color-primary">Standard Pelayanan</h2>
         <!-- <p>Maklumat Pelayanan adalah pernyataan komitmen dari suatu organisasi atau lembaga pelayanan publik untuk memberikan pelayanan yang berkualitas, profesional, dan sesuai dengan standar yang telah ditetapkan</p> -->
       </div><!-- End Section Title -->
 
       <div class="container">
 
-<div class="tab">
-  
-  <ul class="tab-head">
-    <li class="active" rel="tab1">Sekretariat</li>
-    <li rel="tab2">Dit. PKKN</li>
-    <li rel="tab3">Dit. KND</li>
-    <li rel="tab4">Dit. PKN</li>
-    <li rel="tab5">Dit. Penilaian</li>
-    <li rel="tab6">Dit. Lelang</li>
-    <li rel="tab7">Dit. Hukum dan Humas</li>
-    <li rel="tab8">Dit. TSI</li>
-    <li rel="tab9">Kanwil DJKN</li>
-    <li rel="tab10">KPKNL</li>
-  </ul>
-    
-  <div class="tab-container">
-  
-    <div id="tab1" class="tab-content">
-        <div class="expandable-list">
-            <div class="expandable-item" onclick="toggle(0)">
-                <div class="expandable-header">
-                    1. Penerbitan Surat Perintah Penunjukan Pelaksana Tugas
-                    <div class="expandable-icon">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                    </div>
-                </div>
-                <div class="expandable-body">
-                    <img src="https://sensor.kemdikbud.go.id/public/info/wp-content/uploads/2022/10/INFOGRAFIS-STANDAR-PELAYANAN-REV3-01-1-1024x576.jpg">
-                </div>
-            </div>
-            <div class="expandable-item" onclick="toggle(1)">
-                <div class="expandable-header">
-                    2. Penyelesaian Revisi DIPA Kewenangan Direktorat Jenderal Anggaran
-                    <div class="expandable-icon">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                    </div>
-                </div>
-                <div class="expandable-body">
-                    <img src="https://pkmgodean1.slemankab.go.id/wp-content/uploads/2019/09/SP-Poli-Gigi.png">
-                </div>
-            </div>
-            <div class="expandable-item" onclick="toggle(2)">
-                <div class="expandable-header">
-                    3. Pembuatan Surat Penghasilan Setahun
-                    <div class="expandable-icon">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                    </div>
-                </div>
-                <div class="expandable-body">
-                    <img src="https://www.kemenpppa.go.id/assets/files/feature_image/20231017_011427.TW%203.png">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- #tab1 -->
-  
-    <div id="tab2" class="tab-content">
-        <div class="expandable-list">
-            <div class="expandable-item" onclick="toggle(3)">
-              <div class="expandable-header">
-                1. Penerbitan Surat Perintah Penunjukan Pelaksana Tugas
-                <div class="expandable-icon">
-                  <div class="line"></div>
-                  <div class="line"></div>
-                </div>
+        <div class="tab">
+          
+          <ul class="tab-head">
+            @foreach ($ukers as $data)
+              @if($loop->iteration == 1)
+                <li class="dinamyc-color-card-grey active" rel="tab{{$loop->iteration}}">{{$data->name}}</li>
+              @else
+                <li class="dinamyc-color-card-grey" rel="tab{{$loop->iteration}}">{{$data->name}}</li>
+              @endif
+            @endforeach
+          </ul>
+            
+          <div class="tab-container">
+            <?php $toogle = 0; ?>
+            @foreach ($ukers as $data)
+              <div id="tab{{$loop->iteration}}" class="tab-content">
+                  <div class="expandable-list">
+                      @foreach ($standardpelayanans as $data2)
+                        @if($data2->uker == $data->id)
+                          <div class="expandable-item dinamyc-color-card-grey" onclick="toggle({{$toogle}})">
+                              <div class="expandable-header">
+                                  {{$data2->judul}}
+                                  <div class="expandable-icon">
+                                      <div class="line"></div>
+                                      <div class="line"></div>
+                                  </div>
+                              </div>
+                              <div class="expandable-body">
+                                  <img src="{{ asset('standards/' . $data2->gambar) }}">
+                              </div>
+                          </div>
+                          <?php $toogle = $toogle + 1; ?>
+                        @endif
+                      @endforeach
+                  </div>
               </div>
-              <div class="expandable-body">
-                <img src="https://sensor.kemdikbud.go.id/public/info/wp-content/uploads/2022/10/INFOGRAFIS-STANDAR-PELAYANAN-REV3-01-1-1024x576.jpg">
-              </div>
-            </div>
-            <div class="expandable-item" onclick="toggle(4)">
-              <div class="expandable-header">
-                2. Penyelesaian Revisi DIPA Kewenangan Direktorat Jenderal Anggaran
-                <div class="expandable-icon">
-                  <div class="line"></div>
-                  <div class="line"></div>
-                </div>
-              </div>
-              <div class="expandable-body">
-                <img src="https://pkmgodean1.slemankab.go.id/wp-content/uploads/2019/09/SP-Poli-Gigi.png">
-              </div>
-            </div>
-            <div class="expandable-item" onclick="toggle(5)">
-              <div class="expandable-header">
-                3. Pembuatan Surat Penghasilan Setahun
-                <div class="expandable-icon">
-                  <div class="line"></div>
-                  <div class="line"></div>
-                </div>
-              </div>
-              <div class="expandable-body">
-                <img src="https://www.kemenpppa.go.id/assets/files/feature_image/20231017_011427.TW%203.png">
-              </div>
-            </div>
+              <!-- #tab1 -->
+            @endforeach
+            <!-- #tab4 --> 
+          </div>
         </div>
-    </div>
-    <!-- #tab2 -->
-  
-    <div id="tab3" class="tab-content">
-<div class="expandable-list">
-    <div class="expandable-item" onclick="toggle(6)">
-      <div class="expandable-header">
-        1. Penerbitan Surat Perintah Penunjukan Pelaksana Tugas
-        <div class="expandable-icon">
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-      </div>
-      <div class="expandable-body">
-        <img src="https://sensor.kemdikbud.go.id/public/info/wp-content/uploads/2022/10/INFOGRAFIS-STANDAR-PELAYANAN-REV3-01-1-1024x576.jpg">
-      </div>
-    </div>
-    <div class="expandable-item" onclick="toggle(7)">
-      <div class="expandable-header">
-        2. Penyelesaian Revisi DIPA Kewenangan Direktorat Jenderal Anggaran
-        <div class="expandable-icon">
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-      </div>
-      <div class="expandable-body">
-        <img src="https://pkmgodean1.slemankab.go.id/wp-content/uploads/2019/09/SP-Poli-Gigi.png">
-      </div>
-    </div>
-    <div class="expandable-item" onclick="toggle(8)">
-      <div class="expandable-header">
-        3. Pembuatan Surat Penghasilan Setahun
-        <div class="expandable-icon">
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-      </div>
-      <div class="expandable-body">
-        <img src="https://www.kemenpppa.go.id/assets/files/feature_image/20231017_011427.TW%203.png">
-      </div>
-    </div>
-</div>
-    </div>
-    <!-- #tab3 -->
-  
-    <div id="tab4" class="tab-content">
-<div class="expandable-list">
-    <div class="expandable-item" onclick="toggle(9)">
-      <div class="expandable-header">
-        1. Penerbitan Surat Perintah Penunjukan Pelaksana Tugas
-        <div class="expandable-icon">
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-      </div>
-      <div class="expandable-body">
-        <img src="https://sensor.kemdikbud.go.id/public/info/wp-content/uploads/2022/10/INFOGRAFIS-STANDAR-PELAYANAN-REV3-01-1-1024x576.jpg">
-      </div>
-    </div>
-    <div class="expandable-item" onclick="toggle(10)">
-      <div class="expandable-header">
-        2. Penyelesaian Revisi DIPA Kewenangan Direktorat Jenderal Anggaran
-        <div class="expandable-icon">
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-      </div>
-      <div class="expandable-body">
-        <img src="https://pkmgodean1.slemankab.go.id/wp-content/uploads/2019/09/SP-Poli-Gigi.png">
-      </div>
-    </div>
-    <div class="expandable-item" onclick="toggle(11)">
-      <div class="expandable-header">
-        3. Pembuatan Surat Penghasilan Setahun
-        <div class="expandable-icon">
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-      </div>
-      <div class="expandable-body">
-        <img src="https://www.kemenpppa.go.id/assets/files/feature_image/20231017_011427.TW%203.png">
-      </div>
-    </div>
-</div>
-    </div>
-    <!-- #tab4 --> 
-  </div>
-  </div>
-  </div>
 
       </div>
 
@@ -372,26 +226,44 @@
 @section('script')
 <script>
 
-    $(".tab-content").hide();
-    $(".tab-content:first").show();
+  // Hide all tab contents
+  document.querySelectorAll(".tab-content").forEach(tab => {
+      tab.style.display = "none";
+  });
 
-    $(".tab-head li").click(function() {
-	
-      $(".tab-content").hide();
-      var activeTab = $(this).attr("rel"); 
-      $("#"+activeTab).fadeIn();		
-      $(".tab-head li").removeClass("active");
-      $(this).addClass("active");
+  // Show the first tab content
+  document.querySelector(".tab-content").style.display = "block";
 
-	  
-    });
+  // Add click event to all tab-head list items
+  document.querySelectorAll(".tab-head li").forEach(tab => {
+      tab.addEventListener("click", function () {
+          // Hide all tab content
+          document.querySelectorAll(".tab-content").forEach(content => {
+              content.style.display = "none";
+          });
 
+          // Get the `rel` attribute of the clicked tab
+          const activeTab = this.getAttribute("rel");
+          
+          // Show the related tab content
+          document.getElementById(activeTab).style.display = "block";
 
+          // Remove the active class and reset background color for all tabs
+          document.querySelectorAll(".tab-head li").forEach(tab => {
+              tab.classList.remove("active");
+              tab.style.backgroundColor = "#9397a1";
+          });
 
+          // Add the active class and set background color to white for the clicked tab
+          this.classList.add("active");
+          this.style.backgroundColor = "#e5e5e5";
+      });
+  });
 
-    toggle = (idx) => {
-        document.querySelectorAll('.expandable-item')[idx].classList.toggle('active');
-    };
+  // Toggle function for expandable items
+  function toggle(idx) {
+      document.querySelectorAll('.expandable-item')[idx].classList.toggle('active');
+  }
 	
 </script>
 @endsection

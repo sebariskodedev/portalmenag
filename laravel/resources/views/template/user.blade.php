@@ -218,22 +218,22 @@
       </a>
 
       <nav id="navmenu" class="navmenu">
-        <ul>
+        <ul class="dinamyc-color-header">
           <!-- <li><a href="index.html#hero" class="active">Home</a></li> -->
           <li class="dropdown"><a style="color: white;" href="#"><span>Layanan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
+            <ul class="dinamyc-color-header">
               <li><a style="color: white;" href="{{ route('maklumat-pelayanan') }}">Maklumat Pelayanan</a></li>
               <li><a style="color: white;" href="{{ route('standard-pelayanan') }}">Standard Pelayanan</a></li>
             </ul>
           </li>
           <li class="dropdown"><a style="color: white;" href="#"><span>Data</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
+            <ul class="dinamyc-color-header">
               <li><a style="color: white;" href="#">Sebaran</a></li>
               <li><a style="color: white;" href="#">Dataset</a></li>
             </ul>
           </li>
           <li class="dropdown"><a style="color: white;" href="#"><span>Bantuan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
+            <ul class="dinamyc-color-header">
               <li><a style="color: white;" href="{{ route('bantuan-informasi') }}">Informasi Bantuan</a></li>
               <li><a style="color: white;" href="{{ route('bantuan-tersalurkan') }}">Bantuan Tersalurkan</a></li>
             </ul>
@@ -241,7 +241,7 @@
           <li><a style="color: white;" href="{{ route('infografis') }}">Infografis</a></li>
           <li><a style="color: white;" href="{{ route('dumas') }}">Dumas</a></li>
           <li class="dropdown"><a style="color: white;" href="#"><span>Tentang Kami</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
+            <ul class="dinamyc-color-header">
               <li><a style="color: white;" href="{{ route('struktur-organisasi', ['id' => 1]) }}">Struktur Organisasi</a></li>
               <li><a style="color: white;" href="{{ route('informasi-regulasi') }}">Informasi/Regulasi Penting</a></li>
               <li><a style="color: white;" href="{{ route('reformasi-birokrasi') }}">Reformasi Birokrasi</a></li>
@@ -381,6 +381,7 @@
     const zzz = document.getElementsByClassName('dinamyc-color-footer');
     const htmlElement = document.documentElement;
     const kkk = document.getElementsByClassName('dinamyc-color-card');
+    const lll = document.getElementsByClassName('dinamyc-color-card-grey');
 
 
     const aaa = document.getElementsByClassName('text-dinamyc-color-primary');
@@ -407,6 +408,9 @@
         for (let i = 0; i < kkk.length; i++) {
           kkk[i].style.background = "#283046";
         }
+        // for (let i = 0; i < lll.length; i++) {
+        //   lll[i].style.background = "#9397a1";
+        // }
         for (let i = 0; i < aaa.length; i++) {
           aaa[i].style.color = "white";
         }
@@ -431,6 +435,9 @@
         for (let i = 0; i < kkk.length; i++) {
           kkk[i].style.background = "white";
         }
+        // for (let i = 0; i < lll.length; i++) {
+        //   lll[i].style.background = "#e5e5e5";
+        // }
         for (let i = 0; i < aaa.length; i++) {
           aaa[i].style.color = "#114265";
         }
@@ -460,6 +467,9 @@
         for (let i = 0; i < kkk.length; i++) {
           kkk[i].style.background = "white";
         }
+        // for (let i = 0; i < lll.length; i++) {
+        //   lll[i].style.background = "#e5e5e5";
+        // }
         for (let i = 0; i < aaa.length; i++) {
           aaa[i].style.color = "#114265";
         }
@@ -484,6 +494,9 @@
         for (let i = 0; i < kkk.length; i++) {
           kkk[i].style.background = "#283046";
         }
+        // for (let i = 0; i < lll.length; i++) {
+        //   lll[i].style.background = "#9397a1";
+        // }
         for (let i = 0; i < aaa.length; i++) {
           aaa[i].style.color = "white";
         }

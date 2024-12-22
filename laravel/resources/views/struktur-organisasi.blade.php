@@ -26,15 +26,15 @@
 @endsection
 
 @section('content')
-<main class="main">
+<main class="main dinamyc-color">
 
 
 
     <!-- Services Section -->
-    <div class="container">
+    <div class="container dinamyc-color">
 
-        <div class="image-container">
-            <h2>Struktur {{$struktur->judul}}</h2>
+        <div class="image-container dinamyc-color">
+            <h2 class="text-dinamyc-color-primary">Struktur {{$struktur->judul}}</h2>
 
             <img src="{{ asset('struktur/' . $struktur->gambar) }}" 
                             alt="{{ $struktur->judul }}" >

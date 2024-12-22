@@ -17,6 +17,7 @@ use App\Http\Controllers\StandardPelayananController;
 use App\Http\Controllers\DumasController;
 use App\Http\Controllers\StrukturController;
 use App\Http\Controllers\BantuanController;
+use App\Http\Controllers\KategoriRBController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +55,9 @@ Route::get('/dumas/aduan', [DumasController::class, 'aduan'])->middleware('auth'
 
 Route::resource('/informasi/berita', InformasiController::class)->middleware('auth');
 
+Route::resource('/rb/kategori', KategoriRBController::class)->middleware('auth');
+Route::resource('/rb/data', ReformasiController::class)->middleware('auth');
+
 
 
 
@@ -90,7 +94,7 @@ Route::post('/dumas', [DumasController::class, 'submit'])->name('dumas.submit');
 Route::get('/informasi-regulasi', [RegulasiController::class, 'index'])->name('informasi-regulasi');
 Route::get('/informasi-regulasi-action/{kategori}/{id}', [RegulasiController::class, 'getInfoRegulasi'])->name('informasi-regulasi-action');
 
-Route::get('/reformasi-birokrasi', [ReformasiController::class, 'index'])->name('reformasi-birokrasi');
+Route::get('/reformasi-birokrasi', [KategoriRBController::class, 'getKategori'])->name('reformasi-birokrasi');
 Route::get('/reformasi-birokrasi/action/{id}', [ReformasiController::class, 'action'])->name('reformasi-birokrasi-action');
 Route::get('/reformasi-birokrasi/action/child/{id}', [ReformasiController::class, 'actionChild'])->name('reformasi-birokrasi-action-child');
 

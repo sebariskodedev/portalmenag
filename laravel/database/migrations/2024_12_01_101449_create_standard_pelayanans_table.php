@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('standard_pelayanans', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('uker');
+            $table->string('judul');
+            $table->string('deskripsi')->nullable();
+            $table->string('gambar');
             $table->timestamps();
         });
     }

@@ -34,13 +34,13 @@
 }
  .list-item:hover {
 	 color: #005faf;
-	 background: #f6f7f9;
+	 background: #e5e5e5;
 }
  .list-item:hover .list-item__button {
 	 opacity: 1;
 	 transition: all 100ms ease;
 }
- .list-item__name {
+ .list-item-name {
 	 display: block;
 	 font-size: 1rem;
 }
@@ -174,14 +174,14 @@
 @endsection
 
 @section('content')
-<main class="main">
+<main class="main dinamyc-color">
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+    <section id="portfolio" class="portfolio section dinamyc-color">
 
 		<!-- Section Title -->
 		<div class="container section-title" data-aos="fade-up">
-		<h2>Reformasi Birokrasi - Akuntabilitas</h2>
+		<h2 class="text-dinamyc-color-primary">Reformasi Birokrasi - Akuntabilitas</h2>
 		<!-- <p>Maklumat Pelayanan adalah pernyataan komitmen dari suatu organisasi atau lembaga pelayanan publik untuk memberikan pelayanan yang berkualitas, profesional, dan sesuai dengan standar yang telah ditetapkan</p> -->
 		</div><!-- End Section Title -->
 
@@ -192,7 +192,17 @@
                 <div class="row">
                     <div class="search"><input type="search" id="data-search-regulasi" data-search="data-search-regulasi" placeholder="Cari ..." /><button class="search__clear search__clear-regulasi">&times;</button>
                     </div>
-                    <div class="list" id="list-regulasi" data-searchable="data-searchable-regulasi"></div>
+                    <div class="list" id="list-regulasi" data-searchable="data-searchable-regulasi">
+						@foreach ($reformasis as $data)
+							<div class="list-item">
+								<div class="list-item__content">
+									<strong class="list-item-name text-dinamyc-color">{{$data->name}}</strong>
+									<span class="list-item__info text-dinamyc-color">Ditayangkan : {{$data->created_at}} <br><br> <a href="{{ route('reformasi-birokrasi-action-child', ['id' => $data->id]) }}"><span class="chevron">»</span>  Selengkapnya</a></span>
+									
+								</div>
+							</div>
+						@endforeach
+					</div>
                 </div>
             </div>
 
@@ -205,28 +215,9 @@
 
 @section('script')
 <script>
+document.addEventListener('DOMContentLoaded', () => {
     const listRegulasi = document.getElementById("list-regulasi");
     const amount = 10;
-
-    // Render Users
-    const template = listItem => {
-        return `
-                <div class="list-item">
-					<div class="list-item__content">
-						<strong class="list-item__name">${listItem.title}</strong>
-						<span class="list-item__info">Ditayangkan : ${listItem.time} <br><br> <a href="{{ route('reformasi-birokrasi-action-child', ['id' => '1']) }}" style=""><span class="chevron">»</span>  Selengkapnya</a></span>
-						
-					</div>
-                </div>
-    	`;
-    };
-
-    fetch(`http://localhost:8080/api/get-rb`, { method: "get" })
-        .then(response => response.json())
-        .then(data =>
-            data.results.forEach(result => (listRegulasi.innerHTML += template(result)))
-        )
-        .catch(error => console.log(error));
 
     // Search
     const regulasiSearch = document.getElementById("data-search-regulasi");
@@ -264,6 +255,7 @@
         } else {
         }
     });
+});
 
 </script>
 @endsection

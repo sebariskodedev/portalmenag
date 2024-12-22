@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Layanan;
+use App\Models\StandardPelayanan;
+use App\Models\Uker;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Exception;
@@ -100,7 +102,6 @@ class LayananController extends Controller
         $validated = $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // Image is optional
         ]);
 
         // Find the record in the database
@@ -166,15 +167,23 @@ class LayananController extends Controller
      */
     public function getMaklumatPelayanan()
     {
+        $layanans = Layanan::orderBy('id', 'asc')->get();
 
-        return view('maklumat-pelayanan');
+        return view('maklumat-pelayanan', [
+            'layanans' => $layanans
+        ]);
     }
     /**
      * Display a listing of the resource.
      */
     public function getStandardPelayanan()
     {
+        $ukers = Uker::orderBy('id', 'asc')->get();
+        $standardpelayanans = StandardPelayanan::orderBy('id', 'asc')->get();
 
-        return view('standard-pelayanan');
+        return view('standard-pelayanan', [
+            'ukers' => $ukers,
+            'standardpelayanans' => $standardpelayanans
+        ]);
     }
 }

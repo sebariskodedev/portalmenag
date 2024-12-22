@@ -99,14 +99,14 @@
 @endsection
 
 @section('content')
-<main class="main">
+<main class="main dinamyc-color">
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+    <section id="portfolio" class="portfolio section dinamyc-color">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Reformasi Birokrasi</h2>
+        <h2 class="text-dinamyc-color-primary">Reformasi Birokrasi</h2>
         <!-- <p>Maklumat Pelayanan adalah pernyataan komitmen dari suatu organisasi atau lembaga pelayanan publik untuk memberikan pelayanan yang berkualitas, profesional, dan sesuai dengan standar yang telah ditetapkan</p> -->
       </div><!-- End Section Title -->
 
@@ -114,70 +114,15 @@
 
 
         <div id="news-slider" class="owl-carousel">
-
-            <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=503" alt="Image" class="grid-item__image">
-                <div class="grid-item__content">
-                    <h3 class="grid-item__title">Manajemen Perubahan</h3>
-                    <a href="{{ route('reformasi-birokrasi-action', ['id' => '1']) }}" class="grid-item__readmore">Selengkapnya <span class="arrow">→</span></a>
+            @foreach ($kategorirbs as $data)
+                <div class="grid-item dinamyc-color-card">
+                    <img src="{{ asset('kategoriRB/' . $data->gambar) }}" alt="Image" class="grid-item__image">
+                    <div class="grid-item__content">
+                        <h3 class="grid-item__title text-dinamyc-color-primary">{{$data->name}}</h3>
+                        <a href="{{ route('reformasi-birokrasi-action', ['id' => $data->id]) }}" class="grid-item__readmore">Selengkapnya <span class="arrow">→</span></a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=503" alt="Image" class="grid-item__image">
-                <div class="grid-item__content">
-                    <h3 class="grid-item__title">Organisasi</h3>
-                    <a href="{{ route('reformasi-birokrasi-action', ['id' => '1']) }}" class="grid-item__readmore">Selengkapnya <span class="arrow">→</span></a>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=503" alt="Image" class="grid-item__image">
-                <div class="grid-item__content">
-                    <h3 class="grid-item__title">Tata Laksana</h3>
-                    <a href="{{ route('reformasi-birokrasi-action', ['id' => '1']) }}" class="grid-item__readmore">Selengkapnya <span class="arrow">→</span></a>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=503" alt="Image" class="grid-item__image">
-                <div class="grid-item__content">
-                    <h3 class="grid-item__title">Peraturan Perundang-undangan</h3>
-                    <a href="{{ route('reformasi-birokrasi-action', ['id' => '1']) }}" class="grid-item__readmore">Selengkapnya <span class="arrow">→</span></a>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=503" alt="Image" class="grid-item__image">
-                <div class="grid-item__content">
-                    <h3 class="grid-item__title">Sumber Daya Manusia</h3>
-                    <a href="{{ route('reformasi-birokrasi-action', ['id' => '1']) }}" class="grid-item__readmore">Selengkapnya <span class="arrow">→</span></a>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=503" alt="Image" class="grid-item__image">
-                <div class="grid-item__content">
-                    <h3 class="grid-item__title">Akuntabilitas</h3>
-                    <a href="{{ route('reformasi-birokrasi-action', ['id' => '1']) }}" class="grid-item__readmore">Selengkapnya <span class="arrow">→</span></a>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=503" alt="Image" class="grid-item__image">
-                <div class="grid-item__content">
-                    <h3 class="grid-item__title">Penguatan Pengawasan</h3>
-                    <a href="{{ route('reformasi-birokrasi-action', ['id' => '1']) }}" class="grid-item__readmore">Selengkapnya <span class="arrow">→</span></a>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=503" alt="Image" class="grid-item__image">
-                <div class="grid-item__content">
-                    <h3 class="grid-item__title">Pelayanan Publik</h3>
-                    <a href="{{ route('reformasi-birokrasi-action', ['id' => '1']) }}" class="grid-item__readmore">Selengkapnya <span class="arrow">→</span></a>
-                </div>
-            </div>
+            @endforeach
 
         </div>
 

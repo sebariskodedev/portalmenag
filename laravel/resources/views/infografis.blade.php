@@ -5,14 +5,14 @@
 @endsection
 
 @section('content')
-<main class="main">
+<main class="main dinamyc-color">
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+    <section id="portfolio" class="portfolio section dinamyc-color">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Infografis</h2>
+        <h2 class="text-dinamyc-color-primary">Infografis</h2>
         <!-- <p>Maklumat Pelayanan adalah pernyataan komitmen dari suatu organisasi atau lembaga pelayanan publik untuk memberikan pelayanan yang berkualitas, profesional, dan sesuai dengan standar yang telah ditetapkan</p> -->
       </div><!-- End Section Title -->
 
@@ -31,10 +31,10 @@
             @foreach ($infografiss as $data)
               <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
                 <img src="{{ asset('infografis/' . $data->gambar) }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>{{ $data->judul }}</h4>
-                  <a href="{{ asset('infografis/' . $data->gambar) }}" title="{{ $data->judul }}" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                <div class="portfolio-info dinamyc-color-card">
+                  <h4 class="text-dinamyc-color-primary">{{ $data->judul }}</h4>
+                  <a href="{{ asset('infografis/' . $data->gambar) }}" title="{{ $data->judul }}" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in text-dinamyc-color"></i></a>
+                  {{-- <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                 </div>
               </div><!-- End Portfolio Item -->
             @endforeach

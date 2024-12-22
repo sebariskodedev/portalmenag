@@ -36,7 +36,7 @@
                                 <div class="col-6">
                                     <label for="gambar" class="form-label">Gambar</label>
                                     <div class="col-sm-6">
-                                        <input type="file" name="gambar" class="form-control @error('gambar') is-invalid @enderror" id="gambar" accept="image/*" required>
+                                        <input type="file" name="gambar" class="form-control @error('gambar') is-invalid @enderror" id="gambar" accept="image/*">
                                     </div>
                                     @error('gambar')
                                         <span class="invalid-feedback text-danger">{{ $message }}</span>

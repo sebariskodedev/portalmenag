@@ -75,14 +75,14 @@ label {
 @endsection
 
 @section('content')
-<main class="main">
+<main class="main dinamyc-color">
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+    <section id="portfolio" class="portfolio section dinamyc-color">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Layanan Pengaduan Masyarakat</h2>
+        <h2 class="text-dinamyc-color-primary">Layanan Pengaduan Masyarakat</h2>
         <!-- <p>Maklumat Pelayanan adalah pernyataan komitmen dari suatu organisasi atau lembaga pelayanan publik untuk memberikan pelayanan yang berkualitas, profesional, dan sesuai dengan standar yang telah ditetapkan</p> -->
       </div><!-- End Section Title -->
 

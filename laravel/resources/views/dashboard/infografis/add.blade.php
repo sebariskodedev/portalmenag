@@ -1,5 +1,5 @@
 @extends('template.main')
-@section('title', 'Add Maklumat Pelayanan')
+@section('title', 'Add Infografis')
 
 @section('content')
 

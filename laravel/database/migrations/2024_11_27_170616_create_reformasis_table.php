@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('reformasis', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('sub_rb');
+            $table->string('name');
+            $table->string('deskripsi')->nullable();
+            $table->string('dokumen');
             $table->timestamps();
         });
     }
