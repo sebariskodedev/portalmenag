@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('regulasis', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('kategori');
+            $table->string('name');
+            $table->string('deskripsi')->nullable();
+            $table->string('dokumen');
             $table->timestamps();
         });
     }

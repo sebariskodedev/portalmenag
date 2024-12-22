@@ -34,13 +34,13 @@
 }
  .list-item:hover {
 	 color: #005faf;
-	 background: #f6f7f9;
+	 background: #e5e5e5;
 }
  .list-item:hover .list-item__button {
 	 opacity: 1;
 	 transition: all 100ms ease;
 }
- .list-item__name {
+ .list-item-name {
 	 display: block;
 	 font-size: 1rem;
 }
@@ -174,14 +174,14 @@
 @endsection
 
 @section('content')
-<main class="main">
+<main class="main dinamyc-color">
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+    <section id="portfolio" class="portfolio section dinamyc-color">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Informasi/Regulasi Penting</h2>
+        <h2 class="text-dinamyc-color-primary">Informasi/Regulasi Penting</h2>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -190,18 +190,42 @@
           <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
             <div class="containerx">
                 <div class="row">
-                    <div class="search"><label style="font-weight: 700; font-size: 22px;">Regulasi</label><input type="search" id="data-search-regulasi" data-search="data-search-regulasi" placeholder="Cari regulasi ..." /><button class="search__clear search__clear-regulasi">&times;</button>
+                    <div class="search"><label class="text-dinamyc-color-primary" style="font-weight: 700; font-size: 22px;">Regulasi</label><input type="search" id="data-search-regulasi" data-search="data-search-regulasi" placeholder="Cari regulasi ..." /><button class="search__clear search__clear-regulasi">&times;</button>
                     </div>
-                    <div class="list" id="list-regulasi" data-searchable="data-searchable-regulasi"></div>
+                    <div class="list" id="list-regulasi" data-searchable="data-searchable-regulasi">
+						@foreach ($regulasis as $data)
+							@if($data->kategori == 2)
+								<div class="list-item">
+									<div class="list-item__content">
+										<strong class="list-item-name text-dinamyc-color">{{$data->name}}</strong>
+										<span class="list-item__info text-dinamyc-color">Ditayangkan : {{$data->created_at}} <br><br> <a href="{{ route('informasi-regulasi-action', ['kategori' => 'regulasi', 'id' => $data->id]) }}"><span class="chevron">»</span>  Selengkapnya</a></span>
+										
+									</div>
+								</div>
+							@endif
+						@endforeach
+					</div>
                 </div>
             </div>
           </div>
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
             <div class="containerx">
                 <div class="row">
-                    <div class="search"><label style="font-weight: 700; font-size: 22px;">Informasi Penting</label><input type="search" id="data-search-informasi" data-search="data-search-informasi" placeholder="Cari informasi ..." /><button class="search__clear search__clear-informasi">&times;</button>
+                    <div class="search"><label class="text-dinamyc-color-primary" style="font-weight: 700; font-size: 22px;">Informasi Penting</label><input type="search" id="data-search-informasi" data-search="data-search-informasi" placeholder="Cari informasi ..." /><button class="search__clear search__clear-informasi">&times;</button>
                     </div>
-                    <div class="list" id="list-informasi" data-searchable="data-searchable-informasi"></div>
+                    <div class="list" id="list-informasi" data-searchable="data-searchable-informasi">
+						@foreach ($regulasis as $data)
+							@if($data->kategori == 1)
+								<div class="list-item">
+									<div class="list-item__content">
+										<strong class="list-item-name text-dinamyc-color">{{$data->name}}</strong>
+										<span class="list-item__info text-dinamyc-color">Ditayangkan : {{$data->created_at}} <br><br> <a href="{{ route('informasi-regulasi-action', ['kategori' => 'informasi', 'id' => $data->id]) }}"><span class="chevron">»</span>  Selengkapnya</a></span>
+										
+									</div>
+								</div>
+							@endif
+						@endforeach
+					</div>
                 </div>
             </div>
           </div>
@@ -219,26 +243,6 @@
     const listRegulasi = document.getElementById("list-regulasi");
     const amount = 10;
 
-    // Render Users
-    const template = listItem => {
-        return `
-                <div class="list-item">
-					<div class="list-item__content">
-						<strong class="list-item__name">${listItem.title}</strong>
-						<span class="list-item__info">Ditayangkan : ${listItem.time} <br><br> <a href="{{ route('informasi-regulasi-action', ['kategori' => 'regulasi', 'id' => '1']) }}" style=""><span class="chevron">»</span>  Selengkapnya</a></span>
-						
-					</div>
-                </div>
-    	`;
-    };
-
-    fetch(`http://localhost:8080/api/get-regulasi`, { method: "get" })
-        .then(response => response.json())
-        .then(data =>
-            data.results.forEach(result => (listRegulasi.innerHTML += template(result)))
-        )
-        .catch(error => console.log(error));
-
     // Search
     const regulasiSearch = document.getElementById("data-search-regulasi");
 
@@ -250,7 +254,7 @@
 
 		for (var i = 0; i < tag.length; i++) {
 			// Get the text content of the <strong> element inside the current .list-item
-			var title = tag[i].querySelector(".list-item__name").textContent.toLowerCase();
+			var title = tag[i].querySelector(".list-item-name").textContent.toLowerCase();
 
 			if (title.indexOf(term) !== -1) {
 				tag[i].style.display = "flex"; // Show matching items
@@ -280,26 +284,6 @@
 
 const listInformasi = document.getElementById("list-informasi");
 
-// Render Users
-const templatex = listItem => {
-        return `
-                <div class="list-item">
-					<div class="list-item__content">
-						<strong class="list-item__name">${listItem.title}</strong>
-						<span class="list-item__info">Ditayangkan : ${listItem.time} <br><br> <a href="{{ route('informasi-regulasi-action', ['kategori' => 'informasi', 'id' => '1']) }}" style=""><span class="chevron">»</span>  Selengkapnya</a></span>
-						
-					</div>
-                </div>
-    	`;
-};
-
-fetch(`http://localhost:8080/api/get-informasi`, { method: "get" })
-    .then(response => response.json())
-    .then(data =>
-        data.results.forEach(result => (listInformasi.innerHTML += templatex(result)))
-    )
-    .catch(error => console.log(error));
-
 // Search
 const informasiSearch = document.getElementById("data-search-informasi");
 
@@ -311,7 +295,7 @@ function filterInformasi() {
 
 	for (var i = 0; i < tag.length; i++) {
 		// Get the text content of the <strong> element inside the current .list-item
-		var title = tag[i].querySelector(".list-item__name").textContent.toLowerCase();
+		var title = tag[i].querySelector(".list-item-name").textContent.toLowerCase();
 
 		if (title.indexOf(term) !== -1) {
 			tag[i].style.display = "flex"; // Show matching items

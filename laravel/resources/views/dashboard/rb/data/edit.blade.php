@@ -28,7 +28,7 @@
                                 @method('PUT')
                                 <div class="col-12">
                                     <label for="name" class="form-label">Judul</label>
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Input Unit Kerja" value="{{old('name', $reformasi->name)}}" required>
+                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Input Judul" value="{{old('name', $reformasi->name)}}" required>
                                     @error('name')
                                         <span class="invalid-feedback text-danger">{{ $message }}</span>
                                     @enderror

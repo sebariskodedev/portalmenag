@@ -225,6 +225,13 @@
         </li><!-- End Dumas Nav -->
 
         <li class="nav-item">
+        <a id="menu-informasi-regulasi" class="nav-link collapsed" href="/admin/informasi-regulasi">
+            <i class="bi bi-grid"></i>
+            <span>Informasi/Regulasi</span>
+        </a>
+        </li><!-- End User Nav -->
+
+        {{-- <li class="nav-item">
           <a id="menu-informasi-regulasi" class="nav-link animated collapsed" data-bs-target="#informasi-regulasi-nav" data-bs-toggle="collapse" href="#">
             <i class="bi bi-layout-text-window-reverse"></i><span>Informasi/Regulasi</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
@@ -240,7 +247,7 @@
               </a>
             </li>
           </ul>
-        </li><!-- End Informasi/Regulasi Nav -->
+        </li><!-- End Informasi/Regulasi Nav --> --}}
 
         <li class="nav-item">
           <a id="menu-rb" class="nav-link animated collapsed" data-bs-target="#rb-nav" data-bs-toggle="collapse" href="#">

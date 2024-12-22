@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		for (var i = 0; i < tag.length; i++) {
 			// Get the text content of the <strong> element inside the current .list-item
-			var title = tag[i].querySelector(".list-item__name").textContent.toLowerCase();
+			var title = tag[i].querySelector(".list-item-name").textContent.toLowerCase();
 
 			if (title.indexOf(term) !== -1) {
 				tag[i].style.display = "flex"; // Show matching items

@@ -58,6 +58,8 @@ Route::resource('/informasi/berita', InformasiController::class)->middleware('au
 Route::resource('/rb/kategori', KategoriRBController::class)->middleware('auth');
 Route::resource('/rb/data', ReformasiController::class)->middleware('auth');
 
+Route::resource('admin/informasi-regulasi', RegulasiController::class)->middleware('auth');
+
 
 
 
@@ -91,7 +93,7 @@ Route::get('/list-infografis', [InfografisController::class, 'getInfografis'])->
 Route::get('/dumas', [DumasController::class, 'show_page'])->name('dumas');
 Route::post('/dumas', [DumasController::class, 'submit'])->name('dumas.submit');
 
-Route::get('/informasi-regulasi', [RegulasiController::class, 'index'])->name('informasi-regulasi');
+Route::get('/informasi-regulasi', [RegulasiController::class, 'showInformasiRegulasi'])->name('informasi-regulasi');
 Route::get('/informasi-regulasi-action/{kategori}/{id}', [RegulasiController::class, 'getInfoRegulasi'])->name('informasi-regulasi-action');
 
 Route::get('/reformasi-birokrasi', [KategoriRBController::class, 'getKategori'])->name('reformasi-birokrasi');

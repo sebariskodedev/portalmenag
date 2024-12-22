@@ -25,7 +25,7 @@ label {
     align-items: center;
 }
 
-.submit button{
+.submit a{
   background-color: #005faf;
   color: white;
   padding: 12px 12px;
@@ -37,7 +37,7 @@ label {
   justify-content: center;
 }
 
-.submit button:hover {
+.submit a:hover {
   background-color: #2487ce;
 }
 
@@ -75,17 +75,17 @@ label {
 @endsection
 
 @section('content')
-<main class="main">
+<main class="main dinamyc-color">
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+    <section id="portfolio" class="portfolio section dinamyc-color">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Detail Standard Pelayanan Direktorat Urusan Katolik</h2>
+        <h2 class="text-dinamyc-color-primary">Detail {{$regulasi->name}}</h2>
       </div><!-- End Section Title -->
 
-        <div class="container" style="border-radius: 5px; background-color: white; padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+        <div class="container" style="border-radius: 5px; background-color: #ededed; padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
 
             <form action="">
                     
@@ -97,7 +97,7 @@ label {
                     <label for="country">:</label>
                     </div>
                     <div class="col-88">
-                    <label for="country">Standard Pelayanan Direktorat Urusan Katolik</label>
+                    <label for="country">{{$regulasi->name}}</label>
                     </div>
                 </div>
                     
@@ -109,7 +109,7 @@ label {
                     <label for="country">:</label>
                     </div>
                     <div class="col-88">
-                    <label for="country">12/11/2024 15:38</label>
+                    <label for="country">{{$regulasi->created_at}}</label>
                     </div>
                 </div>
                     
@@ -121,12 +121,14 @@ label {
                     <label for="country">:</label>
                     </div>
                     <div class="col-88">
-                    <label for="country">Silahkan akses melalui pranala dibawah ini: <br><br> https://bit.ly/SPDirektoratUrusanKatolik</label>
+                    <label for="country">{{$regulasi->deskripsi}}</label>
                     </div>
                 </div>
                     
                 <div class="row submit">
-                    <button>Download</button>
+                  <a href="{{ asset('dokumenRegulasi/' . $regulasi->dokumen) }}" download>
+                  Download
+                  </a>
                 </div>
                 
             </form>

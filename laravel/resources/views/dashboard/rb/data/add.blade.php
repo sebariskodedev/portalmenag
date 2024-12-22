@@ -29,7 +29,7 @@
                     @csrf
                     <div class="col-12">
                         <label for="name" class="form-label">Judul</label>
-                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Masukkan Nama Unit Kerja" value="{{old('name')}}" required>
+                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Masukkan Judul" value="{{old('name')}}" required>
                         @error('name')
                             <span class="invalid-feedback text-danger">{{ $message }}</span>
                         @enderror
