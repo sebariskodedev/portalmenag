@@ -88,22 +88,22 @@
 @endsection
 
 @section('content')
-<main class="main">
+<main class="main dinamyc-color">
   <!-- Portfolio Section -->
-  <section id="portfolio" class="portfolio section">
+  <section id="portfolio" class="portfolio section dinamyc-color">
     <div class="container">
       <div class="article">
-        <h1 class="article-title">Breaking News: Major Development in Tech</h1>
-        <p class="article-meta">By Jane Doe | Published on November 24, 2024</p>
+        <h1 class="article-title text-dinamyc-color-primary">Breaking News: Major Development in Tech</h1>
+        <p class="article-meta text-dinamyc-color">By Jane Doe | Published on November 24, 2024</p>
 
         <div class="article-content">
           <!-- First Image (Top Right) -->
           <figure class="image-square top-right-image">
             <img src="https://images.unsplash.com/photo-1596265371388-43edbaadab94?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=301&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=501" alt="Top Right Image">
-            <p class="image-note">Figure 1: Example of the first image note</p>
+            <p class="image-note text-dinamyc-color">Figure 1: Example of the first image note</p>
           </figure>
 
-          <p class="article-description">
+          <p class="article-description text-dinamyc-color">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. 
             In condimentum facilisis porta. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, 
             commodo vitae, ornare sit amet, wisi.
@@ -151,10 +151,10 @@
           <!-- Second Image (Center Left) -->
           <figure class="image-square center-left-image">
             <img src="https://images.unsplash.com/photo-1596265371388-43edbaadab94?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=301&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=501" alt="Center Left Image">
-            <p class="image-note">Figure 2: Example of the second image note</p>
+            <p class="image-note text-dinamyc-color">Figure 2: Example of the second image note</p>
           </figure>
 
-          <p class="article-description">
+          <p class="article-description text-dinamyc-color">
             Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Ut convallis 
             euismod dolor nec pretium. Nam sodales mi vitae dolor ullamcorper et vulputate enim accumsan.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. 

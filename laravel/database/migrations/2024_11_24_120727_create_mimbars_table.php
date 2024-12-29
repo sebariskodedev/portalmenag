@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('mimbars', function (Blueprint $table) {
             $table->id();
+            $table->integer('type'); // Replace 'new_integer_column' with your column name
+            $table->string('judul');
+            $table->string('author');
+            $table->longText('deskripsi');
+            $table->string('gambar1');
+            $table->string('keterangan1');
+            $table->string('gambar2')->nullable();
+            $table->string('keterangan2')->nullable();
             $table->timestamps();
         });
     }

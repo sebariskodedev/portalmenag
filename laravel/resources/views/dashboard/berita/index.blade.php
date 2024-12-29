@@ -114,7 +114,7 @@ th {
         <thead>
             <tr>
                 <th scope="col"><b>Judul</b></th>
-                <th scope="col">Tipe</th>
+                <!-- <th scope="col">Tipe</th> -->
                 <th scope="col">Deskripsi</th>
                 <th scope="col">Gambar</th>
                 <th scope="col">Action</th>
@@ -123,9 +123,9 @@ th {
         <tbody>
             @foreach ($beritas as $data)
                 <tr>
-                    <td class="truncate-text" title="{{ $data->judul }}"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->judul }}</span></td>
-                    <td class="truncate-text" title="{{ $data->type }}"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->type }}</span></td>
-                    <td class="truncate-text" title="{{ $data->deskripsi1 }}"><span style="text-overflow: ellipsis; max-width: 10px;-webkit-line-clamp: 2;">{{ $data->deskripsi1 }}</span></td>
+                    <td class="truncate-text" title="{{ $data->judul }}"><span style="text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{{ $data->judul }}</span></td>
+                    {{-- <td class="truncate-text" title="{{ $data->type }}"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->type }}</span></td> --}}
+                    <td class="truncate-text" title="{{ $data->deskripsi }}"><span style="text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">{{ $data->deskripsi }}</span></td>
                     <td>
                         <img src="{{ asset('berita/' . $data->gambar1) }}" 
                             alt="{{ $data->judul }}" 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsController;
@@ -47,6 +48,9 @@ Route::resource('/pelayanan/maklumat', LayananController::class)->middleware('au
 Route::resource('/pelayanan/uker', UkerController::class)->middleware('auth');
 Route::resource('/pelayanan/standard', StandardPelayananController::class)->middleware('auth');
 
+
+Route::resource('/admin/bantuan-tersalurkan', BantuanController::class)->middleware('auth');
+
 Route::resource('/admin/infografis', InfografisController::class)->middleware('auth');
 Route::resource('/dumas/subjek', DumasController::class)->middleware('auth');
 Route::resource('/admin/struktur', StrukturController::class)->middleware('auth');
@@ -54,6 +58,8 @@ Route::get('/dumas/aduan', [DumasController::class, 'aduan'])->middleware('auth'
 
 
 Route::resource('/informasi/berita', InformasiController::class)->middleware('auth');
+Route::resource('/informasi/renungan', RenunganController::class)->middleware('auth');
+Route::resource('/informasi/mimbar', MimbarController::class)->middleware('auth');
 
 Route::resource('/rb/kategori', KategoriRBController::class)->middleware('auth');
 Route::resource('/rb/data', ReformasiController::class)->middleware('auth');
@@ -66,9 +72,10 @@ Route::resource('admin/informasi-regulasi', RegulasiController::class)->middlewa
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('welcome');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/news/{id}', [NewsController::class, 'index'])->name('news');
 Route::get('/list-maklumat-pelayanan', [LayananController::class, 'getMaklumatPelayanan'])->name('maklumat-pelayanan');
@@ -83,7 +90,7 @@ Route::get('/renungan-terbaru', [RenunganController::class, 'getRenunganTerbaru'
 Route::get('/mimbar-terbaru', [MimbarController::class, 'getMimbarTerbaru'])->name('mimbar-terbaru');
 
 Route::get('/bantuan-informasi', [BantuanController::class, 'getInformasiBantuan'])->name('bantuan-informasi');
-Route::get('/bantuan-tersalurkan', [BantuanController::class, 'getBantuanTersalurkan'])->name('bantuan-tersalurkan');
+Route::get('/list-bantuan-tersalurkan', [BantuanController::class, 'getBantuanTersalurkan'])->name('bantuan-tersalurkan');
 
 Route::get('/article-page', [InformasiController::class, 'getInformasi'])->name('article-page');
 

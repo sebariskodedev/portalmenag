@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('bantuans', function (Blueprint $table) {
             $table->id();
+            $table->string('judul');
+            $table->string('deskripsi');
+            $table->string('gambar');
             $table->timestamps();
         });
     }

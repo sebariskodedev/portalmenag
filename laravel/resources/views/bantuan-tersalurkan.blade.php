@@ -28,78 +28,16 @@
           </ul><!-- End Portfolio Filters --> --}}
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info dinamyc-color-card">
-                <h4 class="text-dinamyc-color-primary">Judul Maklumat</h4>
-                <a href="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in text-dinamyc-color"></i></a>
-                {{-- <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg text-dinamyc-color"></i></a> --}}
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info dinamyc-color-card">
-                <h4 class="text-dinamyc-color-primary">Judul Maklumat</h4>
-                <a href="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in text-dinamyc-color"></i></a>
-                {{-- <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg text-dinamyc-color"></i></a> --}}
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info dinamyc-color-card">
-                <h4 class="text-dinamyc-color-primary">Judul Maklumat</h4>
-                <a href="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in text-dinamyc-color"></i></a>
-                {{-- <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg text-dinamyc-color"></i></a> --}}
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info dinamyc-color-card">
-                <h4 class="text-dinamyc-color-primary">Judul Maklumat</h4>
-                <a href="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in text-dinamyc-color"></i></a>
-                {{-- <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg text-dinamyc-color"></i></a> --}}
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info dinamyc-color-card">
-                <h4 class="text-dinamyc-color-primary">Judul Maklumat</h4>
-                <a href="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in text-dinamyc-color"></i></a>
-                {{-- <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg text-dinamyc-color"></i></a> --}}
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info dinamyc-color-card">
-                <h4 class="text-dinamyc-color-primary">Judul Maklumat</h4>
-                <a href="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in text-dinamyc-color"></i></a>
-                {{-- <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg text-dinamyc-color"></i></a> --}}
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info dinamyc-color-card">
-                <h4 class="text-dinamyc-color-primary">Judul Maklumat</h4>
-                <a href="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in text-dinamyc-color"></i></a>
-                {{-- <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg text-dinamyc-color"></i></a> --}}
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info dinamyc-color-card">
-                <h4 class="text-dinamyc-color-primary">Judul Maklumat</h4>
-                <a href="https://cdn.setneg.go.id/_multimedia/photo/20180530/1552Infografis_Info_Penyampaian_Dumas.jpg" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in text-dinamyc-color"></i></a>
-                {{-- <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg text-dinamyc-color"></i></a> --}}
-              </div>
-            </div><!-- End Portfolio Item -->
+            @foreach ($bantuans as $data)
+              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+                <img src="{{ asset('bantuan-tersalurkan/' . $data->gambar) }}" class="img-fluid" alt="">
+                <div class="portfolio-info dinamyc-color-card">
+                  <h4 class="text-dinamyc-color-primary">{{ $data->judul }}</h4>
+                  <a href="{{ asset('bantuan-tersalurkan/' . $data->gambar) }}" title="Judul Maklumat" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in text-dinamyc-color"></i></a>
+                  {{-- <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg text-dinamyc-color"></i></a> --}}
+                </div>
+              </div><!-- End Portfolio Item -->
+            @endforeach
 
           </div><!-- End Portfolio Container -->
 

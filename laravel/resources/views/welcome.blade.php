@@ -1,6 +1,7 @@
 @extends('template.user')
 
 @section('style')
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
 <style>
 .container-x {
@@ -636,9 +637,9 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 }
 
 .card-landing .icon-title img {
-  position: relative;
-  width: 120px;
-  height: 120px;
+  position: absolute;
+  width: 200px;
+  height: 200px;
   margin-top: 20px;
 }
 
@@ -674,6 +675,7 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 }
 
 .child-card {
+  z-index: 100000;
   opacity: 0;
   transition: all 0.1s ease; /* Smooth animation */
   width: 1px;
@@ -826,9 +828,14 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
   font-size: 15px;
   font-weight: bold;
   color: #333;
-  display: inline-block;
+  /* display: inline-block; */
   text-transform: uppercase;
   transition: all 0.3s ease 0s;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .post-slide .post-title a:hover {
   text-decoration: none;
@@ -838,6 +845,11 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
   line-height: 24px;
   color: #808080;
   margin-bottom: 25px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 .post-slide .post-date {
   color: #a9a9a9;
@@ -908,7 +920,7 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 .xxx {
   background-color: #f0f0f0;
   border-radius: 10px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* x-offset, y-offset, blur-radius, spread-radius, color */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* .post-slide {
@@ -1017,86 +1029,54 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
         <div class="container dinamyc-color" data-aos="fade-up" data-aos-delay="100">
 
             <div class="xxx swiper init-swiper dinamyc-color" data-speed="600" data-delay="5000" data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
-            <script type="application/json" class="swiper-config">
-                {
-                "loop": true,
-                "speed": 600,
-                "autoplay": {
-                    "delay": 5000
-                },
-                "slidesPerView": "auto",
-                "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                },
-                "breakpoints": {
-                    "320": {
-                    "slidesPerView": 1,
-                    "spaceBetween": 40
-                    },
-                    "1200": {
-                    "slidesPerView": 1,
-                    "spaceBetween": 20
-                    }
-                }
-                }
-            </script>
-            <div class="swiper-wrapper">
+              <script type="application/json" class="swiper-config">
+                  {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                      "delay": 5000
+                  },
+                  "slidesPerView": "auto",
+                  "pagination": {
+                      "el": ".swiper-pagination",
+                      "type": "bullets",
+                      "clickable": true
+                  },
+                  "breakpoints": {
+                      "320": {
+                      "slidesPerView": 1,
+                      "spaceBetween": 40
+                      },
+                      "1200": {
+                      "slidesPerView": 1,
+                      "spaceBetween": 20
+                      }
+                  }
+                  }
+              </script>
+              <div class="swiper-wrapper">
+                    
+                  @foreach ($beritas as $data)
+                    <div class="swiper-slide">
+                      <div class="post-slide dinamyc-color-card">
+                        <div class="post-img">
+                          <img src="{{ asset('berita/' . $data->gambar1) }}" alt="">
+                          <a href="{{ route('berita-terbaru') }}" class="over-layer"><i class="fa fa-link"></i></a>
+                        </div>
+                        <div class="post-content dinamyc-color-card">
+                          <h3 class="post-title">
+                            <a class="text-dinamyc-color-primary" href="{{ route('berita-terbaru') }}">{{$data->judul}}</a>
+                          </h3>
+                          <p data-content="{{$data->deskripsi}}" class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">The content from Quill will appear here.</p>
+                          <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>{{$data->created_at}}</span>
+                          <a href="{{ route('berita-terbaru') }}" class="read-more">Berita Terbaru</a>
+                        </div>
+                      </div>
+                    </div><!-- End testimonial item -->
+                  @endforeach
 
-                <div class="swiper-slide">
-                  <div class="post-slide dinamyc-color-card">
-                    <div class="post-img">
-                      <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
-                      <a href="{{ route('berita-terbaru') }}" class="over-layer"><i class="fa fa-link"></i></a>
-                    </div>
-                    <div class="post-content dinamyc-color-card">
-                      <h3 class="post-title">
-                        <a class="text-dinamyc-color-primary" href="{{ route('berita-terbaru') }}">Lorem ipsum dolor sit amet.</a>
-                      </h3>
-                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-                      <a href="{{ route('berita-terbaru') }}" class="read-more">Berita Terbaru</a>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                  <div class="post-slide dinamyc-color-card">
-                    <div class="post-img">
-                      <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
-                      <a href="{{ route('berita-terbaru') }}" class="over-layer"><i class="fa fa-link"></i></a>
-                    </div>
-                    <div class="post-content dinamyc-color-card">
-                      <h3 class="post-title">
-                        <a class="text-dinamyc-color-primary" href="{{ route('berita-terbaru') }}">Lorem ipsum dolor sit amet.</a>
-                      </h3>
-                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-                      <a href="{{ route('berita-terbaru') }}" class="read-more">Berita Terbaru</a>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                  <div class="post-slide dinamyc-color-card">
-                    <div class="post-img">
-                      <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
-                      <a href="{{ route('berita-terbaru') }}" class="over-layer"><i class="fa fa-link"></i></a>
-                    </div>
-                    <div class="post-content dinamyc-color-card">
-                      <h3 class="post-title">
-                        <a class="text-dinamyc-color-primary" href="{{ route('berita-terbaru') }}">Lorem ipsum dolor sit amet.</a>
-                      </h3>
-                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-                      <a href="{{ route('berita-terbaru') }}" class="read-more">Berita Terbaru</a>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-
-            </div>
-            <div class="swiper-pagination"></div>
+              </div>
+              <div class="swiper-pagination"></div>
             </div>
 
         </div>
@@ -1106,86 +1086,54 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
         <div class="container dinamyc-color" data-aos="fade-up" data-aos-delay="100">
 
             <div class="xxx swiper init-swiper dinamyc-color" data-speed="600" data-delay="5000" data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
-            <script type="application/json" class="swiper-config">
-                {
-                "loop": true,
-                "speed": 600,
-                "autoplay": {
-                    "delay": 5000
-                },
-                "slidesPerView": "auto",
-                "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                },
-                "breakpoints": {
-                    "320": {
-                    "slidesPerView": 1,
-                    "spaceBetween": 40
-                    },
-                    "1200": {
-                    "slidesPerView": 1,
-                    "spaceBetween": 20
-                    }
-                }
-                }
-            </script>
-            <div class="swiper-wrapper">
+              <script type="application/json" class="swiper-config">
+                  {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                      "delay": 5000
+                  },
+                  "slidesPerView": "auto",
+                  "pagination": {
+                      "el": ".swiper-pagination",
+                      "type": "bullets",
+                      "clickable": true
+                  },
+                  "breakpoints": {
+                      "320": {
+                      "slidesPerView": 1,
+                      "spaceBetween": 40
+                      },
+                      "1200": {
+                      "slidesPerView": 1,
+                      "spaceBetween": 20
+                      }
+                  }
+                  }
+              </script>
+              <div class="swiper-wrapper">
+                    
+                    @foreach ($renungans as $data)
+                      <div class="swiper-slide">
+                        <div class="post-slide dinamyc-color-card">
+                          <div class="post-img">
+                            <img src="{{ asset('renungan/' . $data->gambar1) }}" alt="">
+                            <a href="{{ route('renungan-terbaru') }}" class="over-layer"><i class="fa fa-link"></i></a>
+                          </div>
+                          <div class="post-content dinamyc-color-card">
+                            <h3 class="post-title">
+                              <a class="text-dinamyc-color-primary" href="{{ route('renungan-terbaru') }}">{{$data->judul}}</a>
+                            </h3>
+                            <p data-content="{{$data->deskripsi}}" class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">The content from Quill will appear here.</p>
+                            <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>{{$data->created_at}}</span>
+                            <a href="{{ route('renungan-terbaru') }}" class="read-more">Renungan Terbaru</a>
+                          </div>
+                        </div>
+                      </div><!-- End testimonial item -->
+                    @endforeach
 
-                <div class="swiper-slide">
-                  <div class="post-slide dinamyc-color-card">
-                    <div class="post-img">
-                      <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
-                      <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-                    </div>
-                    <div class="post-content dinamyc-color-card">
-                      <h3 class="post-title">
-                        <a class=" text-dinamyc-color-primary" href="#">Lorem ipsum dolor sit amet.</a>
-                      </h3>
-                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-                      <a href="#" class="read-more">Renungan Terbaru</a>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                  <div class="post-slide dinamyc-color-card">
-                    <div class="post-img">
-                      <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
-                      <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-                    </div>
-                    <div class="post-content dinamyc-color-card">
-                      <h3 class="post-title">
-                        <a class=" text-dinamyc-color-primary" href="#">Lorem ipsum dolor sit amet.</a>
-                      </h3>
-                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-                      <a href="#" class="read-more">Renungan Terbaru</a>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                  <div class="post-slide dinamyc-color-card">
-                    <div class="post-img">
-                      <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
-                      <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-                    </div>
-                    <div class="post-content dinamyc-color-card">
-                      <h3 class="post-title">
-                        <a class=" text-dinamyc-color-primary" href="#">Lorem ipsum dolor sit amet.</a>
-                      </h3>
-                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-                      <a href="#" class="read-more">Renungan Terbaru</a>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-
-            </div>
-            <div class="swiper-pagination"></div>
+              </div>
+              <div class="swiper-pagination"></div>
             </div>
 
         </div>
@@ -1197,86 +1145,54 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
         <div class="container dinamyc-color" data-aos="fade-up" data-aos-delay="100">
 
             <div class="xxx swiper init-swiper dinamyc-color" data-speed="600" data-delay="5000" data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
-            <script type="application/json" class="swiper-config">
-                {
-                "loop": true,
-                "speed": 600,
-                "autoplay": {
-                    "delay": 5000
-                },
-                "slidesPerView": "auto",
-                "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                },
-                "breakpoints": {
-                    "320": {
-                    "slidesPerView": 1,
-                    "spaceBetween": 40
-                    },
-                    "1200": {
-                    "slidesPerView": 1,
-                    "spaceBetween": 20
-                    }
-                }
-                }
-            </script>
-            <div class="swiper-wrapper">
+              <script type="application/json" class="swiper-config">
+                  {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                      "delay": 5000
+                  },
+                  "slidesPerView": "auto",
+                  "pagination": {
+                      "el": ".swiper-pagination",
+                      "type": "bullets",
+                      "clickable": true
+                  },
+                  "breakpoints": {
+                      "320": {
+                      "slidesPerView": 1,
+                      "spaceBetween": 40
+                      },
+                      "1200": {
+                      "slidesPerView": 1,
+                      "spaceBetween": 20
+                      }
+                  }
+                  }
+              </script>
+              <div class="swiper-wrapper">
+                    
+                    @foreach ($mimbars as $data)
+                      <div class="swiper-slide">
+                        <div class="post-slide dinamyc-color-card">
+                          <div class="post-img">
+                            <img src="{{ asset('mimbar/' . $data->gambar1) }}" alt="">
+                            <a href="{{ route('mimbar-terbaru') }}" class="over-layer"><i class="fa fa-link"></i></a>
+                          </div>
+                          <div class="post-content dinamyc-color-card">
+                            <h3 class="post-title">
+                              <a class="text-dinamyc-color-primary" href="{{ route('mimbar-terbaru') }}">{{$data->judul}}</a>
+                            </h3>
+                            <p data-content="{{$data->deskripsi}}" class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">The content from Quill will appear here.</p>
+                            <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>{{$data->created_at}}</span>
+                            <a href="{{ route('mimbar-terbaru') }}" class="read-more">Mimbar Terbaru</a>
+                          </div>
+                        </div>
+                      </div><!-- End testimonial item -->
+                    @endforeach
 
-                <div class="swiper-slide">
-                  <div class="post-slide dinamyc-color-card">
-                    <div class="post-img">
-                      <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
-                      <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-                    </div>
-                    <div class="post-content dinamyc-color-card">
-                      <h3 class="post-title">
-                        <a class="text-dinamyc-color-primary" href="#">Lorem ipsum dolor sit amet.</a>
-                      </h3>
-                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-                      <a href="#" class="read-more">Mimbar Terbaru</a>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                  <div class="post-slide dinamyc-color-card">
-                    <div class="post-img">
-                      <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
-                      <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-                    </div>
-                    <div class="post-content dinamyc-color-card">
-                      <h3 class="post-title">
-                        <a class="text-dinamyc-color-primary" href="#">Lorem ipsum dolor sit amet.</a>
-                      </h3>
-                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-                      <a href="#" class="read-more">Mimbar Terbaru</a>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                  <div class="post-slide dinamyc-color-card">
-                    <div class="post-img">
-                      <img src="https://www.katolikana.com/wp-content/uploads/2023/06/Komper-Paroki-Mlati.png" alt="">
-                      <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-                    </div>
-                    <div class="post-content dinamyc-color-card">
-                      <h3 class="post-title">
-                        <a class="text-dinamyc-color-primary" href="#">Lorem ipsum dolor sit amet.</a>
-                      </h3>
-                      <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-                      <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-                      <a href="#" class="read-more">Mimbar Terbaru</a>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-
-            </div>
-            <div class="swiper-pagination"></div>
+              </div>
+              <div class="swiper-pagination"></div>
             </div>
 
         </div>
@@ -1758,9 +1674,45 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 
   </main>
 
+  <div style="display: none;" id="quill-editor" class="ql-container ql-snow"></div>
+
 @endsection
 
 @section('script')
+
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Create a div element for the Quill editor container
+        const quillContainer = document.createElement('div');
+        quillContainer.id = 'quill-editor';
+        quillContainer.classList.add('ql-container', 'ql-snow');
+        
+        // Append it to the body or any specific parent element
+        document.body.appendChild(quillContainer);
+
+        // Initialize the Quill editor
+        const quill = new Quill(quillContainer, {
+            theme: 'snow',
+            readOnly: true, // Make the editor read-only
+        });
+
+        const deskripsiBerita = document.querySelectorAll('.deskripsi-berita');
+        deskripsiBerita.forEach((element) => {
+          const dataContent = element.getAttribute('data-content');
+          const existingContent = `${dataContent}`;
+          
+          // Set existing content into the Quill editor
+          quill.root.innerHTML = existingContent;
+          // Display content in <p> tag
+          const quillContent = quill.root.innerHTML; // Get HTML content
+
+          element.innerHTML = quillContent;
+        });
+    });
+</script>
+
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const slides = ['slideA', 'slideB', 'slideC'];

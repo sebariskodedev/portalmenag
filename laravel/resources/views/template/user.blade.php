@@ -197,6 +197,80 @@
     height: 40px;
     border-radius: 100px; /* Adjust the value for different roundness */
 }
+
+
+
+/* Floating Button */
+#nav {
+  z-index: 100000;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* padding: 0 30px 0 50px; */
+	position: fixed;
+	margin-top: 50vh;
+	left: 0;
+	height: 50vh;
+	transform: translateX(-100%);
+	transition: transform .4s ease;
+}
+
+#nav.active {
+	transform: translateX(0);
+}
+
+#nav ul {
+	padding: 0;
+	list-style-type: none;
+}
+
+#nav ul li {
+	margin: 14px 0;
+	text-align: right;
+}
+
+#nav a {
+	color: #111;
+	font-size: 24px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+#nav a:hover {
+	color: #d35400;
+}
+
+.toggle {
+	border: none;
+	cursor: pointer;
+	font-size: 20px;
+	padding: 10px 15px;
+	position: absolute;
+	top: 0;
+	right: 1px;
+	transform: translateX(100%);
+}
+
+.toggle:focus {
+	outline: none;
+}
+
+.toggle .fa-bars {
+	display: block;
+}
+
+.toggle .fa-times {
+	display: none;
+}
+
+#nav.active .toggle .fa-bars {
+	display: none;
+}
+
+#nav.active .toggle .fa-times {
+	display: block;
+}
     </style>
 
   @yield('style')  <!-- This will be replaced by the content of the child views -->
@@ -204,6 +278,21 @@
 </head>
 
 <body class="index-page dinamyc-color" style="">
+
+  {{-- <div id="nav">
+    <button class="toggle" id="toggle">
+    <i class="bi bi-chevron-down toggle-dropdown"></i>
+    <i class="bi bi-chevron-down toggle-dropdown"></i>
+    </button>
+    
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+</div> --}}
+
 
   <header id="header" class="header d-flex align-items-center sticky-top dinamyc-color-header" style="background-color: #005faf;">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
@@ -450,8 +539,8 @@
 
 
       if (htmlElement.classList.contains('dark')) {
-        iconElement.classList.remove("bi-moon");
-        iconElement.classList.add("bi-sun"); // Change to moon icon
+        iconElement.classList.remove("bi-sun");
+        iconElement.classList.add("bi-moon"); // Change to moon icon
         console.log("Light");
         htmlElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
@@ -477,8 +566,8 @@
           bbb[i].style.color = "#545454";
         }
       } else {
-        iconElement.classList.remove("bi-sun");
-        iconElement.classList.add("bi-moon"); // Change to moon icon
+        iconElement.classList.remove("bi-moon");
+        iconElement.classList.add("bi-sun"); // Change to moon icon
         console.log("Dark");
         htmlElement.classList.add('dark');
         localStorage.setItem('theme', 'dark');
@@ -506,6 +595,15 @@
       }
     });
   });
+
+
+
+// const toggle = document.getElementById('toggle');
+// const nav = document.getElementById('nav');
+
+// toggle.addEventListener('click', () => {
+// 	nav.classList.toggle('active');
+// });
 </script>
 
 </body>

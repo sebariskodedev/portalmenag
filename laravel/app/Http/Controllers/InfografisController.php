@@ -159,6 +159,7 @@ class InfografisController extends Controller
             return redirect('/admin/infografis');
         }
     }
+    
     /**
      * Display a listing of the resource.
      */

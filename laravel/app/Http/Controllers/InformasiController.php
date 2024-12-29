@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\informasi;
+use App\Models\Informasi;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 // use Exception;
@@ -43,6 +43,7 @@ class InformasiController extends Controller
             'judul' => 'required',
             'gambar1' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048', // Only images up to 2MB
             'keterangan1' => 'required',
+            'deskripsi' => 'required',
             'gambar2' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048'
         ]);
     
@@ -73,10 +74,9 @@ class InformasiController extends Controller
             $berita->type = 2;
             $berita->judul = $request->judul;
             $berita->author = Auth::id();
-            $berita->deskripsi1 = $request->deskripsi1;
+            $berita->deskripsi = $request->deskripsi;
             $berita->keterangan1 = $request->keterangan1;
             $berita->gambar1 = $fileName1; // Save only the file name to the database
-            $berita->deskripsi2 = $request->deskripsi2;
             $berita->keterangan2 = $request->keterangan2;
             $berita->gambar2 = $fileName2; // Save only the file name to the database
             $berita->save();
@@ -86,7 +86,7 @@ class InformasiController extends Controller
             $berita->type = 1;
             $berita->judul = $request->judul;
             $berita->author = Auth::id();
-            $berita->deskripsi1 = $request->deskripsi1;
+            $berita->deskripsi = $request->deskripsi;
             $berita->keterangan1 = $request->keterangan1;
             $berita->gambar1 = $fileName1; // Save only the file name to the database
             $berita->save();
@@ -126,8 +126,9 @@ class InformasiController extends Controller
         $validated = $request->validate([
             'tipe' => 'required',
             'judul' => 'required',
-            'gambar1' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048', // Only images up to 2MB
+            'gambar1' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // Only images up to 2MB
             'keterangan1' => 'required',
+            'deskripsi' => 'required',
             'gambar2' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048'
         ]);
 
@@ -135,11 +136,11 @@ class InformasiController extends Controller
         $berita = Informasi::findOrFail($id);
 
         // Update fields
+        $berita->type = $request->tipe;
         $berita->judul = $request->judul;
-        $berita->deskripsi1 = $request->deskripsi1;
+        $berita->deskripsi = $request->deskripsi;
         $berita->keterangan1 = $request->keterangan1;
 
-        $berita->deskripsi2 = $request->deskripsi2;
         $berita->keterangan2 = $request->keterangan2;
 
         // Check if a new file is uploaded
@@ -220,8 +221,11 @@ class InformasiController extends Controller
      */
     public function getInformasiTerbaru()
     {
+        $beritas = Informasi::orderBy('id', 'asc')->limit(5)->get();
 
-        return view('informasi-terbaru');
+        return view('informasi-terbaru', [
+            'beritas' => $beritas
+        ]);
     }
     /**
      * Display a listing of the resource.

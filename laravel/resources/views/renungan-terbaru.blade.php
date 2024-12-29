@@ -2,6 +2,7 @@
 @extends('template.user')
 
 @section('style')
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
 #news-slider {
   display: grid;
@@ -33,7 +34,8 @@
   margin: 20px 15px 20px;
   border-radius: 15px;
   padding-top: 1px;
-  box-shadow: 0px 14px 22px -9px #bbcbd8;
+  /* box-shadow: 0px 14px 22px -9px #bbcbd8; */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
 .post-slide .post-img {
   position: relative;
@@ -44,7 +46,7 @@
 }
 .post-slide .post-img img {
   width: 100%;
-  height: auto;
+  height: 200px;
   transform: scale(1, 1);
   transition: transform 0.2s linear;
 }
@@ -86,9 +88,14 @@
   font-size: 15px;
   font-weight: bold;
   color: #333;
-  display: inline-block;
+  /* display: inline-block; */
   text-transform: uppercase;
   transition: all 0.3s ease 0s;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .post-slide .post-title a:hover {
   text-decoration: none;
@@ -98,6 +105,11 @@
   line-height: 24px;
   color: #808080;
   margin-bottom: 25px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 .post-slide .post-date {
   color: #a9a9a9;
@@ -166,14 +178,14 @@
 @endsection
 
 @section('content')
-<main class="main">
+<main class="main dinamyc-color">
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+    <section id="portfolio" class="portfolio section dinamyc-color">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Renungan Terbaru</h2>
+        <h2 class="text-dinamyc-color-primary">Renungan Terbaru</h2>
         <!-- <p>Maklumat Pelayanan adalah pernyataan komitmen dari suatu organisasi atau lembaga pelayanan publik untuk memberikan pelayanan yang berkualitas, profesional, dan sesuai dengan standar yang telah ditetapkan</p> -->
       </div><!-- End Section Title -->
 
@@ -181,95 +193,25 @@
 
 
       <div id="news-slider" class="owl-carousel">
-        <div class="post-slide">
-          <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1596265371388-43edbaadab94?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=301&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=501" alt="">
-            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+                  
+        @foreach ($renungans as $data)
+          <div class="post-slide dinamyc-color-card">
+            <div class="post-img">
+              <img src="{{ asset('renungan/' . $data->gambar1) }}" alt="">
+              <a href="{{ route('article-page') }}" class="over-layer"><i class="fa fa-link"></i></a>
+            </div>
+            <div class="post-content dinamyc-color-card">
+              <h3 class="post-title">
+                <a class="text-dinamyc-color-primary" href="{{ route('article-page') }}">{{$data->judul}}</a>
+              </h3>
+              <p data-content="{{$data->deskripsi}}" class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">The content from Quill will appear here.</p>
+              <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>{{$data->created_at}}</span>
+              <a href="{{ route('article-page') }}" class="read-more">selengkapnya</a>
+            </div>
           </div>
-          <div class="post-content">
-            <h3 class="post-title">
-              <a href="#">Lorem ipsum dolor sit amet.</a>
-            </h3>
-            <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">selengkapnya</a>
-          </div>
-        </div>
+        @endforeach
 
-        <div class="post-slide">
-          <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=503" alt="">
-            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-          </div>
-          <div class="post-content">
-            <h3 class="post-title">
-              <a href="#">Lorem ipsum dolor sit amet.</a>
-            </h3>
-            <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">selengkapnya</a>
-          </div>
-        </div>
-
-        <div class="post-slide">
-          <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1564979268369-42032c5ca998?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=500" alt="">
-            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-          </div>
-          <div class="post-content">
-            <h3 class="post-title">
-              <a href="#">Lorem ipsum dolor sit amet.</a>
-            </h3>
-            <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">selengkapnya</a>
-          </div>
-        </div>
-
-        <div class="post-slide">
-          <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1576659531892-0f4991fca82b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=301&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=501" alt="">
-            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-          </div>
-          <div class="post-content">
-            <h3 class="post-title">
-              <a href="#">Lorem ipsum dolor sit amet.</a>
-            </h3>
-            <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">selengkapnya</a>
-          </div>
-        </div>
-
-        <div class="post-slide">
-          <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1586083702768-190ae093d34d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=305&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=505" alt="">
-            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-          </div>
-          <div class="post-content">
-            <h3 class="post-title">
-              <a href="#">Lorem ipsum dolor sit amet.</a>
-            </h3>
-            <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">selengkapnya</a>
-          </div>
-        </div>
-
-        <div class="post-slide">
-          <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1484656551321-a1161420a2a0?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=306&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=506" alt="">
-            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-          </div>
-          <div class="post-content">
-            <h3 class="post-title">
-              <a href="#">Lorem ipsum dolor sit amet.</a>
-            </h3>
-            <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">selengkapnya</a>
-          </div>
-        </div>
+        
       </div>
 
       </div>
@@ -280,4 +222,36 @@
 @endsection
 
 @section('script')
+
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Create a div element for the Quill editor container
+        const quillContainer = document.createElement('div');
+        quillContainer.id = 'quill-editor';
+        quillContainer.classList.add('ql-container', 'ql-snow');
+        
+        // Append it to the body or any specific parent element
+        document.body.appendChild(quillContainer);
+
+        // Initialize the Quill editor
+        const quill = new Quill(quillContainer, {
+            theme: 'snow',
+            readOnly: true, // Make the editor read-only
+        });
+
+        const deskripsiBerita = document.querySelectorAll('.deskripsi-berita');
+        deskripsiBerita.forEach((element) => {
+          const dataContent = element.getAttribute('data-content');
+          const existingContent = `${dataContent}`;
+          
+          // Set existing content into the Quill editor
+          quill.root.innerHTML = existingContent;
+          // Display content in <p> tag
+          const quillContent = quill.root.innerHTML; // Get HTML content
+
+          element.innerHTML = quillContent;
+        });
+    });
+</script>
 @endsection
