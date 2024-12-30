@@ -323,8 +323,8 @@
           </li>
           <li class="dropdown"><a style="color: white;" href="#"><span>Bantuan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul class="dinamyc-color-header">
-              <li><a style="color: white;" href="{{ route('bantuan-informasi') }}">Informasi Bantuan</a></li>
-              <li><a style="color: white;" href="{{ route('bantuan-tersalurkan') }}">Bantuan Tersalurkan</a></li>
+              <li><a style="color: white;" href="{{ route('data-bantuan-informasi') }}">Informasi Bantuan</a></li>
+              <li><a style="color: white;" href="{{ route('data-bantuan-tersalurkan') }}">Bantuan Tersalurkan</a></li>
             </ul>
           </li>
           <li><a style="color: white;" href="{{ route('infografis') }}">Infografis</a></li>
@@ -396,11 +396,17 @@
           </div>
         </div>
 
+        @php
+          $kunjunganCount = App\Models\Kunjungan::count();
+        @endphp
+
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
         <h4 class=" text-dinamyc-color-primary">Hubungi Kami</h4>
         <p class="text-dinamyc-color">Jl. M.H. Thamrin No.6, RT.2/RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340</p>
         <p class="mt-4 text-dinamyc-color"><strong>Telepon:</strong> <span>(+62) 213812344</span></p>
         <p class="text-dinamyc-color"><strong>Email:</strong> <span>bimaskatolik@kemenag.go.id</span></p>
+        <p style="margin-top: 20px;" class="text-dinamyc-color"><strong>Total Kunjungan:</strong> <span>{{$kunjunganCount}}</span></p>
+        <p style="display: flex; align-items: center;" class="text-dinamyc-color"><strong>Online User:</strong> <iframe src="http://localhost:3000" style="width: 200px; height: 35px; border: none; margin-left: 10px;"></iframe></iframe></p>
         </div>
 
         <div class="col-lg-4 col-12 footer-links">

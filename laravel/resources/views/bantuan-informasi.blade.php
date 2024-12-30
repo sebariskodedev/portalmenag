@@ -2,6 +2,7 @@
 @extends('template.user')
 
 @section('style')
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
 #news-slider {
   display: grid;
@@ -45,7 +46,7 @@
 }
 .post-slide .post-img img {
   width: 100%;
-  height: auto;
+  height: 200px;
   transform: scale(1, 1);
   transition: transform 0.2s linear;
 }
@@ -87,9 +88,14 @@
   font-size: 15px;
   font-weight: bold;
   color: #333;
-  display: inline-block;
+  /* display: inline-block; */
   text-transform: uppercase;
   transition: all 0.3s ease 0s;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .post-slide .post-title a:hover {
   text-decoration: none;
@@ -99,6 +105,11 @@
   line-height: 24px;
   color: #808080;
   margin-bottom: 25px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 .post-slide .post-date {
   color: #a9a9a9;
@@ -182,36 +193,23 @@
 
 
       <div id="news-slider" class="owl-carousel">
-        <div class="post-slide dinamyc-color-card">
-          <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1596265371388-43edbaadab94?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=301&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=501" alt="">
-            <a href="{{ route('article-page') }}" class="over-layer"><i class="fa fa-link"></i></a>
+                  
+        @foreach ($bantuans as $data)
+          <div class="post-slide dinamyc-color-card">
+            <div class="post-img">
+              <img src="{{ asset('bantuan-informasi/' . $data->gambar) }}" alt="">
+              <a href="{{ route('article-page') }}" class="over-layer"><i class="fa fa-link"></i></a>
+            </div>
+            <div class="post-content dinamyc-color-card">
+              <h3 class="post-title">
+                <a class="text-dinamyc-color-primary" href="{{ route('article-page') }}">{{$data->nama}}</a>
+              </h3>
+              <p class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">{{$data->deskripsi}}</p>
+              <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>{{$data->created_at}}</span>
+              <a href="{{ route('article-page') }}" class="read-more">selengkapnya</a>
+            </div>
           </div>
-          <div class="post-content dinamyc-color-card">
-            <h3 class="post-title">
-              <a class="text-dinamyc-color-primary" href="{{ route('article-page') }}">Lorem ipsum dolor sit amet.</a>
-            </h3>
-            <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-            <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="{{ route('article-page') }}" class="read-more">selengkapnya</a>
-          </div>
-        </div>
-
-        
-        <div class="post-slide dinamyc-color-card">
-          <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1596265371388-43edbaadab94?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=301&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=501" alt="">
-            <a href="{{ route('article-page') }}" class="over-layer"><i class="fa fa-link"></i></a>
-          </div>
-          <div class="post-content dinamyc-color-card">
-            <h3 class="post-title">
-              <a class="text-dinamyc-color-primary" href="{{ route('article-page') }}">Lorem ipsum dolor sit amet.</a>
-            </h3>
-            <p class="post-description text-dinamyc-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>
-            <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="{{ route('article-page') }}" class="read-more">selengkapnya</a>
-          </div>
-        </div>
+        @endforeach
 
         
       </div>

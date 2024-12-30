@@ -18,6 +18,7 @@ use App\Http\Controllers\StandardPelayananController;
 use App\Http\Controllers\DumasController;
 use App\Http\Controllers\StrukturController;
 use App\Http\Controllers\BantuanController;
+use App\Http\Controllers\BantuanInformasiController;
 use App\Http\Controllers\KategoriRBController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,7 @@ Route::resource('/pelayanan/uker', UkerController::class)->middleware('auth');
 Route::resource('/pelayanan/standard', StandardPelayananController::class)->middleware('auth');
 
 
+Route::resource('/admin/bantuan-informasi', BantuanInformasiController::class)->middleware('auth');
 Route::resource('/admin/bantuan-tersalurkan', BantuanController::class)->middleware('auth');
 
 Route::resource('/admin/infografis', InfografisController::class)->middleware('auth');
@@ -89,8 +91,8 @@ Route::get('/berita-terbaru', [InformasiController::class, 'getInformasiTerbaru'
 Route::get('/renungan-terbaru', [RenunganController::class, 'getRenunganTerbaru'])->name('renungan-terbaru');
 Route::get('/mimbar-terbaru', [MimbarController::class, 'getMimbarTerbaru'])->name('mimbar-terbaru');
 
-Route::get('/bantuan-informasi', [BantuanController::class, 'getInformasiBantuan'])->name('bantuan-informasi');
-Route::get('/list-bantuan-tersalurkan', [BantuanController::class, 'getBantuanTersalurkan'])->name('bantuan-tersalurkan');
+Route::get('/list-bantuan-informasi', [BantuanController::class, 'getInformasiBantuan'])->name('data-bantuan-informasi');
+Route::get('/list-bantuan-tersalurkan', [BantuanController::class, 'getBantuanTersalurkan'])->name('data-bantuan-tersalurkan');
 
 Route::get('/article-page', [InformasiController::class, 'getInformasi'])->name('article-page');
 

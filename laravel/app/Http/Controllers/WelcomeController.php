@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Informasi;
 use App\Models\Renungan;
 use App\Models\Mimbar;
+use App\Models\Kunjungan;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 // use Exception;

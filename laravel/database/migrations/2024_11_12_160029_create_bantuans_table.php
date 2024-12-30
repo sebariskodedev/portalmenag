@@ -13,8 +13,14 @@ return new class extends Migration
     {
         Schema::create('bantuans', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->string('deskripsi');
+            $table->string('tahun');
+            $table->string('tipe');
+            $table->string('nama');
+            $table->string('jenis');
+            $table->longText('deskripsi');
+            $table->string('kategori');
+            $table->string('jumlah_tersalurkan');
+            $table->string('lampiran')->nullable();
             $table->string('gambar');
             $table->timestamps();
         });

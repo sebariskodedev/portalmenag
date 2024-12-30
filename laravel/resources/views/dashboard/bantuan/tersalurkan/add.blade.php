@@ -28,18 +28,62 @@
                 <form class="row g-3" novalidate action="/admin/bantuan-tersalurkan" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="col-6">
-                        <label for="judul" class="form-label">Judul</label>
-                        <input type="text" name="judul" class="form-control @error('judul') is-invalid @enderror" id="judul" placeholder="Masukkan Judul" value="{{old('judul')}}" required>
-                        @error('judul')
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Masukkan Nama" value="{{old('nama')}}" required>
+                        @error('nama')
                             <span class="invalid-feedback text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-6">
                         <label for="gambar" class="form-label">Gambar</label>
-                        <div class="col-sm-6">
-                            <input type="file" name="gambar" class="form-control @error('gambar') is-invalid @enderror" id="gambar" accept="image/*" required>
-                        </div>
+                        <input type="file" name="gambar" class="form-control @error('gambar') is-invalid @enderror" id="gambar" accept="image/*" required>
                         @error('gambar')
+                            <span class="invalid-feedback text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-6">
+                        <label for="tipe" class="form-label">Tipe</label>
+                        <select class="form-select" id="tipe" name="tipe">
+                              <option value="0">Pilih Tipe</option>
+                              <option value="keagamaan">Keagamaan</option>
+                              <option value="pendidikan">Pendidikan</option>
+                        </select>
+                        @error('tipe')
+                            <span class="invalid-feedback text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-6">
+                        <label for="tahun" class="form-label">Tahun</label>
+                        <input type="number" name="tahun" class="form-control @error('tahun') is-invalid @enderror" id="tahun" placeholder="Masukkan Tahun" value="{{old('tahun')}}" required>
+                        @error('tahun')
+                            <span class="invalid-feedback text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-6">
+                        <label for="jenis" class="form-label">Jenis</label>
+                        <input type="text" name="jenis" class="form-control @error('jenis') is-invalid @enderror" id="jenis" placeholder="Masukkan Jenis Bantuan" value="{{old('jenis')}}" required>
+                        @error('jenis')
+                            <span class="invalid-feedback text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-6">
+                        <label for="kategori" class="form-label">Kategori</label>
+                        <input type="text" name="kategori" class="form-control @error('kategori') is-invalid @enderror" id="kategori" placeholder="Masukkan Kategori Bantuan" value="{{old('kategori')}}" required>
+                        @error('kategori')
+                            <span class="invalid-feedback text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-6">
+                        <label for="jumlah_tersalurkan" class="form-label">Jumlah Tersalurkan</label>
+                        <input type="number" name="jumlah_tersalurkan" class="form-control @error('jumlah_tersalurkan') is-invalid @enderror" id="jumlah_tersalurkan" placeholder="Masukkan Jumlah Tersalurkan" value="{{old('jumlah_tersalurkan')}}" required>
+                        @error('jumlah_tersalurkan')
+                            <span class="invalid-feedback text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-6">
+                        <label for="lampiran" class="form-label">Lampiran</label>
+                        <input type="file" name="lampiran" class="form-control @error('lampiran') is-invalid @enderror" id="lampiran" accept="application/pdf">
+                        @error('lampiran')
                             <span class="invalid-feedback text-danger">{{ $message }}</span>
                         @enderror
                     </div>

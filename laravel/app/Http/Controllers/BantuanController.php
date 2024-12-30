@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bantuan;
+use App\Models\BantuanInformasi;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 // use Exception;
@@ -38,7 +39,12 @@ class BantuanController extends Controller
     {
         // Validate the input data and the uploaded file
         $validated = $request->validate([
-            'judul' => 'required',
+            'nama' => 'required',
+            'tipe' => 'required',
+            'tahun' => 'required',
+            'jenis' => 'required',
+            'kategori' => 'required',
+            'jumlah_tersalurkan' => 'required',
             'deskripsi' => 'required',
             'gambar' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048', // Only images up to 2MB
         ]);
@@ -58,13 +64,35 @@ class BantuanController extends Controller
     
         // Save the file's name to the database along with other fields
         $bantuan = new Bantuan();
-        $bantuan->judul = $request->judul;
+        $bantuan->nama = $request->nama;
+        $bantuan->tipe = $request->tipe;
+        $bantuan->tahun = $request->tahun;
+        $bantuan->jenis = $request->jenis;
+        $bantuan->kategori = $request->kategori;
+        $bantuan->jumlah_tersalurkan = $request->jumlah_tersalurkan;
         $bantuan->deskripsi = $request->deskripsi;
         $bantuan->gambar = $fileName; // Save only the file name to the database
+
+        // Check if a new file is uploaded
+        if ($request->hasFile('lampiran')) {
+
+            // Get the uploaded file
+            $file = $request->file('lampiran'); // Ensure this matches the form input name
+    
+            // Generate a unique filename with timestamp
+            $timestamp = now()->format('YmdHis'); // e.g., 20241130123045
+            $fileNameLampiran = $timestamp . '.' . $file->getClientOriginalExtension();
+    
+            // Define the upload path in the public directory
+            $uploadPath = 'lampiran-bantuan-tersalurkan';
+    
+            // Move the file to the specified directory
+            $file->move(public_path($uploadPath), $fileNameLampiran);
+            $bantuan->lampiran = $fileNameLampiran;
+        }
+
         $bantuan->save();
     
-        // Optionally, you can generate a public URL for the uploaded file
-        $fileUrl = asset($uploadPath . '/' . $fileName);
     
         // Add success alert and redirect
         Alert::success('Success', 'Bantuan has been saved!');
@@ -98,16 +126,26 @@ class BantuanController extends Controller
     {
         // Validate the input data
         $validated = $request->validate([
-            'judul' => 'required',
+            'nama' => 'required',
+            'tipe' => 'required',
+            'tahun' => 'required',
+            'jenis' => 'required',
+            'kategori' => 'required',
+            'jumlah_tersalurkan' => 'required',
             'deskripsi' => 'required',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // Image is optional
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // Only images up to 2MB
         ]);
 
         // Find the record in the database
         $bantuan = Bantuan::findOrFail($id);
 
         // Update fields
-        $bantuan->judul = $request->judul;
+        $bantuan->nama = $request->nama;
+        $bantuan->tipe = $request->tipe;
+        $bantuan->tahun = $request->tahun;
+        $bantuan->jenis = $request->jenis;
+        $bantuan->kategori = $request->kategori;
+        $bantuan->jumlah_tersalurkan = $request->jumlah_tersalurkan;
         $bantuan->deskripsi = $request->deskripsi;
 
         // Check if a new file is uploaded
@@ -132,6 +170,24 @@ class BantuanController extends Controller
 
             // Update the file name in the database
             $bantuan->gambar = $fileName;
+        }
+
+        // Check if a new file is uploaded
+        if ($request->hasFile('lampiran')) {
+
+            // Get the uploaded file
+            $file2 = $request->file('lampiran'); // Ensure this matches the form input name
+    
+            // Generate a unique filename with timestamp
+            $timestamp = now()->format('YmdHis'); // e.g., 20241130123045
+            $fileNameLampiran = $timestamp . '.' . $file2->getClientOriginalExtension();
+    
+            // Define the upload path in the public directory
+            $uploadPath = 'lampiran-bantuan-tersalurkan';
+    
+            // Move the file to the specified directory
+            $file2->move(public_path($uploadPath), $fileNameLampiran);
+            $bantuan->lampiran = $fileNameLampiran;
         }
 
         // Save the updated record
@@ -165,8 +221,11 @@ class BantuanController extends Controller
      */
     public function getInformasiBantuan()
     {
+        $bantuans = BantuanInformasi::orderBy('id', 'asc')->get();
 
-        return view('bantuan-informasi');
+        return view('bantuan-informasi', [
+            'bantuans' => $bantuans
+        ]);
     }
     /**
      * Display a listing of the resource.

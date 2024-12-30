@@ -113,7 +113,7 @@ th {
 	<table class="table table-bordered border-primarytable-striped table-class" id= "table-id" style="margin-top: 20px;">
         <thead>
             <tr>
-                <th scope="col"><b>Judul</b></th>
+                <th scope="col"><b>Nama</b></th>
                 <th scope="col">Deskripsi</th>
                 <th scope="col">Gambar</th>
                 <th scope="col">Action</th>
@@ -122,11 +122,11 @@ th {
         <tbody>
             @foreach ($bantuans as $data)
                 <tr>
-                    <td class="truncate-text" title="{{ $data->judul }}"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->judul }}</span></td>
+                    <td class="truncate-text" title="{{ $data->nama }}"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->nama }}</span></td>
                     <td class="truncate-text" title="{{ $data->deskripsi }}"><span style="text-overflow: ellipsis; max-width: 10px;-webkit-line-clamp: 2;">{{ $data->deskripsi }}</span></td>
                     <td>
                         <img src="{{ asset('bantuan-tersalurkan/' . $data->gambar) }}" 
-                            alt="{{ $data->judul }}" 
+                            alt="{{ $data->nama }}" 
                             style="max-width: 150px; max-height: 100px; object-fit: cover;">
                     </td>
                     <td>

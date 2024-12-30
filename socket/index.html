@@ -1,0 +1,12 @@
+<span id="online-count">0</span>
+
+<script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+<script>
+    // Connect to the WebSocket server
+    const socket = io('ws://localhost:3000');
+
+    // Listen for online user updates
+    socket.on('status', (data) => {
+        document.getElementById('online-count').textContent = `(${data.online})`;
+    });
+</script>

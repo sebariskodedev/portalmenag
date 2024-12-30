@@ -1,6 +1,7 @@
 @extends('template.user')
 
 @section('style')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
 <style>
@@ -1674,40 +1675,79 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
 
   </main>
 
-  <div style="display: none;" id="quill-editor" class="ql-container ql-snow"></div>
-
 @endsection
 
 @section('script')
 
+<script>
+
+// Function to get client's IP using an external service
+async function getClientIp() {
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        return data.ip;
+    } catch (error) {
+        console.error('Error fetching IP:', error);
+        return null;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async function() {
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+  const ip = await getClientIp(); // Use the external API to get the client's IP
+
+      const data = { ip: ip };
+
+      try {
+          const response = await fetch('/api/post-kunjungan', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  // 'Accept': 'application/json',
+                  'X-CSRF-TOKEN': csrfToken 
+              },
+              body: JSON.stringify(data)
+          });
+
+          if (response.ok) {
+              const result = await response.json();
+          } else {
+              throw new Error('Failed to add Kunjungan');
+          }
+      } catch (error) {
+          console.error(error);
+      }
+});
+</script>
+
 <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Create a div element for the Quill editor container
+        // Create a hidden div element for the Quill editor container
         const quillContainer = document.createElement('div');
-        quillContainer.id = 'quill-editor';
-        quillContainer.classList.add('ql-container', 'ql-snow');
-        
-        // Append it to the body or any specific parent element
+        quillContainer.style.display = 'none'; // Hide the editor container
+
+        // Append it to the body
         document.body.appendChild(quillContainer);
 
-        // Initialize the Quill editor
+        // Initialize Quill without showing the toolbar
         const quill = new Quill(quillContainer, {
-            theme: 'snow',
+            modules: { toolbar: false }, // Disable the toolbar
+            theme: null, // No theme to avoid additional UI rendering
             readOnly: true, // Make the editor read-only
         });
 
         const deskripsiBerita = document.querySelectorAll('.deskripsi-berita');
         deskripsiBerita.forEach((element) => {
-          const dataContent = element.getAttribute('data-content');
-          const existingContent = `${dataContent}`;
-          
-          // Set existing content into the Quill editor
-          quill.root.innerHTML = existingContent;
-          // Display content in <p> tag
-          const quillContent = quill.root.innerHTML; // Get HTML content
+            const dataContent = element.getAttribute('data-content');
+            
+            // Set existing content into the Quill editor
+            quill.root.innerHTML = dataContent;
 
-          element.innerHTML = quillContent;
+            // Extract the processed content and display it in the element
+            element.innerHTML = quill.root.innerHTML;
         });
     });
 </script>

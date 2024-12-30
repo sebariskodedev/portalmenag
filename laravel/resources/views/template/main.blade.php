@@ -49,8 +49,8 @@
 
       <div class="d-flex align-items-center justify-content-between">
         <a href="/" class="logo d-flex align-items-center">
-          <img src="{{ asset('assets/img/logo.png') }}" alt="">
-          <span class="d-none d-lg-block">NiceAdmin</span>
+          <img src="{{ asset('sample/logo.png') }}" alt="">
+          <span class="d-none d-lg-block">Bimas Katolik</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
       </div><!-- End Logo -->
@@ -82,18 +82,18 @@
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
                 <h6>{{ auth()->user()->name }}</h6>
-                <span>Web Designer</span>
+                <span>Administrator</span>
               </li>
               <li>
                 <hr class="dropdown-divider">
               </li>
 
-              <li>
+              <!-- <li>
                 <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                   <i class="bi bi-person"></i>
                   <span>My Profile</span>
                 </a>
-              </li>
+              </li> -->
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -164,7 +164,7 @@
             </a>
             <ul id="bantuan-nav" class="nav-content collapsed" data-bs-parent="#sidebar-nav">
               <li>
-                <a href="/admin/informasi-bantuan">
+                <a href="/admin/bantuan-informasi">
                   <i class="bi bi-circle"></i><span>Informasi Bantuan</span>
                 </a>
               </li>
@@ -274,12 +274,12 @@
         </a>
         </li><!-- End Settings Nav -->
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
         <a id="menu-setting" class="nav-link collapsed" href="/admin/settings">
             <i class="bi bi-grid"></i>
             <span>Settings</span>
         </a>
-        </li><!-- End Settings Nav -->
+        </li> -->
 
       </ul>
 

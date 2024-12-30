@@ -226,32 +226,38 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Create a div element for the Quill editor container
+        // Create a hidden div element for the Quill editor container
         const quillContainer = document.createElement('div');
-        quillContainer.id = 'quill-editor';
-        quillContainer.classList.add('ql-container', 'ql-snow');
-        
-        // Append it to the body or any specific parent element
+        quillContainer.style.display = 'none'; // Hide the editor container completely
+
+        // Append the container to the body
         document.body.appendChild(quillContainer);
 
-        // Initialize the Quill editor
+        // Initialize the Quill editor without a toolbar
         const quill = new Quill(quillContainer, {
-            theme: 'snow',
+            modules: { toolbar: false }, // Disable the toolbar
+            theme: null, // No theme to avoid UI rendering
             readOnly: true, // Make the editor read-only
         });
 
+        // Process each `.deskripsi-berita` element
         const deskripsiBerita = document.querySelectorAll('.deskripsi-berita');
         deskripsiBerita.forEach((element) => {
-          const dataContent = element.getAttribute('data-content');
-          const existingContent = `${dataContent}`;
-          
-          // Set existing content into the Quill editor
-          quill.root.innerHTML = existingContent;
-          // Display content in <p> tag
-          const quillContent = quill.root.innerHTML; // Get HTML content
+            // Get the `data-content` attribute value
+            const dataContent = element.getAttribute('data-content');
+            
+            // Set the content into Quill's root element
+            quill.root.innerHTML = dataContent;
 
-          element.innerHTML = quillContent;
+            // Retrieve the processed content from Quill
+            const quillContent = quill.root.innerHTML;
+
+            // Update the target element's innerHTML with the processed content
+            element.innerHTML = quillContent;
         });
+
+        // Clean up by removing the hidden Quill container from the DOM
+        document.body.removeChild(quillContainer);
     });
 </script>
 @endsection

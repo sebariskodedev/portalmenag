@@ -124,12 +124,12 @@ label {
                 <label for="subjek">Subjek<span class="required" style="color: red;">*</span></label>
                 </div>
                 <div class="col-75">
-                <select id="subjek" name="subjek">
-                    <option value="0">Pilih Subjek</option>
-                    @foreach ($kategoridumass as $data)
-                    <option value="{{$data->id}}">{{$data->name}}</option>
-                    @endforeach
-                </select>
+                  <select id="subjek" name="subjek">
+                      <option value="0">Pilih Subjek</option>
+                      @foreach ($kategoridumass as $data)
+                      <option value="{{$data->id}}">{{$data->name}}</option>
+                      @endforeach
+                  </select>
                 </div>
             </div>
                 
