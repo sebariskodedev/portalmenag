@@ -238,4 +238,26 @@ class BantuanController extends Controller
             'bantuans' => $bantuans
         ]);
     }
+    /**
+     * Display a listing of the resource.
+     */
+    public function getBantuanTersalurkanAction($id)
+    {
+        $bantuan = Bantuan::findOrFail($id);
+
+        return view('bantuan-tersalurkan-action', [
+            'bantuan' => $bantuan
+        ]);
+    }
+    /**
+     * Display a listing of the resource.
+     */
+    public function getInformasiBantuanAction($id)
+    {
+        $bantuan = BantuanInformasi::findOrFail($id);
+
+        return view('bantuan-informasi-action', [
+            'bantuan' => $bantuan
+        ]);
+    }
 }

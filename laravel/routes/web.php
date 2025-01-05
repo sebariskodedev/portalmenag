@@ -20,6 +20,7 @@ use App\Http\Controllers\StrukturController;
 use App\Http\Controllers\BantuanController;
 use App\Http\Controllers\BantuanInformasiController;
 use App\Http\Controllers\KategoriRBController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -92,9 +93,11 @@ Route::get('/renungan-terbaru', [RenunganController::class, 'getRenunganTerbaru'
 Route::get('/mimbar-terbaru', [MimbarController::class, 'getMimbarTerbaru'])->name('mimbar-terbaru');
 
 Route::get('/list-bantuan-informasi', [BantuanController::class, 'getInformasiBantuan'])->name('data-bantuan-informasi');
+Route::get('/bantuan-informasi-action/{id}', [BantuanController::class, 'getInformasiBantuanAction'])->name('bantuan-informasi-action');
 Route::get('/list-bantuan-tersalurkan', [BantuanController::class, 'getBantuanTersalurkan'])->name('data-bantuan-tersalurkan');
+Route::get('/bantuan-tersalurkan-action/{id}', [BantuanController::class, 'getBantuanTersalurkanAction'])->name('bantuan-tersalurkan-action');
 
-Route::get('/article-page', [InformasiController::class, 'getInformasi'])->name('article-page');
+Route::get('/article/{kategori}/{id}', [InformasiController::class, 'getInformasi'])->name('article-page');
 
 
 Route::get('/list-infografis', [InfografisController::class, 'getInfografis'])->name('infografis');
@@ -111,3 +114,6 @@ Route::get('/reformasi-birokrasi/action/child/{id}', [ReformasiController::class
 
 
 Route::get('/struktur-organisasi/{id}', [StrukturController::class, 'getStruktur'])->name('struktur-organisasi');
+
+
+Route::get('/search', [SearchController::class, 'search'])->name('search');

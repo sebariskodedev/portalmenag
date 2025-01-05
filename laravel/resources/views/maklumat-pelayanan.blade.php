@@ -29,9 +29,9 @@
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
             @foreach ($layanans as $data)
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                <img src="{{ asset('maklumat-pelayanan/' . $data->gambar) }}" class="img-fluid" alt="">
-                <div class="portfolio-info dinamyc-color-card">
+              <div style="backgroud-color: transparent; padding-bottom: 5px;" class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+                <img style="box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); border-radius: 10px;" src="{{ asset('maklumat-pelayanan/' . $data->gambar) }}" class="img-fluid" alt="">
+                <div style="border-radius: 0px 0px 10px 10px; margin-bottom: 5px;" class="portfolio-info dinamyc-color-card">
                   <h4 class="text-dinamyc-color-primary">{{$data->judul}}</h4>
                   {{-- <p class="text-dinamyc-color">{{$data->deskripsi}}</p> --}}
                   <a href="{{ asset('maklumat-pelayanan/' . $data->gambar) }}" title="{{$data->judul}}" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in text-dinamyc-color"></i></a>

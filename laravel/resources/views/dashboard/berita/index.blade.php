@@ -2,6 +2,7 @@
 @section('title', 'Berita')
 
 @section('style')
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
   /* Container styles */
   .search-add {
@@ -125,7 +126,7 @@ th {
                 <tr>
                     <td class="truncate-text" title="{{ $data->judul }}"><span style="text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{{ $data->judul }}</span></td>
                     {{-- <td class="truncate-text" title="{{ $data->type }}"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->type }}</span></td> --}}
-                    <td class="truncate-text" title="{{ $data->deskripsi }}"><span style="text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">{{ $data->deskripsi }}</span></td>
+                    <td class="truncate-text" title="{{ $data->deskripsi }}"><span data-content="{{$data->deskripsi}}" class="deskripsi-informasi" style="text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">The content from Quill will appear here.</span></td>
                     <td>
                         <img src="{{ asset('berita/' . $data->gambar1) }}" 
                             alt="{{ $data->judul }}" 
@@ -174,6 +175,44 @@ th {
 @endsection
 
 @section('script')
+
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Create a hidden div element for the Quill editor container
+        const quillContainer = document.createElement('div');
+        quillContainer.style.display = 'none'; // Hide the editor container completely
+
+        // Append the container to the body
+        document.body.appendChild(quillContainer);
+
+        // Initialize the Quill editor without a toolbar
+        const quill = new Quill(quillContainer, {
+            modules: { toolbar: false }, // Disable the toolbar
+            theme: null, // No theme to avoid UI rendering
+            readOnly: true, // Make the editor read-only
+        });
+
+        // Process each `.deskripsi-berita` element
+        const deskripsiBerita = document.querySelectorAll('.deskripsi-informasi');
+        deskripsiBerita.forEach((element) => {
+            // Get the `data-content` attribute value
+            const dataContent = element.getAttribute('data-content');
+            
+            // Set the content into Quill's root element
+            quill.root.innerHTML = dataContent;
+
+            // Retrieve the processed content from Quill
+            const quillContent = quill.root.innerHTML;
+
+            // Update the target element's innerHTML with the processed content
+            element.innerHTML = quillContent;
+        });
+
+        // Clean up by removing the hidden Quill container from the DOM
+        document.body.removeChild(quillContainer);
+    });
+</script>
 
 
 <script>

@@ -1,6 +1,10 @@
 @extends('template.main')
 @section('title', 'Edit Bantuan Tersalurkan')
 
+@section('style')
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+@endsection
+
 @section('content')
 
     <!-- Main content -->
@@ -23,7 +27,8 @@
                             <h5 class="card-title"></h5>
 
                             <!-- Vertical Form -->
-                            <form class="row g-3" novalidate action="/admin/bantuan-tersalurkan/{{ $bantuan->id }}" enctype="multipart/form-data" method="POST">
+                            <div id="data-container" style="display: none;" data-content="{{ $bantuan->deskripsi }}"></div>
+                            <form id="form-bantuan" class="row g-3" novalidate action="/admin/bantuan-tersalurkan/{{ $bantuan->id }}" enctype="multipart/form-data" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="col-6">
@@ -88,17 +93,17 @@
                                         <span class="invalid-feedback text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="col-12">
-                                    <label for="deskripsi" class="form-label">Deskripsi</label>
-                                    <div class="col-sm-12">
-                                        <textarea type="deskripsi" name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" placeholder="Masukkan Deskripsi" style="height: 100px" required>{{old('deskripsi', $bantuan->deskripsi)}}</textarea>
-                                    </div>
+                                <div class="col-12" style="padding-bottom: 100px;">
+                                    <label for="deskripsi" class="form-label">Deskripsi berita</label>
+
+                                    <div class="col-sm-12" id="quill-editor"></div>
+                                    <input type="hidden" name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" placeholder="Masukkan Deskripsi" value="{{old('deskripsi', $bantuan->deskripsi)}}" style="height: 100px" required>
                                     @error('deskripsi')
                                         <span class="invalid-feedback text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="text-center" style="margin-top: 20px; align-items: right; justify-content: right; display: flex;">
-                                    <button style="margin-right: 20px;" type="submit" class="btn btn-primary">Submit</button>
+                                    <button style="margin-right: 20px;" type="button" onclick="submitForm()" class="btn btn-primary">Submit</button>
                                     <button type="reset" class="btn btn-secondary">Reset</button>
                                 </div>
                             </form><!-- Vertical Form -->
@@ -117,4 +122,49 @@
 @endsection
 
 @section('script')
+
+<!-- Include Quill JS -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quill@1.3.6/dist/quill.min.js"></script>
+
+<script>
+    // Step 2: Initialize Quill Editor with Text from JavaScript
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize Quill editor on the div
+        const quill = new Quill('#quill-editor', {
+            theme: 'snow', // theme for the editor
+            placeholder: 'Masukkan deskripsi berita...', // placeholder text
+        });
+
+        // Step 3: Set initial content (text) in the editor using JavaScript
+        // Retrieve the data from the HTML element's data attribute
+        const dataContent = document.getElementById('data-container').getAttribute('data-content');
+        const htmlContent = `${dataContent}`;
+        
+        // You can use setText() to add plain text or use setContents() for HTML or Delta format
+        quill.root.innerHTML = htmlContent; // Set HTML content directly
+        // OR
+        // const delta = quill.clipboard.convert(initialText); // Convert text to Quill Delta
+        // quill.setContents(delta); // Set converted content
+    });
+</script>
+
+<script>
+    function submitForm() {
+        // Retrieve the form element
+        const form = document.getElementById('form-bantuan');
+        var parentElement = document.getElementById('quill-editor');
+        var deskripsiContent = parentElement.querySelector('.ql-editor').innerHTML;
+        document.getElementById('deskripsi').value = deskripsiContent;
+
+        
+        // Check form validity
+        const isValid = form.checkValidity();
+        
+        // Print the validation result to the console
+        console.log('Form valid:', isValid);
+
+        form.submit();
+    }
+</script>
 @endsection

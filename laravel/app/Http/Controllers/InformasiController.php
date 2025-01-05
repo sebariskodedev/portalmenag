@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Informasi;
+use App\Models\Renungan;
+use App\Models\Mimbar;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 // use Exception;
@@ -230,9 +232,30 @@ class InformasiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function getInformasi()
+    public function getInformasi($kategori, $id)
     {
+        $data;
+        if($kategori == "berita"){
+            $data = Informasi::findOrFail($id);
 
-        return view('article-page');
+            return view('article-page', [
+                'data' => $data,
+                'kategori' => 'berita'
+            ]);
+        } else if($kategori == "mimbar"){
+            $data = Mimbar::findOrFail($id);
+
+            return view('article-page', [
+                'data' => $data,
+                'kategori' => 'mimbar'
+            ]);
+        } else {
+            $data = Renungan::findOrFail($id);
+
+            return view('article-page', [
+                'data' => $data,
+                'kategori' => 'renungan'
+            ]);
+        }
     }
 }

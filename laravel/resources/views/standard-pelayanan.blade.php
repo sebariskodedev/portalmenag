@@ -262,7 +262,18 @@
 
   // Toggle function for expandable items
   function toggle(idx) {
-      document.querySelectorAll('.expandable-item')[idx].classList.toggle('active');
+      // Get all expandable items
+      const items = document.querySelectorAll('.expandable-item');
+
+      // Deactivate all items
+      items.forEach((item, index) => {
+          if (index !== idx) {
+              item.classList.remove('active');
+          }
+      });
+
+      // Toggle the active state of the selected item
+      items[idx].classList.toggle('active');
   }
 	
 </script>

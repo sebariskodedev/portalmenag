@@ -198,15 +198,16 @@
           <div class="post-slide dinamyc-color-card">
             <div class="post-img">
               <img src="{{ asset('bantuan-informasi/' . $data->gambar) }}" alt="">
-              <a href="{{ route('article-page') }}" class="over-layer"><i class="fa fa-link"></i></a>
+              <a href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}" class="over-layer"><i class="fa fa-link"></i></a>
             </div>
             <div class="post-content dinamyc-color-card">
               <h3 class="post-title">
-                <a class="text-dinamyc-color-primary" href="{{ route('article-page') }}">{{$data->nama}}</a>
+                <a class="text-dinamyc-color-primary" href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}">{{$data->nama}}</a>
               </h3>
-              <p class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">{{$data->deskripsi}}</p>
+              <p data-content="{{$data->deskripsi}}" class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">The content from Quill will appear here.</p>
+              <span class="post-description text-dinamyc-color"><strong>Status:</strong> {{$data->status}}<br><strong>Tipe Bantuan:</strong> {{$data->tipe}}<br><strong>Jumlah Kuota:</strong> {{$data->jumlah_kuota}}</span>
               <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>{{$data->created_at}}</span>
-              <a href="{{ route('article-page') }}" class="read-more">selengkapnya</a>
+              <a href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}" class="read-more">selengkapnya</a>
             </div>
           </div>
         @endforeach
@@ -222,4 +223,42 @@
 @endsection
 
 @section('script')
+
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Create a hidden div element for the Quill editor container
+        const quillContainer = document.createElement('div');
+        quillContainer.style.display = 'none'; // Hide the editor container completely
+
+        // Append the container to the body
+        document.body.appendChild(quillContainer);
+
+        // Initialize the Quill editor without a toolbar
+        const quill = new Quill(quillContainer, {
+            modules: { toolbar: false }, // Disable the toolbar
+            theme: null, // No theme to avoid UI rendering
+            readOnly: true, // Make the editor read-only
+        });
+
+        // Process each `.deskripsi-berita` element
+        const deskripsiBerita = document.querySelectorAll('.deskripsi-berita');
+        deskripsiBerita.forEach((element) => {
+            // Get the `data-content` attribute value
+            const dataContent = element.getAttribute('data-content');
+            
+            // Set the content into Quill's root element
+            quill.root.innerHTML = dataContent;
+
+            // Retrieve the processed content from Quill
+            const quillContent = quill.root.innerHTML;
+
+            // Update the target element's innerHTML with the processed content
+            element.innerHTML = quillContent;
+        });
+
+        // Clean up by removing the hidden Quill container from the DOM
+        document.body.removeChild(quillContainer);
+    });
+</script>
 @endsection

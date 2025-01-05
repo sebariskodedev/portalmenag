@@ -271,6 +271,111 @@
 #nav.active .toggle .fa-times {
 	display: block;
 }
+
+
+
+#overlay {
+	 z-index: 2;
+	 position: fixed;
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 background: rgba(220, 220, 220, 0.7);
+	 visibility: hidden;
+	 opacity: 0;
+	 transition: all 0.2s ease-in;
+	 will-change: opacity;
+}
+ #overlay.show {
+	 visibility: visible;
+	 opacity: 1;
+}
+ #hamburger {
+	 z-index: 10;
+	 position: fixed;
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+	 align-items: center;
+	 bottom: 1.5%;
+	 right: .9%;
+	 background-color: #005faf;
+	 width: 56px;
+	 height: 56px;
+	 border-radius: 50%;
+	 cursor: pointer;
+	 box-shadow: 2px 2px 10px rgba(10, 10, 10, 0.3);
+	 transition: all 0.2s ease-in-out;
+}
+ #hamburger .icon-bar {
+	 display: block;
+	 background-color: #fff;
+	 width: 22px;
+	 height: 2px;
+	 transition: all 0.3s ease-in-out;
+}
+ #hamburger .icon-bar + .icon-bar {
+	 margin-top: 4px;
+}
+ .sosmed {
+	 z-index: 9;
+	 position: fixed;
+	 bottom: 3.3%;
+	 right: 1.3%;
+	 width: 40px;
+	 height: 40px;
+	 border-radius: 5px;
+	 background-color: #005faf;
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+	 align-items: center;
+	 visibilty: hidden;
+	 opacity: 0;
+	 box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.48);
+	 cursor: pointer;
+	 transition: all 0.3s ease-in;
+}
+ .material-icons {
+	 font-size: 20px;
+	 color: #ffffff;
+}
+ #facebook.show {
+	 transform: translateY(-125%);
+}
+ #twiter.show {
+	 transform: translateY(-250%);
+}
+ #instagram.show {
+	 transform: translateY(-375%);
+}
+ #youtube.show {
+	 transform: translateY(-500%);
+}
+ #tiktok.show {
+	 transform: translateY(-625%);
+}
+ #hamburger.show {
+	 box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.48);
+}
+ #hamburger.show #wrapper {
+	 transition: transform 0.4s ease-in-out;
+	 transform: rotateZ(90deg);
+}
+ #hamburger.show #one {
+	 transform: translateY(6px) rotateZ(45deg) scaleX(0.9);
+}
+ #hamburger.show #thr {
+	 transform: translateY(-6px) rotateZ(-45deg) scaleX(0.9);
+}
+ #hamburger.show #two {
+	 opacity: 0;
+}
+ .sosmed.show {
+	 visibility: visible;
+	 opacity: 1;
+}
     </style>
 
   @yield('style')  <!-- This will be replaced by the content of the child views -->
@@ -345,7 +450,7 @@
               </li> -->
             </ul>
           </li>
-          <li><a style="color: white;" href="#">PPID</a></li>
+          <li><a style="color: white;" href="https://bimaskatolik-ppid.kemenag.go.id/v5/organisasi.php">PPID</a></li>
 
           <!-- <div class="search-container btn-getstarted" style="background-color: transparent;">
             <form action="/search">
@@ -379,6 +484,10 @@
 
     @yield('content')  <!-- This will be replaced by the content of the child views -->
 
+    @php
+      $kunjunganCount = App\Models\Kunjungan::count();
+    @endphp
+
   <footer id="footer" class="footer light-background dinamyc-color-footer">
 
     <div class="container footer-top">
@@ -388,25 +497,16 @@
             <span class="sitename text-dinamyc-color-primary">Bimas Katolik</span>
           </a>
           <p class="text-dinamyc-color">Bimas Katolik Kemenag adalah situs resmi yang dikelola oleh Bimbingan Masyarakat Katolik di bawah Kementerian Agama Republik Indonesia. Website ini bertujuan untuk memberikan informasi terkait kegiatan, program, dan layanan bagi umat Katolik di Indonesia.</p>
-          <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
+          
+          <p style="margin-top: 20px;" class="text-dinamyc-color"><strong>Total Kunjungan:</strong> <span>{{$kunjunganCount}}</span></p>
+          <p style="display: flex; align-items: center;" class="text-dinamyc-color"><strong>Online User:</strong> <iframe src="http://localhost:3000" style="width: 200px; height: 35px; border: none; margin-left: 10px;"></iframe></iframe></p>
         </div>
-
-        @php
-          $kunjunganCount = App\Models\Kunjungan::count();
-        @endphp
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
         <h4 class=" text-dinamyc-color-primary">Hubungi Kami</h4>
         <p class="text-dinamyc-color">Jl. M.H. Thamrin No.6, RT.2/RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340</p>
         <p class="mt-4 text-dinamyc-color"><strong>Telepon:</strong> <span>(+62) 213812344</span></p>
         <p class="text-dinamyc-color"><strong>Email:</strong> <span>bimaskatolik@kemenag.go.id</span></p>
-        <p style="margin-top: 20px;" class="text-dinamyc-color"><strong>Total Kunjungan:</strong> <span>{{$kunjunganCount}}</span></p>
-        <p style="display: flex; align-items: center;" class="text-dinamyc-color"><strong>Online User:</strong> <iframe src="http://localhost:3000" style="width: 200px; height: 35px; border: none; margin-left: 10px;"></iframe></iframe></p>
         </div>
 
         <div class="col-lg-4 col-12 footer-links">
@@ -426,7 +526,30 @@
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="hamburger">
+  <div id="wrapper">
+      <span class="icon-bar" id="one"></span>
+      <span class="icon-bar" id="two"></span>
+      <span class="icon-bar" id="thr"></span>
+    </div>
+  </div>
+  <a href="" class="sosmed" id="tiktok">
+    <i class="bi bi-tiktok material-icons"></i>
+  </a>
+  <a href="" class="sosmed" id="youtube">
+    <i class="bi bi-youtube material-icons"></i>
+  </a>
+  <a href="" class="sosmed" id="instagram">
+    <i class="bi bi-instagram material-icons"></i>
+  </a>
+  <a href="" class="sosmed" id="twiter">
+    <i class="bi bi-twitter-x material-icons"></i>
+  </a>
+  <a href="" class="sosmed" id="facebook">
+    <i class="bi bi-facebook material-icons"></i>
+  </a>
+
+  <a style="left: 1%" href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
@@ -610,6 +733,13 @@
 // toggle.addEventListener('click', () => {
 // 	nav.classList.toggle('active');
 // });
+
+
+$('#hamburger').click(function() {
+  $('#hamburger').toggleClass('show');
+  $('#overlay').toggleClass('show');
+  $('.sosmed').toggleClass('show');
+});
 </script>
 
 </body>

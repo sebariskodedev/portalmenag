@@ -198,15 +198,15 @@
           <div class="post-slide dinamyc-color-card">
             <div class="post-img">
               <img src="{{ asset('berita/' . $data->gambar1) }}" alt="">
-              <a href="{{ route('article-page') }}" class="over-layer"><i class="fa fa-link"></i></a>
+              <a href="{{ route('article-page', ['kategori' => 'berita', 'id' => $data->id]) }}" class="over-layer"><i class="fa fa-link"></i></a>
             </div>
             <div class="post-content dinamyc-color-card">
               <h3 class="post-title">
-                <a class="text-dinamyc-color-primary" href="{{ route('article-page') }}">{{$data->judul}}</a>
+                <a class="text-dinamyc-color-primary" href="{{ route('article-page', ['kategori' => 'berita', 'id' => $data->id]) }}">{{$data->judul}}</a>
               </h3>
               <p data-content="{{$data->deskripsi}}" class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">The content from Quill will appear here.</p>
               <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>{{$data->created_at}}</span>
-              <a href="{{ route('article-page') }}" class="read-more">selengkapnya</a>
+              <a href="{{ route('article-page', ['kategori' => 'berita', 'id' => $data->id]) }}" class="read-more">selengkapnya</a>
             </div>
           </div>
         @endforeach

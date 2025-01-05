@@ -987,7 +987,7 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
     </div>
     <div class="card-landing dinamyc-color-card">
       <div class="icon-title">
-        <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/data-512.png" />
+        <img src="{{ asset('images/Icon_Data.png') }}" />
       </div>
       <div class="child-card" style="margin-bottom: 10px;">
         <div class="item"><a href="#">Sebaran</a></div>
