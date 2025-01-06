@@ -191,29 +191,56 @@
 
       <div class="container">
 
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-      <div id="news-slider" class="owl-carousel">
-                  
-        @foreach ($bantuans as $data)
-          <div class="post-slide dinamyc-color-card">
-            <div class="post-img">
-              <img src="{{ asset('bantuan-informasi/' . $data->gambar) }}" alt="">
-              <a href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}" class="over-layer"><i class="fa fa-link"></i></a>
-            </div>
-            <div class="post-content dinamyc-color-card">
-              <h3 class="post-title">
-                <a class="text-dinamyc-color-primary" href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}">{{$data->nama}}</a>
-              </h3>
-              <p data-content="{{$data->deskripsi}}" class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">The content from Quill will appear here.</p>
-              <span class="post-description text-dinamyc-color"><strong>Status:</strong> {{$data->status}}<br><strong>Tipe Bantuan:</strong> {{$data->tipe}}<br><strong>Jumlah Kuota:</strong> {{$data->jumlah_kuota}}</span>
-              <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>{{$data->created_at}}</span>
-              <a href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}" class="read-more">selengkapnya</a>
-            </div>
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active">Semua</li>
+            <li data-filter=".filter-pendidikan">Pendidikan</li>
+            <li data-filter=".filter-keagamaan">Keagamaan</li>
+          </ul><!-- End Portfolio Filters -->
+
+
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+                      
+            @foreach ($bantuans as $data)
+              @if($data->tipe == "pendidikan")
+              <div class="post-slide dinamyc-color-card col-lg-4 col-md-6 portfolio-item isotope-item filter-pendidikan">
+                <div class="post-img">
+                  <img src="{{ asset('bantuan-informasi/' . $data->gambar) }}" alt="">
+                  <a href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}" class="over-layer"><i class="fa fa-link"></i></a>
+                </div>
+                <div class="post-content dinamyc-color-card">
+                  <h3 class="post-title">
+                    <a class="text-dinamyc-color-primary" href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}">{{$data->nama}}</a>
+                  </h3>
+                  <p data-content="{{$data->deskripsi}}" class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">The content from Quill will appear here.</p>
+                  <span class="post-description text-dinamyc-color"><strong>Status:</strong> {{$data->status}}<br><strong>Tipe Bantuan:</strong> {{$data->tipe}}<br><strong>Jumlah Kuota:</strong> {{$data->jumlah_kuota}}</span>
+                  <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>{{$data->created_at}}</span>
+                  <a href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}" class="read-more">selengkapnya</a>
+                </div>
+              </div>
+              @else
+              <div class="post-slide dinamyc-color-card col-lg-4 col-md-6 portfolio-item isotope-item filter-keagamaan">
+                <div class="post-img">
+                  <img src="{{ asset('bantuan-informasi/' . $data->gambar) }}" alt="">
+                  <a href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}" class="over-layer"><i class="fa fa-link"></i></a>
+                </div>
+                <div class="post-content dinamyc-color-card">
+                  <h3 class="post-title">
+                    <a class="text-dinamyc-color-primary" href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}">{{$data->nama}}</a>
+                  </h3>
+                  <p data-content="{{$data->deskripsi}}" class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">The content from Quill will appear here.</p>
+                  <span class="post-description text-dinamyc-color"><strong>Status:</strong> {{$data->status}}<br><strong>Tipe Bantuan:</strong> {{$data->tipe}}<br><strong>Jumlah Kuota:</strong> {{$data->jumlah_kuota}}</span>
+                  <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>{{$data->created_at}}</span>
+                  <a href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}" class="read-more">selengkapnya</a>
+                </div>
+              </div>
+              @endif
+            @endforeach
+
+            
           </div>
-        @endforeach
-
-        
-      </div>
+        <div>
 
       </div>
 
