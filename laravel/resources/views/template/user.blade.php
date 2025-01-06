@@ -533,19 +533,19 @@
       <span class="icon-bar" id="thr"></span>
     </div>
   </div>
-  <a href="" class="sosmed" id="tiktok">
+  <a href="https://www.tiktok.com/@bimaskatolik?_t=ZS-8skMw2uUMnB&_r=1" class="sosmed" id="tiktok">
     <i class="bi bi-tiktok material-icons"></i>
   </a>
-  <a href="" class="sosmed" id="youtube">
+  <a href="https://youtube.com/@ditjenbimaskatolik?si=da5XTpaHXRyW-DsF" class="sosmed" id="youtube">
     <i class="bi bi-youtube material-icons"></i>
   </a>
-  <a href="" class="sosmed" id="instagram">
+  <a href="https://www.instagram.com/bimaskatolik?igsh=M2ZuMzRrMHRjYzVn" class="sosmed" id="instagram">
     <i class="bi bi-instagram material-icons"></i>
   </a>
-  <a href="" class="sosmed" id="twiter">
+  <a href="https://x.com/bimaskatolikri?t=FMGChqSxeRS2ztzCIWBWeg&s=09" class="sosmed" id="twiter">
     <i class="bi bi-twitter-x material-icons"></i>
   </a>
-  <a href="" class="sosmed" id="facebook">
+  <a href="https://www.facebook.com/share/14fbKDHy36/" class="sosmed" id="facebook">
     <i class="bi bi-facebook material-icons"></i>
   </a>
 

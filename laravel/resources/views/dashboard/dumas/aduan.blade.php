@@ -122,9 +122,19 @@ th {
                     <td class="truncate-text"><span style="text-overflow: ellipsis; max-width: 10px;-webkit-line-clamp: 2;">{{ $data->name }}</span></td>
                     <td class="truncate-text"><span style="text-overflow: ellipsis; max-width: 10px;-webkit-line-clamp: 2;">{{ $data->email }}</span></td>
                     <td>
-                        <button style="margin: 5px;" type="submit" class="btn btn-success btn-sm mr-1">
-                            <i class="fa-solid fa-pen"></i> Detail
-                        </button>
+						<button 
+							style="margin: 5px;" 
+							type="button" 
+							class="btn btn-success btn-sm mr-1" 
+							data-bs-toggle="modal" 
+							data-bs-target="#verticalycentered" 
+							data-title="Aduan tentang {{$data->subjek}}" 
+							data-nama="{{$data->name}}"
+							data-email="{{$data->email}}"
+							data-pesan="{{$data->pesan}}"
+							data-lampiran="{{ asset('lampirans/' . $data->lampiran) }}">
+							<i class="fa-solid fa-pen"></i> Detail
+						</button>
                         <form class="d-inline" action="/dumas/aduan/{{ $data->id }}" method="POST">
                             @csrf
                             @method('delete')
@@ -137,6 +147,26 @@ th {
             @endforeach
         </tbody>
     </table>
+	<div class="modal fade" id="verticalycentered" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalLabel">Default Title</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<span><strong>Nama : </strong><span class="nama"></span></span><br>
+					<span><strong>Email : </strong><span class="email"></span></span><br>
+					<span><strong>Pesan : </strong><span class="pesan"></span></span><br>
+					<span><strong>Lampiran : </strong><a class="lampiran" href="#" download>Download</a></span><br>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!--		Start Pagination -->
 	<div class='pagination-container'>
@@ -162,6 +192,59 @@ th {
 @endsection
 
 @section('script')
+
+<script>
+
+	function containsFileExtension(fileName) {
+		const extensions = ['.jpg', '.png', '.pdf', '.docx'];
+		return extensions.some(ext => fileName.includes(ext));
+	}
+
+	document.addEventListener('DOMContentLoaded', function () {
+		// Select the modal element
+		const modal = document.getElementById('verticalycentered');
+		
+		// Add an event listener for the 'show.bs.modal' event
+		modal.addEventListener('show.bs.modal', function (event) {
+			// Get the button that triggered the modal
+			const button = event.relatedTarget;
+
+			// Extract data from the button's data-* attributes
+			const title = button.getAttribute('data-title');
+			const nama = button.getAttribute('data-nama');
+			const email = button.getAttribute('data-email');
+			const pesan = button.getAttribute('data-pesan');
+			const lampiran = button.getAttribute('data-lampiran');
+
+			// Update the modal's title and body content
+			modal.querySelector('.modal-title').textContent = title;
+			modal.querySelector('.nama').textContent = nama;
+			modal.querySelector('.email').textContent = email;
+			modal.querySelector('.pesan').textContent = pesan;
+			const downloadLink = modal.querySelector('.lampiran');
+			if (lampiran) {
+				// Check if it has a file extension using a regular expression
+				const hasFileExtension = /\.[0-9a-z]+$/i.test(lampiran);
+
+				// console.log(hasFileExtension);
+
+				if (hasFileExtension) {
+					if (downloadLink) {
+						downloadLink.setAttribute('href', lampiran);
+						downloadLink.textContent = "Download";
+					}
+				} else {
+					if (downloadLink) {
+						downloadLink.setAttribute('href', lampiran);
+						downloadLink.textContent = "-";
+					}
+				}
+			} else {
+				console.log("Lampiran attribute is empty or null.");
+			}
+		});
+	});
+</script>
 
 
 <script>
