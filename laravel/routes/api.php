@@ -5,6 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegulasiController;
 use App\Http\Controllers\ReformasiController;
 use App\Http\Controllers\KunjunganController;
+use App\Http\Controllers\KlikLayananController;
+use App\Http\Controllers\KlikBantuanController;
+use App\Http\Controllers\KlikDataController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\InformasiController;
+use App\Http\Controllers\RenunganController;
+use App\Http\Controllers\MimbarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +34,15 @@ Route::get('/get-rb', [ReformasiController::class, 'getJsonRB'])->name('get-rb')
 
 Route::get('/get-kunjungan', [KunjunganController::class, 'get'])->name('get-kunjungan');
 Route::post('/post-kunjungan', [KunjunganController::class, 'add'])->name('post-kunjungan');
+Route::get('/get-monthly-counts', [KunjunganController::class, 'getMonthlyCounts'])->name('getMonthlyCounts');
+
+
+Route::post('/post-klik-layanan', [KlikLayananController::class, 'add'])->name('post-klik-layanan');
+Route::post('/post-klik-bantuan', [KlikBantuanController::class, 'add'])->name('post-klik-bantuan');
+Route::post('/post-klik-data', [KlikDataController::class, 'add'])->name('post-klik-data');
+
+Route::post('/post-feedback', [FeedbackController::class, 'add'])->name('post-kunjungan');
+
+Route::put('/update-status-informasi/{id}', [InformasiController::class, 'updateStatusInformasi']);
+Route::put('/update-status-renungan/{id}', [RenunganController::class, 'updateStatusRenungan']);
+Route::put('/update-status-mimbar/{id}', [MimbarController::class, 'updateStatusMimbar']);

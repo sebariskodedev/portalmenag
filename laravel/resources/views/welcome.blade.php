@@ -782,14 +782,15 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  margin: -12px 15px 8px 15px;
-  margin-left: -10px;
+  /* margin: -12px 15px 8px 15px;
+  margin-left: -10px; */
 }
 .post-slide .post-img img {
-  width: 100%;
-  height: 200px;
-  transform: scale(1, 1);
-  transition: transform 0.2s linear;
+  width: 100%; /* Full width */
+  aspect-ratio: 1 / 1; /* Maintain a 1:1 aspect ratio for a square */
+  object-fit: cover; /* Ensures the image fills the square without distortion */
+  /* transform: scale(1, 1);
+  transition: transform 0.2s linear; */
 }
 .post-slide:hover .post-img img {
   transform: scale(1.1, 1.1);
@@ -1693,32 +1694,39 @@ async function getClientIp() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', async function() {
-  const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+document.addEventListener('DOMContentLoaded', async function () {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-  const ip = await getClientIp(); // Use the external API to get the client's IP
+    const ip = await getClientIp();
 
-      const data = { ip: ip };
+    if (!ip) {
+        console.error('IP address is required');
+        return;
+    }
 
-      try {
-          const response = await fetch('/api/post-kunjungan', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  // 'Accept': 'application/json',
-                  'X-CSRF-TOKEN': csrfToken 
-              },
-              body: JSON.stringify(data)
-          });
+    const data = { ip: ip };
 
-          if (response.ok) {
-              const result = await response.json();
-          } else {
-              throw new Error('Failed to add Kunjungan');
-          }
-      } catch (error) {
-          console.error(error);
-      }
+    try {
+        const response = await fetch('/api/post-kunjungan', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            // console.log(result);
+        } else {
+            const errorResponse = await response.text();
+            console.error('Failed to add Kunjungan:', errorResponse);
+        }
+    } catch (error) {
+        console.error('Error during fetch:', error);
+    }
 });
 </script>
 

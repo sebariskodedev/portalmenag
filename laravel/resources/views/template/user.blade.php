@@ -321,7 +321,7 @@
  .sosmed {
 	 z-index: 9;
 	 position: fixed;
-	 bottom: 3.3%;
+	 bottom: 80px;
 	 right: 1.3%;
 	 width: 40px;
 	 height: 40px;
@@ -342,19 +342,19 @@
 	 color: #ffffff;
 }
  #facebook.show {
-	 transform: translateY(-125%);
+	 transform: translateY(-185%);
 }
  #twiter.show {
-	 transform: translateY(-250%);
+	 transform: translateY(-310%);
 }
  #instagram.show {
-	 transform: translateY(-375%);
+	 transform: translateY(-435%);
 }
  #youtube.show {
-	 transform: translateY(-500%);
+	 transform: translateY(-560%);
 }
  #tiktok.show {
-	 transform: translateY(-625%);
+	 transform: translateY(-685%);
 }
  #hamburger.show {
 	 box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.48);
@@ -375,6 +375,400 @@
  .sosmed.show {
 	 visibility: visible;
 	 opacity: 1;
+}
+
+
+
+
+
+
+.counter-container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    margin: 5px;
+    width: 22%;
+}
+.counter {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+#visitorCount {
+    color: #007bff;
+}
+
+p {
+    color: #666666;
+}
+
+
+
+
+
+.artboards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.artboardTitle {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.artboard {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.screen {
+  background-color: white;
+  border: 1px solid black;
+  background-color: #ECEFF1;
+}
+.screen.iPhone4 {
+  width: 320px;
+  height: 480px;
+}
+.screen.iPhone5 {
+  width: 320px;
+  height: 568px;
+}
+.screen.iPhone6, .screen.iPhone7 {
+  width: 375px;
+  height: 667px;
+}
+.screen.iPhonePlus {
+  width: 414px;
+  height: 736px;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.nps.screenshot img {
+  width: 100%;
+  height: auto;
+}
+
+.nps.formContainer {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+@media (min-width: 736px) {
+  .nps.formContainer {
+    width: 414px;
+    height: auto;
+    top: inherit;
+    right: 1rem;
+    bottom: 1rem;
+    left: inherit;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.33);
+  }
+}
+.nps.formContainer.transitionOut {
+  display: none;
+}
+.nps.formContainer.transitionIn {
+  display: block;
+}
+
+.nps.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 100%;
+  min-height: 100%;
+  padding-bottom: 1rem;
+}
+
+.nps.coverImage {
+  width: 100%;
+  height: auto;
+  padding-bottom: 0.5rem;
+  box-sizing: content-box;
+}
+
+.nps.h1 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 1.2;
+  color: #263238;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.25rem;
+  padding-left: 1rem;
+}
+
+.nps.h2,
+.nps.h3 {
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.2;
+  color: #263238;
+  padding-top: 0.25rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+}
+
+.nps.h3 {
+  padding-top: 1rem;
+  padding-bottom: 0;
+  font-weight: bold;
+}
+
+.nps.scaleDescription {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  font-size: 1rem;
+  color: #607D8B;
+}
+.nps.scaleDescription span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nps.scaleDescription i {
+  margin-right: 0.25rem;
+}
+
+.nps.scale {
+  display: flex;
+  height: 2.5rem;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  box-sizing: content-box;
+}
+
+.nps.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-grow: 1;
+  cursor: pointer;
+  color: #40354E;
+  border-color: #40354E;
+  border-style: solid;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+  border-left-width: 0;
+}
+.nps.label[for=pria] {
+  border-left-width: 1px;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+.nps.label[for=wanita] {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+.nps.label[for=satu] {
+  border-left-width: 1px;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+.nps.label[for=empat] {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+.nps.label[for=satu_a] {
+  border-left-width: 1px;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+.nps.label[for=enam_a] {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+.nps.label[for=satu_b] {
+  border-left-width: 1px;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+.nps.label[for=lima_b] {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+.nps.label[for=satu_c] {
+  border-left-width: 1px;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+.nps.label[for=lima_c] {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.nps.input {
+  display: none;
+}
+.nps.input:checked + label {
+  background-color: #40354E;
+  color: white;
+  font-weight: bold;
+}
+
+.nps.textarea {
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: normal;
+  color: #263238;
+  border: 1px solid #90A4AE;
+}
+.nps.textarea::-moz-placeholder {
+  color: #607D8B;
+}
+.nps.textarea:-ms-input-placeholder {
+  color: #607D8B;
+}
+.nps.textarea::placeholder {
+  color: #607D8B;
+}
+
+.nps.textareaLabel {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+  font-size: 0.875rem;
+  color: #607D8B;
+  cursor: pointer;
+}
+.nps.textareaLabel input {
+  margin-right: 0.25rem;
+}
+
+.nps.actions {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.nps.close {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.nps.button {
+  background-color: #000;
+  height: 2.5rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: normal;
+  font-size: 1rem;
+  padding: 0 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: 2.5rem;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nps.floatingActionButton {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 0;
+  cursor: pointer;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 1.5rem;
+  background-color: #005faf;
+  color: white;
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.25);
+  font-size: 1rem;
+  padding: 0 1rem;
+}
+.nps.floatingActionButton:focus {
+  outline: 0;
+}
+.nps.floatingActionButton.thankYou {
+  background-color: #00c853;
+  transform: scale(0);
+  -webkit-animation: thankYou ease-in-out 1200ms 150ms forwards;
+          animation: thankYou ease-in-out 1200ms 150ms forwards;
+}
+@-webkit-keyframes thankYou {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  75% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes thankYou {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  75% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
     </style>
 
@@ -413,7 +807,7 @@
 
       <nav id="navmenu" class="navmenu">
         <ul class="dinamyc-color-header">
-          <!-- <li><a href="index.html#hero" class="active">Home</a></li> -->
+          <li><a style="color: white;" href="{{ route('welcome') }}">Beranda</a></li>
           <li class="dropdown"><a style="color: white;" href="#"><span>Layanan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul class="dinamyc-color-header">
               <li><a style="color: white;" href="{{ route('maklumat-pelayanan') }}">Maklumat Pelayanan</a></li>
@@ -437,7 +831,7 @@
           <li class="dropdown"><a style="color: white;" href="#"><span>Tentang Kami</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul class="dinamyc-color-header">
               <li><a style="color: white;" href="{{ route('struktur-organisasi', ['id' => 1]) }}">Struktur Organisasi</a></li>
-              <li><a style="color: white;" href="{{ route('informasi-regulasi') }}">Informasi/Regulasi Penting</a></li>
+              <li><a style="color: white;" href="{{ route('informasi-regulasi') }}">Regulasi/Informasi Penting</a></li>
               <li><a style="color: white;" href="{{ route('reformasi-birokrasi') }}">Reformasi Birokrasi</a></li>
               <!-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
@@ -485,6 +879,10 @@
     @yield('content')  <!-- This will be replaced by the content of the child views -->
 
     @php
+      use Carbon\Carbon;
+      $todayCount = App\Models\Kunjungan::whereDate('created_at', Carbon::today())->count();
+      $thisWeekCount = App\Models\Kunjungan::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+      $thisMonthCount = App\Models\Kunjungan::whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->count();
       $kunjunganCount = App\Models\Kunjungan::count();
     @endphp
 
@@ -496,17 +894,54 @@
           <a style="color: white;" href="{{ route('welcome') }}" class="logo d-flex align-items-center">
             <span class="sitename text-dinamyc-color-primary">Bimas Katolik</span>
           </a>
-          <p class="text-dinamyc-color">Bimas Katolik Kemenag adalah situs resmi yang dikelola oleh Bimbingan Masyarakat Katolik di bawah Kementerian Agama Republik Indonesia. Website ini bertujuan untuk memberikan informasi terkait kegiatan, program, dan layanan bagi umat Katolik di Indonesia.</p>
+          <p class="text-dinamyc-color">Situs resmi yang dikelola oleh Direktorat Jenderal Bimbingan Masyarakat Katolik Kementerian Agama Republik Indonesia. Website ini bertujuan untuk memberikan informasi terkait kegiatan, program, dan layanan bagi umat Katolik di Indonesia.</p>
           
-          <p style="margin-top: 20px;" class="text-dinamyc-color"><strong>Total Kunjungan:</strong> <span>{{$kunjunganCount}}</span></p>
-          <p style="display: flex; align-items: center;" class="text-dinamyc-color"><strong>Online User:</strong> <iframe src="http://localhost:3000" style="width: 200px; height: 35px; border: none; margin-left: 10px;"></iframe></iframe></p>
+          <div class="social-links d-flex mt-4">
+            <div class="counter-container dinamyc-color-card">
+                <h4 class="text-dinamyc-color-primary">Kunjungan hari Ini</h4>
+                <div class="counter">
+                    <span id="visitorCount">{{$todayCount}}</span>
+                </div>
+                <p></p>
+            </div>
+            <div class="counter-container dinamyc-color-card">
+                <h4 class="text-dinamyc-color-primary">Kunjungan minggu Ini</h4>
+                <div class="counter">
+                    <span id="visitorCount">{{$thisWeekCount}}</span>
+                </div>
+                <p></p>
+            </div>
+            <div class="counter-container dinamyc-color-card">
+                <h4 class="text-dinamyc-color-primary">Kunjungan bulan Ini</h4>
+                <div class="counter">
+                    <span id="visitorCount">{{$thisMonthCount}}</span>
+                </div>
+                <p></p>
+            </div>
+            <div class="counter-container dinamyc-color-card">
+                <h4 class="text-dinamyc-color-primary">Total Kunjungan</h4>
+                <div class="counter">
+                    <span id="visitorCount">{{$kunjunganCount}}</span>
+                </div>
+                <p></p>
+            </div>
+          </div>
+          {{-- <p style="margin-top: 20px;" class="text-dinamyc-color"><strong>Total Kunjungan:</strong> <span>{{$kunjunganCount}}</span></p>
+          <p style="display: flex; align-items: center;" class="text-dinamyc-color"><strong>Online User:</strong> <iframe src="http://localhost:3000" style="width: 200px; height: 35px; border: none; margin-left: 10px;"></iframe></iframe></p> --}}
         </div>
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-        <h4 class=" text-dinamyc-color-primary">Hubungi Kami</h4>
-        <p class="text-dinamyc-color">Jl. M.H. Thamrin No.6, RT.2/RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340</p>
-        <p class="mt-4 text-dinamyc-color"><strong>Telepon:</strong> <span>(+62) 213812344</span></p>
-        <p class="text-dinamyc-color"><strong>Email:</strong> <span>bimaskatolik@kemenag.go.id</span></p>
+          <h4 class=" text-dinamyc-color-primary">Hubungi Kami</h4>
+          <p class="text-dinamyc-color">Jl. M.H. Thamrin No.6, RT.2/RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340</p>
+          <p class="mt-4 text-dinamyc-color"><strong>Telepon:</strong> <span>(+62) 213812344</span></p>
+          <p class="text-dinamyc-color"><strong>Email:</strong> <span>bimaskatolik@kemenag.go.id</span></p>
+          <div class="social-links d-flex mt-4">
+            <a href="https://www.facebook.com/share/14fbKDHy36/"><i class="bi bi-facebook"></i></a>
+            <a href="https://x.com/bimaskatolikri?t=FMGChqSxeRS2ztzCIWBWeg&s=09"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.instagram.com/bimaskatolik?igsh=M2ZuMzRrMHRjYzVn"><i class="bi bi-instagram"></i></a>
+            <a href="https://youtube.com/@ditjenbimaskatolik?si=da5XTpaHXRyW-DsF"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.tiktok.com/@bimaskatolik?_t=ZS-8skMw2uUMnB&_r=1"><i class="bi bi-tiktok"></i></a>
+          </div>
         </div>
 
         <div class="col-lg-4 col-12 footer-links">
@@ -526,30 +961,115 @@
   </footer>
 
   <!-- Scroll Top -->
-  <div id="hamburger">
-  <div id="wrapper">
-      <span class="icon-bar" id="one"></span>
-      <span class="icon-bar" id="two"></span>
-      <span class="icon-bar" id="thr"></span>
+  <div style="margin-bottom: 60px;" id="hamburger">
+    <div id="wrapper">
+        <span class="icon-bar" id="one"></span>
+        <span class="icon-bar" id="two"></span>
+        <span class="icon-bar" id="thr"></span>
+      </div>
     </div>
+    <a href="https://www.tiktok.com/@bimaskatolik?_t=ZS-8skMw2uUMnB&_r=1" class="sosmed" id="tiktok">
+      <i class="bi bi-tiktok material-icons"></i>
+    </a>
+    <a href="https://youtube.com/@ditjenbimaskatolik?si=da5XTpaHXRyW-DsF" class="sosmed" id="youtube">
+      <i class="bi bi-youtube material-icons"></i>
+    </a>
+    <a href="https://www.instagram.com/bimaskatolik?igsh=M2ZuMzRrMHRjYzVn" class="sosmed" id="instagram">
+      <i class="bi bi-instagram material-icons"></i>
+    </a>
+    <a href="https://x.com/bimaskatolikri?t=FMGChqSxeRS2ztzCIWBWeg&s=09" class="sosmed" id="twiter">
+      <i class="bi bi-twitter-x material-icons"></i>
+    </a>
+    <a href="https://www.facebook.com/share/14fbKDHy36/" class="sosmed" id="facebook">
+      <i class="bi bi-facebook material-icons"></i>
+    </a>
   </div>
-  <a href="https://www.tiktok.com/@bimaskatolik?_t=ZS-8skMw2uUMnB&_r=1" class="sosmed" id="tiktok">
-    <i class="bi bi-tiktok material-icons"></i>
-  </a>
-  <a href="https://youtube.com/@ditjenbimaskatolik?si=da5XTpaHXRyW-DsF" class="sosmed" id="youtube">
-    <i class="bi bi-youtube material-icons"></i>
-  </a>
-  <a href="https://www.instagram.com/bimaskatolik?igsh=M2ZuMzRrMHRjYzVn" class="sosmed" id="instagram">
-    <i class="bi bi-instagram material-icons"></i>
-  </a>
-  <a href="https://x.com/bimaskatolikri?t=FMGChqSxeRS2ztzCIWBWeg&s=09" class="sosmed" id="twiter">
-    <i class="bi bi-twitter-x material-icons"></i>
-  </a>
-  <a href="https://www.facebook.com/share/14fbKDHy36/" class="sosmed" id="facebook">
-    <i class="bi bi-facebook material-icons"></i>
-  </a>
 
   <a style="left: 1%" href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div style="z-index: 10000000; height: 100vh; overflow-y: auto;" class="nps formContainer transitionOut">
+    <form class="nps form">
+      <h1 class="nps h1">Survey Kepuasan Website Ditjen Bimas Katolik</h1>
+      <h2 class="nps h2">Jenis kelamin<span class="required" style="color: red;">*</span></h2>
+      <div class="nps scale">
+        <input class="nps input" name="pria" type="radio" id="pria" />
+        <label class="nps label" for="pria">Pria</label>
+        <input class="nps input" name="wanita" type="radio" id="wanita" />
+        <label class="nps label" for="wanita">Wanita</label>
+      </div>
+      <h2 class="nps h2">Berapa umur anda (tahun)<span class="required" style="color: red;">*</span></h2>
+      <div class="nps scale">
+        <input class="nps input" name="umur_1" type="radio" id="satu" />
+        <label class="nps label" for="satu">18-28</label>
+        <input class="nps input" name="umur_2" type="radio" id="dua" />
+        <label class="nps label" for="dua">29-42</label>
+        <input class="nps input" name="umur_3" type="radio" id="tiga" />
+        <label class="nps label" for="tiga">43-58</label>
+        <input class="nps input" name="umur_4" type="radio" id="empat" />
+        <label class="nps label" for="empat">> 59</label>
+      </div>
+      <h2 class="nps h2">Apa pekerjaan anda<span class="required" style="color: red;">*</span></h2>
+      <h2 style="margin-top: 0px; margin-bottom: 0px; font-size: .8rem;" class="nps h2">(1) Aparatur Sipil Negara (ASN), (2) Pegawai Swasta, (3) Wiraswasta, (4) Rohaniwan, (5) Pelajar, (6) Lainya</h2>
+      <div class="nps scale">
+        <input class="nps input" name="pekerjaan_1" type="radio" id="satu_a" />
+        <label class="nps label" for="satu_a">1</label>
+        <input class="nps input" name="pekerjaan_2" type="radio" id="dua_a" />
+        <label class="nps label" for="dua_a">2</label>
+        <input class="nps input" name="pekerjaan_3" type="radio" id="tiga_a" />
+        <label class="nps label" for="tiga_a">3</label>
+        <input class="nps input" name="pekerjaan_4" type="radio" id="empat_a" />
+        <label class="nps label" for="empat_a">4</label>
+        <input class="nps input" name="pekerjaan_5" type="radio" id="lima_a" />
+        <label class="nps label" for="lima_a">5</label>
+        <input class="nps input" name="pekerjaan_6" type="radio" id="enam_a" />
+        <label class="nps label" for="enam_a">6</label>
+      </div>
+      <h3 class="nps h3">Menu apa yang paling sering anda akses?<span class="required" style="color: red;">*</span></h3>
+      <textarea name="favorite_menu" class="nps textarea" rows="1" placeholder="Jawaban anda"></textarea>
+      <h2 class="nps h2">Bagaimana pendapat anda terkait Website Ditjen Bimas Katolik?<span class="required" style="color: red;">*</span></h2>
+      <div class="nps scaleDescription">
+        <span><i>😔</i> Sedih</span>
+        <span><i>😃</i> Senang</span>
+      </div>
+      <div class="nps scale">
+        <input class="nps input" name="pendapat_1" type="radio" id="satu_b" />
+        <label class="nps label" for="satu_b">1</label>
+        <input class="nps input" name="pendapat_2" type="radio" id="dua_b" />
+        <label class="nps label" for="dua_b">2</label>
+        <input class="nps input" name="pendapat_3" type="radio" id="tiga_b" />
+        <label class="nps label" for="tiga_b">3</label>
+        <input class="nps input" name="pendapat_4" type="radio" id="empat_b" />
+        <label class="nps label" for="empat_b">4</label>
+        <input class="nps input" name="pendapat_5" type="radio" id="lima_b" />
+        <label class="nps label" for="lima_b">5</label>
+      </div>
+      <h2 class="nps h2">Seberapa besar anda ingin merekomendasikan Website Ditjen Bimas Katolik?
+      <span class="required" style="color: red;">*</span></h2>
+      <div class="nps scaleDescription">
+        <span><i>👎</i> Tidak rekomendasi</span>
+        <span><i>👍</i> Rekomendasi</span>
+      </div>
+      <div class="nps scale">
+        <input class="nps input" name="rekomendasi_1" type="radio" id="satu_c" />
+        <label class="nps label" for="satu_c">1</label>
+        <input class="nps input" name="rekomendasi_2" type="radio" id="dua_c" />
+        <label class="nps label" for="dua_c">2</label>
+        <input class="nps input" name="rekomendasi_3" type="radio" id="tiga_c" />
+        <label class="nps label" for="tiga_c">3</label>
+        <input class="nps input" name="rekomendasi_4" type="radio" id="empat_c" />
+        <label class="nps label" for="empat_c">4</label>
+        <input class="nps input" name="rekomendasi_5" type="radio" id="lima_c" />
+        <label class="nps label" for="lima_c">5</label>
+      </div>
+      <h3 class="nps h3">Menurut anda, apa yang perlu ditingkatkan pada Website Ditjen Bimas Katolik? (opsional)</h3>
+      <textarea name="saran" class="nps textarea" rows="5" placeholder="Jawaban anda"></textarea>
+      <div class="nps actions">
+        <a class="nps close">Cancel</a>
+        <a class="nps button">Submit</a>
+      </div>
+    </form>
+  </div>
+  <a style="z-index: 1000000;" class="nps floatingActionButton">🎤 Feedback</a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
@@ -569,7 +1089,141 @@
 
     @yield('script')  <!-- This will be replaced by the content of the child views -->
 
+    <script>
+      document.querySelector(".nps.button").addEventListener("click", async function (event) {
+        // Prevent the default behavior
+        event.preventDefault();
 
+        // Collect form data
+        const formData = new FormData(document.querySelector(".nps.form"));
+
+        // Convert form data to a JSON object
+        let data = {};
+        formData.forEach((value, key) => {
+            if(key == "saran"){
+              data['saran'] = value;
+            }
+
+            if(key == "favorite_menu"){
+              data['favorite_menu'] = value;
+            }
+
+            if(key == "pria"){
+              data['gender'] = "pria";
+            }
+            if(key == "wanita"){
+              data['gender'] = "wanita";
+            }
+
+            if(key == "umur_1"){
+              data['umur'] = "18 - 28 tahun";
+            }
+            if(key == "umur_2"){
+              data['umur'] = "29 - 42 tahun";
+            }
+            if(key == "umur_3"){
+              data['umur'] = "43 - 58 tahun";
+            }
+            if(key == "umur_4"){
+              data['umur'] = "> 59 tahun";
+            }
+
+            if(key == "pekerjaan_1"){
+              data['pekerjaan'] = "Aparatur Sipil Negara (ASN)";
+            }
+            if(key == "pekerjaan_2"){
+              data['pekerjaan'] = "Pegawai Swasta";
+            }
+            if(key == "pekerjaan_3"){
+              data['pekerjaan'] = "Wiraswasta";
+            }
+            if(key == "pekerjaan_4"){
+              data['pekerjaan'] = "Rohaniwan";
+            }
+            if(key == "pekerjaan_5"){
+              data['pekerjaan'] = "Pelajar";
+            }
+            if(key == "pekerjaan_6"){
+              data['pekerjaan'] = "Lainya";
+            }
+
+            if(key == "pendapat_1"){
+              data['pendapat'] = "Sedih";
+            }
+            if(key == "pendapat_2"){
+              data['pendapat'] = "Hampir sedih";
+            }
+            if(key == "pendapat_3"){
+              data['pendapat'] = "Datar";
+            }
+            if(key == "pendapat_4"){
+              data['pendapat'] = "Senyum";
+            }
+            if(key == "pendapat_5"){
+              data['pendapat'] = "Senyum lebar";
+            }
+
+            if(key == "rekomendasi_1"){
+              data['rekomendasi'] = "1";
+            }
+            if(key == "rekomendasi_2"){
+              data['rekomendasi'] = "2";
+            }
+            if(key == "rekomendasi_3"){
+              data['rekomendasi'] = "3";
+            }
+            if(key == "rekomendasi_4"){
+              data['rekomendasi'] = "4";
+            }
+            if(key == "rekomendasi_5"){
+              data['rekomendasi'] = "5";
+            }
+        });
+
+        // Send data to Laravel backend via fetch
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        const response = await fetch("/api/post-feedback", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                'Accept': 'application/json',
+                "X-CSRF-TOKEN": csrfToken,
+            },
+            body: JSON.stringify(data),
+        });
+            
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log(result);
+        } else {
+            const errorResponse = await response.text();
+            console.error('Failed to add Feedback:', errorResponse);
+        }
+      });
+    </script>
+
+<script>
+  $(window).on("load", function() {
+    $(".nps.floatingActionButton").click(function() {
+      $(".nps.formContainer").addClass("transitionIn").removeClass("transitionOut");
+      $(this).removeClass("thankYou");
+    });
+
+    $(".nps.close").click(function() {
+      $(".nps.formContainer").addClass("transitionOut").removeClass("transitionIn");
+      $(".nps.floatingActionButton").text("🎤 Feedback").removeClass("thankYou");
+    });
+
+    $(".nps.button").click(function() {
+      setTimeout(function() {
+        $(".nps.floatingActionButton").fadeOut();
+      }, 3000);
+      $(".nps.floatingActionButton").addClass("thankYou").text("Thank you ❤️");
+      $(".nps.formContainer").addClass("transitionOut").removeClass("transitionIn");
+    });
+  });
+</script>
     <script>
   // Get the form elements
   const searchInput = document.getElementById('search');

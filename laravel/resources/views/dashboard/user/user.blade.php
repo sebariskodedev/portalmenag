@@ -128,7 +128,7 @@ th {
                     <tr style="height: 1em;">
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->email }}</td>
-                        <td>Admin</td>
+                        <td>{{$data->role}}</td>
                         <td>
                             <form class="d-inline" action="/users/{{ $data->id_user }}/edit"
                                 method="GET">

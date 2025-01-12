@@ -2,6 +2,7 @@
 @extends('template.user')
 
 @section('style')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
 #news-slider {
@@ -36,8 +37,21 @@
   padding-top: 1px;
   /* box-shadow: 0px 14px 22px -9px #bbcbd8; */
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transform: scale(1);
 }
-.post-slide .post-img {
+
+.post-slide.hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+.post-slide.invisible {
+  display: none; /* Completely remove after animation ends */
+}
+/* .post-slide .post-img {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
@@ -49,6 +63,20 @@
   height: 200px;
   transform: scale(1, 1);
   transition: transform 0.2s linear;
+} */
+.post-slide .post-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  /* margin: -12px 15px 8px 15px;
+  margin-left: -10px; */
+}
+.post-slide .post-img img {
+  width: 100%; /* Full width */
+  aspect-ratio: 1 / 1; /* Maintain a 1:1 aspect ratio for a square */
+  object-fit: cover; /* Ensures the image fills the square without distortion */
+  /* transform: scale(1, 1);
+  transition: transform 0.2s linear; */
 }
 .post-slide:hover .post-img img {
   transform: scale(1.1, 1.1);
@@ -200,36 +228,36 @@
           </ul><!-- End Portfolio Filters -->
 
 
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+          <div id="news-slider" class="owl-carousel">
                       
             @foreach ($bantuans as $data)
               @if($data->tipe == "pendidikan")
-              <div class="post-slide dinamyc-color-card col-lg-4 col-md-6 portfolio-item isotope-item filter-pendidikan">
+              <div class="post-slide dinamyc-color-card filter-pendidikan">
                 <div class="post-img">
                   <img src="{{ asset('bantuan-informasi/' . $data->gambar) }}" alt="">
                   <a href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}" class="over-layer"><i class="fa fa-link"></i></a>
                 </div>
                 <div class="post-content dinamyc-color-card">
-                  <h3 class="post-title">
+                  <h3 style="height: 40px;" class="post-title">
                     <a class="text-dinamyc-color-primary" href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}">{{$data->nama}}</a>
                   </h3>
-                  <p data-content="{{$data->deskripsi}}" class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">The content from Quill will appear here.</p>
+                  <p style="height: 70px;" data-content="{{$data->deskripsi}}" class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">The content from Quill will appear here.</p>
                   <span class="post-description text-dinamyc-color"><strong>Status:</strong> {{$data->status}}<br><strong>Tipe Bantuan:</strong> {{$data->tipe}}<br><strong>Jumlah Kuota:</strong> {{$data->jumlah_kuota}}</span>
                   <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>{{$data->created_at}}</span>
                   <a href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}" class="read-more">selengkapnya</a>
                 </div>
               </div>
               @else
-              <div class="post-slide dinamyc-color-card col-lg-4 col-md-6 portfolio-item isotope-item filter-keagamaan">
+              <div class="post-slide dinamyc-color-card filter-keagamaan">
                 <div class="post-img">
                   <img src="{{ asset('bantuan-informasi/' . $data->gambar) }}" alt="">
                   <a href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}" class="over-layer"><i class="fa fa-link"></i></a>
                 </div>
                 <div class="post-content dinamyc-color-card">
-                  <h3 class="post-title">
+                  <h3 style="height: 40px;" class="post-title">
                     <a class="text-dinamyc-color-primary" href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}">{{$data->nama}}</a>
                   </h3>
-                  <p data-content="{{$data->deskripsi}}" class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">The content from Quill will appear here.</p>
+                  <p style="height: 70px;" data-content="{{$data->deskripsi}}" class="post-description text-dinamyc-color deskripsi-berita deskripsi-berita{{$loop->iteration}}">The content from Quill will appear here.</p>
                   <span class="post-description text-dinamyc-color"><strong>Status:</strong> {{$data->status}}<br><strong>Tipe Bantuan:</strong> {{$data->tipe}}<br><strong>Jumlah Kuota:</strong> {{$data->jumlah_kuota}}</span>
                   <span class="post-date text-dinamyc-color"><i class="fa fa-clock-o"></i>{{$data->created_at}}</span>
                   <a href="{{ route('bantuan-informasi-action', ['id' => $data->id]) }}" class="read-more">selengkapnya</a>
@@ -250,6 +278,88 @@
 @endsection
 
 @section('script')
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const filters = document.querySelectorAll(".portfolio-filters li"); // Filter buttons
+  const cards = document.querySelectorAll(".post-slide"); // All cards
+
+  // Add click event listeners to each filter
+  filters.forEach(filter => {
+    filter.addEventListener("click", () => {
+      // Remove active class from all filters and add to the clicked one
+      filters.forEach(f => f.classList.remove("filter-active"));
+      filter.classList.add("filter-active");
+
+      const selectedFilter = filter.getAttribute("data-filter");
+
+      cards.forEach(card => {
+        if (selectedFilter === "*" || card.classList.contains(selectedFilter.replace(".", ""))) {
+          // Show card with animation
+          card.classList.remove("hidden", "invisible");
+        } else {
+          // Hide card with animation
+          card.classList.add("hidden");
+          setTimeout(() => {
+            card.classList.add("invisible");
+          }, 500); // Match the duration of the CSS transition
+        }
+      });
+    });
+  });
+});
+
+</script>
+
+<script>
+
+// Function to get client's IP using an external service
+async function getClientIp() {
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        return data.ip;
+    } catch (error) {
+        console.error('Error fetching IP:', error);
+        return null;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async function () {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    const ip = await getClientIp();
+
+    if (!ip) {
+        console.error('IP address is required');
+        return;
+    }
+
+    const data = { ip: ip };
+
+    try {
+        const response = await fetch('/api/post-klik-bantuan', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            // console.log(result);
+        } else {
+            const errorResponse = await response.text();
+            console.error('Failed to add Kunjungan:', errorResponse);
+        }
+    } catch (error) {
+        console.error('Error during fetch:', error);
+    }
+});
+</script>
 
 <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script>

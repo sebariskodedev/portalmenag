@@ -19,6 +19,72 @@
 .hidden {
   display: none;
 }
+
+
+
+.inner {
+  width: 450px;
+  margin: 0 auto;
+}
+
+.tag-field {
+  display: flex;
+  flex-wrap: wrap;
+  height: 50px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;  
+}
+
+input {
+  border: 0;
+  outline: 0;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  margin-right: 5px;
+  padding: 0 8px;
+  color: #fff;
+  background: #47CF73;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.tag-close {
+  display: inline-block;
+  margin-left: 0;
+  width: 0;
+  transition: 0.2s all;
+  overflow: hidden;
+}
+
+.tag:hover .tag-close {
+  margin-left: 10px;
+  width: 10px;
+}
+
+.yolo-heading {
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+
+.yolo-heading::after {
+  content: "";
+  display: inline-block;
+  width: 40px;
+  height: 5px;
+  position: absolute;
+  top: 15px;
+  left: 200px;
+  background: #47CF73;
+}
+
+
 </style>
 @endsection
 @section('content')
@@ -90,6 +156,44 @@
                         @enderror
                     </div>
                     <button id="toggleButton" style="margin-right: 20px;" type="button" class="btn btn-warning">Tambah Gambar</button>
+                    <div class="col-6">
+                        <label for="sumber" class="form-label">Sumber</label>
+                        <input type="text" name="sumber" class="form-control @error('sumber') is-invalid @enderror" id="sumber" placeholder="Masukkan Sumber" value="{{old('sumber', $renungan->sumber)}}" required>
+                        @error('sumber')
+                            <span class="invalid-feedback text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-6">
+                        <label for="metadata" class="form-label">Metadata</label>
+                        <input type="text" name="metadata" class="form-control @error('metadata') is-invalid @enderror" id="metadata" placeholder="Masukkan Metadata" value="{{old('metadata', $renungan->metadata)}}" required>
+                        @error('metadata')
+                            <span class="invalid-feedback text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-6">
+                        <label for="metatitle" class="form-label">Meta Title</label>
+                        <input type="text" name="metatitle" class="form-control @error('metatitle') is-invalid @enderror" id="metatitle" placeholder="Masukkan Meta title" value="{{old('metatitle', $renungan->metatitle)}}" required>
+                        @error('metatitle')
+                            <span class="invalid-feedback text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-6">
+                        <label for="metadeskripsi" class="form-label">Meta Deskripsi</label>
+                        <input type="text" name="metadeskripsi" class="form-control @error('metadeskripsi') is-invalid @enderror" id="metadeskripsi" placeholder="Masukkan Meta deskripsi" value="{{old('metadeskripsi', $renungan->metadeskripsi)}}" required>
+                        @error('metadeskripsi')
+                            <span class="invalid-feedback text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div id="tags-div" class="col-12">
+                        <label for="tags" class="form-label">Tags (Tekan enter untuk menambahkan tak baru)</label>
+                        <div class="tag-field js-tags">
+                          <input style="border: none;" placeholder="Masukkan tag ..." name="tags" class="js-tag-input form-control @error('tags') is-invalid @enderror" id="textInput" required>
+                        </div>
+                        <input data-tags="{{$renungan->metatag}}" style="display: none;" type="text" name="metatag" value="{{old('metatag', $renungan->metatag)}}" id="tags" required>
+                        @error('tags')
+                            <span class="invalid-feedback text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                     <div class="col-12" style="padding-bottom: 100px;">
                         <label for="deskripsi" class="form-label">Deskripsi berita</label>
 
@@ -154,12 +258,35 @@
         var deskripsiContent = parentElement.querySelector('.ql-editor').innerHTML;
         document.getElementById('deskripsi').value = deskripsiContent;
 
-        
-        // Check form validity
-        const isValid = form.checkValidity();
-        
-        // Print the validation result to the console
-        console.log('Form valid:', isValid);
+
+        const tagDivs = document.querySelectorAll('div[data-tag]');
+        // Create an array to store the data
+        let tagData = [];
+        // Loop through each div and get the data-tag and other attributes
+        tagDivs.forEach((div) => {
+            let dataTag = div.getAttribute('data-tag');  // Get the value of the data-tag attribute
+            // let dataIndex = div.getAttribute('data-index'); // Get the value of the data-index attribute
+            
+            // // Optionally, you can also get the text content or innerHTML of the div
+            let textContent = div.textContent.trim(); // or div.innerHTML if you want the HTML
+
+            // Push the data into the array
+            tagData.push(dataTag);
+        });
+        const inputElement = document.getElementById('tags');
+        if (inputElement) {
+          inputElement.value = tagData.toString();
+        } else {
+            console.error('Input element not found!');
+        }
+
+        // // Create a new FormData object
+        // const formData = new FormData(form);
+
+        // // Log the form data
+        // formData.forEach((value, key) => {
+        //     console.log(`${key}: ${value}`);
+        // });
 
         form.submit();
     }
@@ -214,6 +341,95 @@ toggleButton.addEventListener('click', () => {
   });
 });
 
+</script>
+
+<script>
+var tags = []; // Initialize with existing data
+var $container = document.getElementById('tags-div');
+var $input = document.getElementById('textInput');
+var $tags = document.querySelector('.js-tags');
+var $dataElement = document.getElementById('tags');
+var dataTags = $dataElement.getAttribute('data-tags');
+var tagsInit = dataTags.split(',');
+
+// // Render initial tags on page load
+document.addEventListener('DOMContentLoaded', function () {
+  // console.log(tagsInit);
+  // render(tags, $tags);
+  tagsInit.forEach((value, index) => {
+    tags.push(value);
+    $input.value = '';
+    render(tags, $tags);
+  });
+});
+
+$container.addEventListener('click', function() {
+  $input.focus();
+});
+
+$container.addEventListener('keydown', function(evt) {
+  if ( !evt.target.matches('.js-tag-input') ) {
+    return;
+  }
+  
+  if ( evt.keyCode !== 13 ) {
+    return;
+  }
+  
+  var value = String(evt.target.value);
+  
+  if ( !value.length || value.length > 20 || tags.length === 5 ) {
+    return;
+  }
+  
+  tags.push(evt.target.value);
+  $input.value = '';
+  render(tags, $tags);
+});
+
+$container.addEventListener('keydown', function(evt) {
+  if ( !evt.target.matches('.js-tag-input') ) {
+    return;
+  }
+  
+  if ( evt.keyCode !== 8 ) {
+    return;
+  }
+  
+  if ( String(evt.target.value).length ) {
+    return;
+  }
+  
+  tags = tags.slice(0, tags.length - 1);
+  $input.value = '';
+  render(tags, $tags);
+});
+
+$container.addEventListener('click', function(evt) {
+  if ( evt.target.matches('.js-tag-close') || evt.target.matches('.js-tag') ) {
+    tags = tags.filter(function(tag, i) {
+      return i != evt.target.getAttribute('data-index');
+    });
+    render(tags, $tags);
+  }
+}, true);
+ 
+
+function render(tags, el) {
+  el.innerHTML = tags.map(function(tag, i) {
+    return (
+      '<div data-tag="' + tag + '" class="tag js-tag" data-index="' + i + '">' +
+        tag +
+        '<span class="tag-close js-tag-close" data-index="' + i + '">×</span>' +
+      '</div>'
+   );
+  }).join('') + (tags.length === 5 ? '' : '<input placeholder="Enter new tag..." class="js-tag-input">')
+  ;
+  
+  $container.querySelector('.js-tag-input').focus();
+    $("#textInput").css("width","100%")
+
+}
 </script>
 
 @endsection

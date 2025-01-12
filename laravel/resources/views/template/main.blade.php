@@ -82,7 +82,7 @@
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
                 <h6>{{ auth()->user()->name }}</h6>
-                <span>Administrator</span>
+                <span>{{auth()->user()->role}}</span>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -128,12 +128,14 @@
           </a>
         </li><!-- End Dashboard Nav -->
 
+        @if(auth()->check() && auth()->user()->role === 'Admin')
           <li class="nav-item">
           <a id="menu-users" class="nav-link collapsed" href="/users">
-              <i class="bi bi-grid"></i>
+              <i class="bi bi-layout-text-window-reverse"></i>
               <span>Users</span>
           </a>
           </li><!-- End User Nav -->
+        @endif
 
           <li class="nav-item">
             <a id="menu-informasi" class="nav-link animated collapsed" data-bs-target="#informasi-nav" data-bs-toggle="collapse" href="#">
@@ -201,7 +203,7 @@
 
         <li class="nav-item">
         <a id="menu-infografis" class="nav-link collapsed" href="/admin/infografis">
-            <i class="bi bi-grid"></i>
+            <i class="bi bi-layout-text-window-reverse"></i>
             <span>Infografis</span>
         </a>
         </li><!-- End Infografis Nav -->
@@ -223,10 +225,45 @@
             </li>
           </ul>
         </li><!-- End Dumas Nav -->
+      
+        <li class="nav-item">
+        <a id="menu-feedbacks" class="nav-link collapsed" href="/admin/feedbacks">
+            <i class="bi bi-layout-text-window-reverse"></i>
+            <span>Feedback</span>
+        </a>
+        </li><!-- End User Nav -->
+
+        <li class="nav-item">
+          <a id="menu-pengunjung" class="nav-link animated collapsed" data-bs-target="#pengunjung-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-layout-text-window-reverse"></i><span>Pengunjung</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="pengunjung-nav" class="nav-content collapsed" data-bs-parent="#sidebar-nav">
+            <li>
+              <a href="/pengunjung/website">
+                <i class="bi bi-circle"></i><span>Pengunjung Website</span>
+              </a>
+            </li>
+            <li>
+              <a href="/pengunjung/layanan">
+                <i class="bi bi-circle"></i><span>Klik Layanan</span>
+              </a>
+            </li>
+            <li>
+              <a href="/pengunjung/data">
+                <i class="bi bi-circle"></i><span>Klik Data</span>
+              </a>
+            </li>
+            <li>
+              <a href="/pengunjung/bantuan">
+                <i class="bi bi-circle"></i><span>Klik Bantuan</span>
+              </a>
+            </li>
+          </ul>
+        </li><!-- End Bantuan Nav -->
 
         <li class="nav-item">
         <a id="menu-informasi-regulasi" class="nav-link collapsed" href="/admin/informasi-regulasi">
-            <i class="bi bi-grid"></i>
+            <i class="bi bi-layout-text-window-reverse"></i>
             <span>Informasi/Regulasi</span>
         </a>
         </li><!-- End User Nav -->
@@ -269,7 +306,7 @@
 
         <li class="nav-item">
         <a id="menu-struktur" class="nav-link collapsed" href="/admin/struktur">
-            <i class="bi bi-grid"></i>
+            <i class="bi bi-layout-text-window-reverse"></i>
             <span>Struktur Organisasi</span>
         </a>
         </li><!-- End Settings Nav -->

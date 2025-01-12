@@ -27,7 +27,7 @@
                 <!-- Vertical Form -->
                 <form class="row g-3" novalidate action="/users" method="POST">
                     @csrf
-                    <div class="col-6">
+                    <div class="col-12">
                         <label for="name" class="form-label">Full Name</label>
                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Input Name" value="{{old('name')}}" required>
                         @error('name')
@@ -38,6 +38,18 @@
                         <label for="email" class="form-label">Email</label>
                         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Input Email" value="{{old('email')}}" required>
                         @error('email')
+                            <span class="invalid-feedback text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-6">
+                        <label for="role" class="form-label">Role</label>
+                        <select class="form-select" id="tipe" name="role">
+                              <option value="0">Pilih Role</option>
+                              <option value="Admin">Admin</option>
+                              <option value="Kontributor">Kontributor</option>
+                              <option value="Editor">Editor</option>
+                        </select>
+                        @error('role')
                             <span class="invalid-feedback text-danger">{{ $message }}</span>
                         @enderror
                     </div>

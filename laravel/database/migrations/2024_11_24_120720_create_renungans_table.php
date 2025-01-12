@@ -16,11 +16,18 @@ return new class extends Migration
             $table->integer('type'); // Replace 'new_integer_column' with your column name
             $table->string('judul');
             $table->string('author');
+            $table->string('editor');
             $table->longText('deskripsi');
             $table->string('gambar1');
             $table->string('keterangan1');
+            $table->string('sumber');
+            $table->string('metadata');
+            $table->string('metatag');
+            $table->string('metatitle');
+            $table->string('metadeskripsi');
             $table->string('gambar2')->nullable();
             $table->string('keterangan2')->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -181,7 +181,7 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2 class="text-dinamyc-color-primary">Informasi/Regulasi Penting</h2>
+        <h2 class="text-dinamyc-color-primary">Regulasi/Informasi Penting</h2>
       </div><!-- End Section Title -->
 
       <div class="container">

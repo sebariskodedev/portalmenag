@@ -10,6 +10,9 @@ use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
+use App\Mail\DumasMailable;
+use Illuminate\Support\Facades\Mail;
+
 class DumasController extends Controller
 {
     /**
@@ -65,6 +68,15 @@ class DumasController extends Controller
                 'pesan' => $request->input('pesan'),
                 'lampiran' => $fileName,
             ]);
+
+            $data = [
+                'name' => 'Info Bimas Katolik',
+                'sender' => $request->input('email'),
+                'message' => $request->input('pesan')
+            ];
+
+            Mail::to('info.bimaskatolik@kemenag.go.id')->send(new YourMailable($data));
+            
             // Redirect or return response
             return redirect()->back()->with('success', 'Aduan berhasil dikirim.');
         } else {
@@ -76,6 +88,15 @@ class DumasController extends Controller
                 'pesan' => $request->input('pesan'),
                 'lampiran' => null,
             ]);
+
+            $data = [
+                'name' => 'Info Bimas Katolik',
+                'sender' => $request->input('email'),
+                'message' => $request->input('pesan')
+            ];
+    
+            Mail::to('info.bimaskatolik@kemenag.go.id')->send(new DumasMailable($data));
+
             // Redirect or return response
             return redirect()->back()->with('success', 'Aduan berhasil dikirim.');
         }

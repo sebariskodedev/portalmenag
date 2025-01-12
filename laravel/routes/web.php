@@ -21,6 +21,11 @@ use App\Http\Controllers\BantuanController;
 use App\Http\Controllers\BantuanInformasiController;
 use App\Http\Controllers\KategoriRBController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\KunjunganController;
+use App\Http\Controllers\KlikLayananController;
+use App\Http\Controllers\KlikDataController;
+use App\Http\Controllers\KlikBantuanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,7 +50,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
 //route barang
-Route::resource('/users', UserController::class)->middleware('auth');
+Route::resource('/users', UserController::class)->middleware('auth')->middleware('checkRole:Admin');
 Route::resource('/pelayanan/maklumat', LayananController::class)->middleware('auth');
 Route::resource('/pelayanan/uker', UkerController::class)->middleware('auth');
 Route::resource('/pelayanan/standard', StandardPelayananController::class)->middleware('auth');
@@ -59,6 +64,9 @@ Route::resource('/dumas/subjek', DumasController::class)->middleware('auth');
 Route::resource('/admin/struktur', StrukturController::class)->middleware('auth');
 Route::get('/dumas/aduan', [DumasController::class, 'aduan'])->middleware('auth');
 
+Route::get('/admin/feedbacks', [FeedbackController::class, 'feedback'])->middleware('auth');
+Route::get('/feedbacks-export-csv', [FeedbackController::class, 'exportCsv'])->name('feedback-export.csv');
+
 
 Route::resource('/informasi/berita', InformasiController::class)->middleware('auth');
 Route::resource('/informasi/renungan', RenunganController::class)->middleware('auth');
@@ -68,6 +76,16 @@ Route::resource('/rb/kategori', KategoriRBController::class)->middleware('auth')
 Route::resource('/rb/data', ReformasiController::class)->middleware('auth');
 
 Route::resource('admin/informasi-regulasi', RegulasiController::class)->middleware('auth');
+
+
+Route::get('/pengunjung/website', [KunjunganController::class, 'kunjungan'])->middleware('auth');
+Route::get('/pengunjung-website-export-csv', [KunjunganController::class, 'exportCsv'])->name('pengunjung-website-export.csv');
+Route::get('/pengunjung/layanan', [KlikLayananController::class, 'kunjungan'])->middleware('auth');
+Route::get('/pengunjung-layanan-export-csv', [KlikLayananController::class, 'exportCsv'])->name('pengunjung-layanan-export.csv');
+Route::get('/pengunjung/data', [KlikDataController::class, 'kunjungan'])->middleware('auth');
+Route::get('/pengunjung-data-export-csv', [KlikDataController::class, 'exportCsv'])->name('pengunjung-data-export.csv');
+Route::get('/pengunjung/bantuan', [KlikBantuanController::class, 'kunjungan'])->middleware('auth');
+Route::get('/pengunjung-bantuan-export-csv', [KlikBantuanController::class, 'exportCsv'])->name('pengunjung-bantuan-export.csv');
 
 
 

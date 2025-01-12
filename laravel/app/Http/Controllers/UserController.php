@@ -38,6 +38,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users',
+            'role' => 'required|not_in:0',
             'password' => 'required',
             'passwordConfirm' => 'required|same:password'
         ]);
@@ -78,12 +79,22 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email,' . $user_id . ',id_user',
-            'password' => 'required',
-            'passwordConfirm' => 'required|same:password'
+            'role' => 'required|not_in:0',
+            'password' => 'nullable',
+            'passwordConfirm' => 'nullable|same:password'
         ]);
 
-        $user = User::findOrFail($user_id);
-        $user->update($validated);
+        if($request->password != ''){
+            $user = User::findOrFail($user_id);
+            $user->update($validated);
+        } else{
+            $user = User::findOrFail($user_id);
+
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->role = $request->role;
+            $user->save();
+        }
 
         Alert::info('Success', 'Barang has been updated !');
         return redirect('/users');

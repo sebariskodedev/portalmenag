@@ -37,13 +37,13 @@ return [
         'smtp' => [
             'transport' => 'smtp',
             'url' => env('MAIL_URL'),
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'host' => env('MAIL_HOST', 'smtp.mailgun.org'), // Will use MAIL_HOST from .env
+            'port' => env('MAIL_PORT', 587), // Will use MAIL_PORT from .env
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'), // Will use MAIL_ENCRYPTION from .env
+            'username' => env('MAIL_USERNAME'), // Will use MAIL_USERNAME from .env
+            'password' => env('MAIL_PASSWORD'), // Will use MAIL_PASSWORD from .env
             'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN'),
+            'local_domain' => env('MAIL_EHLO_DOMAIN'), // Optional if you need to define an EHLO domain
         ],
 
         'ses' => [
@@ -99,8 +99,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info.bimaskatolik@kemenag.go.id'), // Uses the value from the .env file
+        'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'BimasKatolik')), // Uses the APP_NAME from the .env file or a custom name
     ],
 
     /*

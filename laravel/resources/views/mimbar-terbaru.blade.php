@@ -41,14 +41,15 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  margin: -12px 15px 8px 15px;
-  margin-left: -10px;
+  /* margin: -12px 15px 8px 15px;
+  margin-left: -10px; */
 }
 .post-slide .post-img img {
-  width: 100%;
-  height: 200px;
-  transform: scale(1, 1);
-  transition: transform 0.2s linear;
+  width: 100%; /* Full width */
+  aspect-ratio: 1 / 1; /* Maintain a 1:1 aspect ratio for a square */
+  object-fit: cover; /* Ensures the image fills the square without distortion */
+  /* transform: scale(1, 1);
+  transition: transform 0.2s linear; */
 }
 .post-slide:hover .post-img img {
   transform: scale(1.1, 1.1);
@@ -174,6 +175,54 @@
     padding: 0px 15px 25px 15px;
   }
 }
+
+.search {
+	 margin-bottom: 1rem;
+	 position: relative;
+     width: 100%;
+     justify-content: center;
+     align-items: center;
+}
+ .search label, .search input {
+	 display: block;
+}
+ .search label {
+	 margin-bottom: 1rem;
+}
+ .search input {
+    position:relative;
+	 width: 96%;
+	 padding: 1rem;
+	 border-radius: 5px;
+	 border: 1px solid #cacfd9;
+	 font-family: inherit;
+	 outline: none;
+}
+ .search input:focus {
+	 box-shadow: 0px 0px 0px 3px rgba(51, 132, 243, .15);
+	 border-color: #3384f3;
+}
+ .search__clear {
+	 position: absolute;
+	 top: .9rem;
+	 right: 1.5rem;
+	 cursor: pointer;
+	 background: #e1e4ea;
+	 width: 2rem;
+	 height: 2rem;
+	 line-height: 2rem;
+	 color: #91a1bb;
+	 border: 0;
+	 padding: 0;
+	 border-radius: 50%;
+}
+ .search__clear:focus, .search__clear:active {
+	 outline: 0;
+}
+ .search__clear:hover {
+	 background: #cacfd9;
+	 color: #597191;
+}
 </style>
 @endsection
 
@@ -188,6 +237,17 @@
         <h2 class="text-dinamyc-color-primary">Mimbar Terbaru</h2>
         <!-- <p>Maklumat Pelayanan adalah pernyataan komitmen dari suatu organisasi atau lembaga pelayanan publik untuk memberikan pelayanan yang berkualitas, profesional, dan sesuai dengan standar yang telah ditetapkan</p> -->
       </div><!-- End Section Title -->
+
+      <div class="container">
+            <div class="containerx">
+                <div class="row">
+                    <form class="search" action="/mimbar-terbaru" autocomplete="on">
+                        <input id="search" name="search" type="text" placeholder="Cari mimbar .....">
+                    </form>
+                    {{-- <span class="text-dinamyc-color" style="font-style: italic; margin-left: 30px;">Hasil pencarian : <span style="font-style: italic; color: #005faf;">{{$query}}</span></span> --}}
+                </div>
+            </div>
+      </div>
 
       <div class="container">
 

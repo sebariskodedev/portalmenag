@@ -2,7 +2,9 @@
 @section('title', 'Berita')
 
 @section('style')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
   /* Container styles */
   .search-add {
@@ -138,6 +140,17 @@ th {
                                 <i class="fa-solid fa-pen"></i> Edit
                             </button>
                         </form>
+						@if(auth()->user()->role === 'Admin' || auth()->user()->role === 'Editor')
+							@if($data->status === 'non-aktif')
+								<button onclick="ubahStatus('aktif', '{{$data->id}}')" style="margin: 5px;" type="submit" class="btn btn-success btn-sm mr-1">
+									<i class="fa-solid fa-pen"></i> Aktifkan
+								</button>
+							@else
+								<button onclick="ubahStatus('non-aktif', '{{$data->id}}')" style="margin: 5px;" type="submit" class="btn btn-danger btn-sm mr-1">
+									<i class="fa-solid fa-pen"></i> Non-Aktifkan
+								</button>
+							@endif
+						@endif
                         <form class="d-inline" action="/informasi/berita/{{ $data->id }}" method="POST">
                             @csrf
                             @method('delete')
@@ -175,6 +188,53 @@ th {
 @endsection
 
 @section('script')
+<script>
+    function ubahStatus(status, id) {
+		const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        const url = `/api/update-status-informasi/${id}`;
+
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify({
+                status: status
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+			if (data.success) {
+				Swal.fire({
+					title: 'Success!',
+					text: 'Status updated successfully!',
+					icon: 'success',
+					confirmButtonText: 'OK'
+				}).then(() => {
+					location.reload(); // Reload the page to reflect changes
+				});
+			} else {
+				Swal.fire({
+					title: 'Failed!',
+					text: data.message,
+					icon: 'error',
+					confirmButtonText: 'OK'
+				});
+			}
+        })
+        .catch(error => {
+            console.error('Error:', error);
+			Swal.fire({
+				title: 'Error!',
+				text: 'An error occurred. Please try again.',
+				icon: 'error',
+				confirmButtonText: 'OK'
+			});
+        });
+    }
+</script>
 
 <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script>

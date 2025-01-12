@@ -26,7 +26,7 @@
                             <form class="row g-3" novalidate action="/users/{{ $user->id_user }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <div class="col-6">
+                                <div class="col-12">
                                     <label for="name" class="form-label">Full Name</label>
                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Input Name" value="{{old('name', $user->name)}}" required>
                                     @error('name')
@@ -37,6 +37,24 @@
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Input Email" value="{{old('email', $user->email)}}" required>
                                     @error('email')
+                                        <span class="invalid-feedback text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-6">
+                                    <label for="role" class="form-label">Role</label>
+                                    <select class="form-select" id="tipe" name="role">
+                                        <option value="{{$user->role}}">{{$user->role}}</option>
+                                        @if($user->role !== 'Admin')
+                                        <option value="Admin">Admin</option>
+                                        @endif
+                                        @if($user->role !== 'Kontributor')
+                                        <option value="Kontributor">Kontributor</option>
+                                        @endif
+                                        @if($user->role !== 'Editor')
+                                        <option value="Editor">Editor</option>
+                                        @endif
+                                    </select>
+                                    @error('role')
                                         <span class="invalid-feedback text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
