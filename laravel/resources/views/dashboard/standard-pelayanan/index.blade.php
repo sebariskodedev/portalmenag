@@ -122,7 +122,7 @@ th {
         <tbody>
             @foreach ($standardpelayanans as $data)
                 <tr>
-                    <td class="truncate-text" title="{{ $data->uker }}"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->uker }}</span></td>
+                    <td class="truncate-text" title="{{ $data->unit->name }}"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->unit->name }}</span></td>
                     <td class="truncate-text" title="{{ $data->judul }}"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->judul }}</span></td>
                     <td>
                         <img src="{{ asset('standards/' . $data->gambar) }}" 

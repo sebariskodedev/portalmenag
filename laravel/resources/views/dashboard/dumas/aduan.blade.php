@@ -118,7 +118,7 @@ th {
         <tbody>
             @foreach ($dumass as $data)
                 <tr>
-                    <td class="truncate-text"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->subjek }}</span></td>
+                    <td class="truncate-text"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->kategoriDumas->name }}</span></td>
                     <td class="truncate-text"><span style="text-overflow: ellipsis; max-width: 10px;-webkit-line-clamp: 2;">{{ $data->name }}</span></td>
                     <td class="truncate-text"><span style="text-overflow: ellipsis; max-width: 10px;-webkit-line-clamp: 2;">{{ $data->email }}</span></td>
                     <td>
@@ -128,7 +128,7 @@ th {
 							class="btn btn-success btn-sm mr-1" 
 							data-bs-toggle="modal" 
 							data-bs-target="#verticalycentered" 
-							data-title="Aduan tentang {{$data->subjek}}" 
+							data-title="Aduan tentang {{$data->kategoriDumas->name}}" 
 							data-nama="{{$data->name}}"
 							data-email="{{$data->email}}"
 							data-pesan="{{$data->pesan}}"

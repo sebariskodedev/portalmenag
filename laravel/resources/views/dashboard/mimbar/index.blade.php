@@ -118,6 +118,8 @@ th {
             <tr>
                 <th scope="col"><b>Judul</b></th>
                 <!-- <th scope="col">Tipe</th> -->
+                <th scope="col">Kontributor</th>
+                <!-- <th scope="col">Editor</th> -->
                 <th scope="col">Deskripsi</th>
                 <th scope="col">Gambar</th>
                 <th scope="col">Action</th>
@@ -127,6 +129,8 @@ th {
             @foreach ($mimbars as $data)
                 <tr>
                     <td class="truncate-text" title="{{ $data->judul }}"><span style="text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{{ $data->judul }}</span></td>
+                    <td class="truncate-text" title="{{ $data->userAuthor->name }}"><span style="text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{{ $data->userAuthor->name }}</span></td>
+                    {{-- <td class="truncate-text" title="{{ $data->userEditor->name }}"><span style="text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{{ $data->userEditor->name }}</span></td> --}}
                     {{-- <td class="truncate-text" title="{{ $data->type }}"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->type }}</span></td> --}}
                     <td class="truncate-text" title="{{ $data->deskripsi }}"><span data-content="{{$data->deskripsi}}" class="deskripsi-informasi" style="text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">The content from Quill will appear here.</span></td>
                     <td>

@@ -37,7 +37,7 @@
                                     <label for="uker" class="form-label">Unit Kerja</label>
                                     <div class="col-sm-6">
                                         <select class="form-select" id="uker" name="uker">
-                                            <option value="{{$standardpelayanan->uker}}">{{$standardpelayanan->uker}}</option>
+                                            <option value="{{$standardpelayanan->uker}}">{{$standardpelayanan->unit->name}}</option>
                                             @foreach ($ukers as $data)
                                                 <option value="{{$data->id}}">{{$data->name}}</option>
                                             @endforeach

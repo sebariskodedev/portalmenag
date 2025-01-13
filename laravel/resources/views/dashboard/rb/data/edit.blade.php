@@ -37,7 +37,7 @@
                                     <label for="sub_rb" class="form-label">Sub RB</label>
                                     <div class="col-sm-6">
                                         <select class="form-select" id="sub_rb" name="sub_rb">
-                                            <option value="{{$reformasi->sub_rb}}">{{$reformasi->sub_rb}}</option>
+                                            <option value="{{$reformasi->sub_rb}}">{{$reformasi->kategoriRB->name}}</option>
                                             @foreach ($kategorirb as $data)
                                                 <option value="{{$data->id}}">{{$data->name}}</option>
                                             @endforeach

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class KategoriDumas extends Model
 {
@@ -14,4 +15,9 @@ class KategoriDumas extends Model
         'name',
         'deskripsi',  // assuming 'deskripsi' is another field
     ];
+
+    public function dumas()
+    {
+        return $this->hasOne(Dumas::class);
+    }
 }

@@ -122,7 +122,7 @@ th {
         <tbody>
             @foreach ($reformasis as $data)
                 <tr>
-                    <td class="truncate-text"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->sub_rb }}</span></td>
+                    <td class="truncate-text"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->kategoriRB->name }}</span></td>
                     <td class="truncate-text"><span style="text-overflow: ellipsis; max-width: 100px;-webkit-line-clamp: 2;">{{ $data->name }}</span></td>
                     <td class="truncate-text"><span style="text-overflow: ellipsis; max-width: 10px;-webkit-line-clamp: 2;">{{ $data->deskripsi }}</span></td>
                     <td>

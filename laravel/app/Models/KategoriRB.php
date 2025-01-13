@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class KategoriRB extends Model
 {
@@ -14,4 +15,9 @@ class KategoriRB extends Model
         'name',
         'deskripsi',  // assuming 'deskripsi' is another field
     ];
+
+    public function reformasis()
+    {
+        return $this->hasOne(Reformasi::class);
+    }
 }
