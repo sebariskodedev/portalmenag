@@ -80,12 +80,18 @@ Route::resource('admin/informasi-regulasi', RegulasiController::class)->middlewa
 
 Route::get('/pengunjung/website', [KunjunganController::class, 'kunjungan'])->middleware('auth');
 Route::get('/pengunjung-website-export-csv', [KunjunganController::class, 'exportCsv'])->name('pengunjung-website-export.csv');
+Route::get('/pengunjung-harian-website-export-csv', [KunjunganController::class, 'exportCsvToday'])->name('pengunjung-harian-website-export.csv');
+Route::get('/pengunjung-mingguan-website-export-csv', [KunjunganController::class, 'exportCsvWeek'])->name('pengunjung-mingguan-website-export.csv');
+Route::get('/pengunjung-bulanan-website-export-csv', [KunjunganController::class, 'exportCsvMonth'])->name('pengunjung-bulanan-website-export.csv');
+Route::get('/pengunjung-tahunan-website-export-csv', [KunjunganController::class, 'exportCsvYear'])->name('pengunjung-tahunan-website-export.csv');
 Route::get('/pengunjung/layanan', [KlikLayananController::class, 'kunjungan'])->middleware('auth');
 Route::get('/pengunjung-layanan-export-csv', [KlikLayananController::class, 'exportCsv'])->name('pengunjung-layanan-export.csv');
 Route::get('/pengunjung/data', [KlikDataController::class, 'kunjungan'])->middleware('auth');
 Route::get('/pengunjung-data-export-csv', [KlikDataController::class, 'exportCsv'])->name('pengunjung-data-export.csv');
 Route::get('/pengunjung/bantuan', [KlikBantuanController::class, 'kunjungan'])->middleware('auth');
 Route::get('/pengunjung-bantuan-export-csv', [KlikBantuanController::class, 'exportCsv'])->name('pengunjung-bantuan-export.csv');
+
+Route::get('/dumas-export-csv', [DumasController::class, 'exportCsv'])->name('dumas-export.csv');
 
 
 

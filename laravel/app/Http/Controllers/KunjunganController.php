@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 use App\Exports\KunjunganExport;
+use App\Exports\SomeKunjunganExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class KunjunganController extends Controller
@@ -33,6 +34,34 @@ class KunjunganController extends Controller
     public function exportCsv()
     {
         return Excel::download(new KunjunganExport, 'pengunjung_website_export.csv');
+    }
+
+    public function exportCsvToday()
+    {
+        $today = Kunjungan::whereDate('created_at', Carbon::today())->get();
+
+        return Excel::download(new SomeKunjunganExport($today), 'today_count.csv');
+    }
+
+    public function exportCsvWeek()
+    {
+        $week = Kunjungan::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+
+        return Excel::download(new SomeKunjunganExport($week), 'week_count.csv');
+    }
+
+    public function exportCsvMonth()
+    {
+        $month = Kunjungan::whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->get();
+
+        return Excel::download(new SomeKunjunganExport($month), 'month_count.csv');
+    }
+
+    public function exportCsvYear()
+    {
+        $year = Kunjungan::whereBetween('created_at', [Carbon::now()->startOfYear(), Carbon::now()->endOfYear()])->get();
+
+        return Excel::download(new SomeKunjunganExport($year), 'year_count.csv');
     }
     /**
      * Display a listing of the resource.

@@ -140,6 +140,10 @@
             <div class="col-xxl-3 col-md-4">
               <div class="card info-card sales-card">
 
+                <div class="filter">
+                  <a href="{{ route('pengunjung-harian-website-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                </div>
+
                 <div class="card-body">
                   <h5 class="card-title">Kunjungan <span>| Harian</span></h5>
 
@@ -161,6 +165,10 @@
             <!-- Visitors Card -->
             <div class="col-xxl-3 col-md-4">
               <div class="card info-card sales-card">
+
+                <div class="filter">
+                  <a href="{{ route('pengunjung-mingguan-website-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                </div>
 
                 <div class="card-body">
                   <h5 class="card-title">Kunjungan <span>| Mingguan</span></h5>
@@ -184,6 +192,10 @@
             <div class="col-xxl-3 col-md-4">
               <div class="card info-card sales-card">
 
+                <div class="filter">
+                  <a href="{{ route('pengunjung-bulanan-website-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                </div>
+
                 <div class="card-body">
                   <h5 class="card-title">Kunjungan <span>| Bulanan</span></h5>
 
@@ -205,6 +217,10 @@
             <!-- Visitors Card -->
             <div class="col-xxl-3 col-md-4">
               <div class="card info-card sales-card">
+
+                <div class="filter">
+                  <a href="{{ route('pengunjung-tahunan-website-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                </div>
 
                 <div class="card-body">
                   <h5 class="card-title">Kunjungan <span>| Tahunan</span></h5>
@@ -228,6 +244,10 @@
             <div class="col-xxl-3 col-md-4">
               <div class="card info-card sales-card">
 
+                <div class="filter">
+                  <a href="{{ route('pengunjung-website-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                </div>
+
                 <div class="card-body">
                   <h5 class="card-title">Kunjungan <span>| Total Kunjungan</span></h5>
 
@@ -249,6 +269,10 @@
             <!-- Visitors Card -->
             <div class="col-xxl-3 col-md-4">
               <div class="card info-card sales-card">
+
+                <div class="filter">
+                  <a href="{{ route('pengunjung-layanan-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                </div>
 
                 <div class="card-body">
                   <h5 class="card-title">Klik <span>| Layanan</span></h5>
@@ -272,6 +296,10 @@
             <div class="col-xxl-3 col-md-4">
               <div class="card info-card sales-card">
 
+                <div class="filter">
+                  <a href="{{ route('pengunjung-data-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                </div>
+
                 <div class="card-body">
                   <h5 class="card-title">Klik <span>| Data</span></h5>
 
@@ -293,6 +321,10 @@
             <!-- Visitors Card -->
             <div class="col-xxl-3 col-md-4">
               <div class="card info-card sales-card">
+
+                <div class="filter">
+                  <a href="{{ route('pengunjung-bantuan-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                </div>
 
                 <div class="card-body">
                   <h5 class="card-title">Klik <span>| Bantuan</span></h5>
@@ -316,6 +348,10 @@
             <div class="col-xxl-3 col-md-4">
               <div class="card info-card sales-card">
 
+                <div class="filter">
+                  <a href="{{ route('feedback-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                </div>
+
                 <div class="card-body">
                   <h5 class="card-title">Laporan <span>| Feedback</span></h5>
 
@@ -337,6 +373,10 @@
             <!-- Visitors Card -->
             <div class="col-xxl-3 col-md-4">
               <div class="card info-card sales-card">
+
+                <div class="filter">
+                  <a href="{{ route('dumas-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                </div>
 
                 <div class="card-body">
                   <h5 class="card-title">Laporan <span>| Aduan</span></h5>

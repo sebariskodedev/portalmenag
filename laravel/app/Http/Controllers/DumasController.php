@@ -13,8 +13,17 @@ use Illuminate\Support\Facades\Storage;
 use App\Mail\DumasMailable;
 use Illuminate\Support\Facades\Mail;
 
+use App\Exports\DumasExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class DumasController extends Controller
 {
+
+    public function exportCsv()
+    {
+        return Excel::download(new DumasExport, 'dumas_export.csv');
+    }
+
     /**
      * Display a listing of the resource.
      */

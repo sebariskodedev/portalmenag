@@ -9,7 +9,7 @@ use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
-use App\Exports\TableExport;
+use App\Exports\FeedbackExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class FeedbackController extends Controller
@@ -28,7 +28,7 @@ class FeedbackController extends Controller
 
     public function exportCsv()
     {
-        return Excel::download(new TableExport, 'feedback_export.csv');
+        return Excel::download(new FeedbackExport, 'feedback_export.csv');
     }
 
     /**
