@@ -307,6 +307,7 @@
 	 cursor: pointer;
 	 box-shadow: 2px 2px 10px rgba(10, 10, 10, 0.3);
 	 transition: all 0.2s ease-in-out;
+   transform: translateY(0);
 }
  #hamburger .icon-bar {
 	 display: block;
@@ -342,19 +343,19 @@
 	 color: #ffffff;
 }
  #facebook.show {
-	 transform: translateY(-185%);
+	 transform: translateY(0);
 }
  #twiter.show {
-	 transform: translateY(-310%);
+	 transform: translateY(-50px);
 }
  #instagram.show {
-	 transform: translateY(-435%);
+	 transform: translateY(-100px);
 }
  #youtube.show {
-	 transform: translateY(-560%);
+	 transform: translateY(-150px);
 }
  #tiktok.show {
-	 transform: translateY(-685%);
+	 transform: translateY(-200px);
 }
  #hamburger.show {
 	 box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.48);
@@ -478,7 +479,7 @@ iframe {
     width: 414px;
     height: auto;
     top: inherit;
-    right: 1rem;
+    left: 1rem;
     bottom: 1rem;
     left: inherit;
     border-radius: 0.5rem;
@@ -708,13 +709,15 @@ iframe {
 .nps.floatingActionButton {
   position: fixed;
   bottom: 1rem;
-  right: 1rem;
+  left: 1rem;
   z-index: 0;
   cursor: pointer;
   min-width: 2.5rem;
-  height: 2.5rem;
+  width: 6rem;
+  height: 6rem;
   border-radius: 1.5rem;
   background-color: #005faf;
+  /* background-color: transparent; */
   color: white;
   font-weight: normal;
   display: flex;
@@ -726,6 +729,28 @@ iframe {
   box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.25);
   font-size: 1rem;
   padding: 0 1rem;
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.bounce {
+  animation: bounce 2s infinite; /* Adjust the duration and iteration */
+}
+
+.nps.floatingActionButton img {
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+  background-color: transparent;
 }
 .nps.floatingActionButton:focus {
   outline: 0;
@@ -770,6 +795,7 @@ iframe {
     transform: scale(1);
   }
 }
+
     </style>
 
   @yield('style')  <!-- This will be replaced by the content of the child views -->
@@ -961,7 +987,7 @@ iframe {
   </footer>
 
   <!-- Scroll Top -->
-  <div style="margin-bottom: 60px;" id="hamburger">
+  <div style="" id="hamburger">
     <div id="wrapper">
         <span class="icon-bar" id="one"></span>
         <span class="icon-bar" id="two"></span>
@@ -985,43 +1011,43 @@ iframe {
     </a>
   </div>
 
-  <a style="left: 1%" href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <div style="z-index: 10000000; height: 100vh; overflow-y: auto;" class="nps formContainer transitionOut">
-    <form class="nps form">
+    <form style="padding-top: 30px; padding-bottom: 30px;" class="nps form">
       <h1 class="nps h1">Survey Kepuasan Website Ditjen Bimas Katolik</h1>
       <h2 class="nps h2">Jenis kelamin<span class="required" style="color: red;">*</span></h2>
       <div class="nps scale">
-        <input class="nps input" name="pria" type="radio" id="pria" />
+        <input class="nps input" name="gender" type="radio" id="pria" value="pria"/>
         <label class="nps label" for="pria">Pria</label>
-        <input class="nps input" name="wanita" type="radio" id="wanita" />
+        <input class="nps input" name="gender" type="radio" id="wanita" value="wanita"/>
         <label class="nps label" for="wanita">Wanita</label>
       </div>
       <h2 class="nps h2">Berapa umur anda (tahun)<span class="required" style="color: red;">*</span></h2>
       <div class="nps scale">
-        <input class="nps input" name="umur_1" type="radio" id="satu" />
+        <input class="nps input" name="umur" type="radio" id="satu" value="18 - 28 tahun"/>
         <label class="nps label" for="satu">18-28</label>
-        <input class="nps input" name="umur_2" type="radio" id="dua" />
+        <input class="nps input" name="umur" type="radio" id="dua" value="29 - 42 tahun"/>
         <label class="nps label" for="dua">29-42</label>
-        <input class="nps input" name="umur_3" type="radio" id="tiga" />
+        <input class="nps input" name="umur" type="radio" id="tiga" value="43 - 58 tahun"/>
         <label class="nps label" for="tiga">43-58</label>
-        <input class="nps input" name="umur_4" type="radio" id="empat" />
+        <input class="nps input" name="umur" type="radio" id="empat" value="> 59 tahun"/>
         <label class="nps label" for="empat">> 59</label>
       </div>
       <h2 class="nps h2">Apa pekerjaan anda<span class="required" style="color: red;">*</span></h2>
       <h2 style="margin-top: 0px; margin-bottom: 0px; font-size: .8rem;" class="nps h2">(1) Aparatur Sipil Negara (ASN), (2) Pegawai Swasta, (3) Wiraswasta, (4) Rohaniwan, (5) Pelajar, (6) Lainya</h2>
       <div class="nps scale">
-        <input class="nps input" name="pekerjaan_1" type="radio" id="satu_a" />
+        <input class="nps input" name="pekerjaan" type="radio" id="satu_a" value="Aparatur Sipil Negara (ASN)"/>
         <label class="nps label" for="satu_a">1</label>
-        <input class="nps input" name="pekerjaan_2" type="radio" id="dua_a" />
+        <input class="nps input" name="pekerjaan" type="radio" id="dua_a" value="Pegawai Swasta"/>
         <label class="nps label" for="dua_a">2</label>
-        <input class="nps input" name="pekerjaan_3" type="radio" id="tiga_a" />
+        <input class="nps input" name="pekerjaan" type="radio" id="tiga_a" value="Wiraswasta"/>
         <label class="nps label" for="tiga_a">3</label>
-        <input class="nps input" name="pekerjaan_4" type="radio" id="empat_a" />
+        <input class="nps input" name="pekerjaan" type="radio" id="empat_a" value="Rohaniwan"/>
         <label class="nps label" for="empat_a">4</label>
-        <input class="nps input" name="pekerjaan_5" type="radio" id="lima_a" />
+        <input class="nps input" name="pekerjaan" type="radio" id="lima_a" value="Pelajar"/>
         <label class="nps label" for="lima_a">5</label>
-        <input class="nps input" name="pekerjaan_6" type="radio" id="enam_a" />
+        <input class="nps input" name="pekerjaan" type="radio" id="enam_a" value="Lainya"/>
         <label class="nps label" for="enam_a">6</label>
       </div>
       <h3 class="nps h3">Menu apa yang paling sering anda akses?<span class="required" style="color: red;">*</span></h3>
@@ -1032,15 +1058,15 @@ iframe {
         <span><i>😃</i> Senang</span>
       </div>
       <div class="nps scale">
-        <input class="nps input" name="pendapat_1" type="radio" id="satu_b" />
+        <input class="nps input" name="pendapat" type="radio" id="satu_b" value="Sedih"/>
         <label class="nps label" for="satu_b">1</label>
-        <input class="nps input" name="pendapat_2" type="radio" id="dua_b" />
+        <input class="nps input" name="pendapat" type="radio" id="dua_b" value="Hampir sedih"/>
         <label class="nps label" for="dua_b">2</label>
-        <input class="nps input" name="pendapat_3" type="radio" id="tiga_b" />
+        <input class="nps input" name="pendapat" type="radio" id="tiga_b" value="Datar"/>
         <label class="nps label" for="tiga_b">3</label>
-        <input class="nps input" name="pendapat_4" type="radio" id="empat_b" />
+        <input class="nps input" name="pendapat" type="radio" id="empat_b" value="Senyum"/>
         <label class="nps label" for="empat_b">4</label>
-        <input class="nps input" name="pendapat_5" type="radio" id="lima_b" />
+        <input class="nps input" name="pendapat" type="radio" id="lima_b" value="Senyum lebar"/>
         <label class="nps label" for="lima_b">5</label>
       </div>
       <h2 class="nps h2">Seberapa besar anda ingin merekomendasikan Website Ditjen Bimas Katolik?
@@ -1050,15 +1076,15 @@ iframe {
         <span><i>👍</i> Rekomendasi</span>
       </div>
       <div class="nps scale">
-        <input class="nps input" name="rekomendasi_1" type="radio" id="satu_c" />
+        <input class="nps input" name="rekomendasi" type="radio" id="satu_c" value="1"/>
         <label class="nps label" for="satu_c">1</label>
-        <input class="nps input" name="rekomendasi_2" type="radio" id="dua_c" />
+        <input class="nps input" name="rekomendasi" type="radio" id="dua_c" value="2"/>
         <label class="nps label" for="dua_c">2</label>
-        <input class="nps input" name="rekomendasi_3" type="radio" id="tiga_c" />
+        <input class="nps input" name="rekomendasi" type="radio" id="tiga_c" value="3"/>
         <label class="nps label" for="tiga_c">3</label>
-        <input class="nps input" name="rekomendasi_4" type="radio" id="empat_c" />
+        <input class="nps input" name="rekomendasi" type="radio" id="empat_c" value="4"/>
         <label class="nps label" for="empat_c">4</label>
-        <input class="nps input" name="rekomendasi_5" type="radio" id="lima_c" />
+        <input class="nps input" name="rekomendasi" type="radio" id="lima_c" value="5"/>
         <label class="nps label" for="lima_c">5</label>
       </div>
       <h3 class="nps h3">Menurut anda, apa yang perlu ditingkatkan pada Website Ditjen Bimas Katolik? (opsional)</h3>
@@ -1069,7 +1095,7 @@ iframe {
       </div>
     </form>
   </div>
-  <a style="z-index: 1000000;" class="nps floatingActionButton">🎤 Feedback</a>
+  <a style="" class="nps floatingActionButton bounce"><img src="{{ asset('sample/rateus.png') }}" alt="Skytsunami"/></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
@@ -1090,6 +1116,34 @@ iframe {
     @yield('script')  <!-- This will be replaced by the content of the child views -->
 
     <script>
+      window.addEventListener('scroll', () => {
+        const socialMediaButton = document.getElementById('hamburger');
+        const tiktok = document.getElementById('tiktok');
+        const instagram = document.getElementById('instagram');
+        const facebook = document.getElementById('facebook');
+        const youtube = document.getElementById('youtube');
+        const twiter = document.getElementById('twiter');
+
+        // Show/hide the scroll-to-top button
+        if (window.scrollY > 100) {
+          socialMediaButton.style.transform = 'translateY(-60px)'; // Move up when scroll button is visible
+          facebook.style.transform = 'translateY(-60px)'; // Reset position
+          twiter.style.transform = 'translateY(-110px)'; // Reset position
+          instagram.style.transform = 'translateY(-160px)'; // Reset position
+          youtube.style.transform = 'translateY(-210px)'; // Reset position
+          tiktok.style.transform = 'translateY(-260px)'; // Reset position
+        } else {
+          socialMediaButton.style.transform = 'translateY(0)'; // Reset position
+          facebook.style.transform = 'translateY(0)'; // Reset position
+          twiter.style.transform = 'translateY(-50px)'; // Reset position
+          instagram.style.transform = 'translateY(-100px)'; // Reset position
+          youtube.style.transform = 'translateY(-150px)'; // Reset position
+          tiktok.style.transform = 'translateY(-200px)'; // Reset position
+        }
+      });
+    </script>
+
+    <script>
       document.querySelector(".nps.button").addEventListener("click", async function (event) {
         // Prevent the default behavior
         event.preventDefault();
@@ -1100,84 +1154,7 @@ iframe {
         // Convert form data to a JSON object
         let data = {};
         formData.forEach((value, key) => {
-            if(key == "saran"){
-              data['saran'] = value;
-            }
-
-            if(key == "favorite_menu"){
-              data['favorite_menu'] = value;
-            }
-
-            if(key == "pria"){
-              data['gender'] = "pria";
-            }
-            if(key == "wanita"){
-              data['gender'] = "wanita";
-            }
-
-            if(key == "umur_1"){
-              data['umur'] = "18 - 28 tahun";
-            }
-            if(key == "umur_2"){
-              data['umur'] = "29 - 42 tahun";
-            }
-            if(key == "umur_3"){
-              data['umur'] = "43 - 58 tahun";
-            }
-            if(key == "umur_4"){
-              data['umur'] = "> 59 tahun";
-            }
-
-            if(key == "pekerjaan_1"){
-              data['pekerjaan'] = "Aparatur Sipil Negara (ASN)";
-            }
-            if(key == "pekerjaan_2"){
-              data['pekerjaan'] = "Pegawai Swasta";
-            }
-            if(key == "pekerjaan_3"){
-              data['pekerjaan'] = "Wiraswasta";
-            }
-            if(key == "pekerjaan_4"){
-              data['pekerjaan'] = "Rohaniwan";
-            }
-            if(key == "pekerjaan_5"){
-              data['pekerjaan'] = "Pelajar";
-            }
-            if(key == "pekerjaan_6"){
-              data['pekerjaan'] = "Lainya";
-            }
-
-            if(key == "pendapat_1"){
-              data['pendapat'] = "Sedih";
-            }
-            if(key == "pendapat_2"){
-              data['pendapat'] = "Hampir sedih";
-            }
-            if(key == "pendapat_3"){
-              data['pendapat'] = "Datar";
-            }
-            if(key == "pendapat_4"){
-              data['pendapat'] = "Senyum";
-            }
-            if(key == "pendapat_5"){
-              data['pendapat'] = "Senyum lebar";
-            }
-
-            if(key == "rekomendasi_1"){
-              data['rekomendasi'] = "1";
-            }
-            if(key == "rekomendasi_2"){
-              data['rekomendasi'] = "2";
-            }
-            if(key == "rekomendasi_3"){
-              data['rekomendasi'] = "3";
-            }
-            if(key == "rekomendasi_4"){
-              data['rekomendasi'] = "4";
-            }
-            if(key == "rekomendasi_5"){
-              data['rekomendasi'] = "5";
-            }
+          data[key] = value;
         });
 
         // Send data to Laravel backend via fetch
@@ -1195,7 +1172,7 @@ iframe {
 
         if (response.ok) {
             const result = await response.json();
-            console.log(result);
+            // console.log(result);
         } else {
             const errorResponse = await response.text();
             console.error('Failed to add Feedback:', errorResponse);
@@ -1212,7 +1189,7 @@ iframe {
 
     $(".nps.close").click(function() {
       $(".nps.formContainer").addClass("transitionOut").removeClass("transitionIn");
-      $(".nps.floatingActionButton").text("🎤 Feedback").removeClass("thankYou");
+      // $(".nps.floatingActionButton").text("🎤 Feedback").removeClass("thankYou");
     });
 
     $(".nps.button").click(function() {
