@@ -713,8 +713,8 @@ iframe {
   z-index: 0;
   cursor: pointer;
   min-width: 2.5rem;
-  width: 6rem;
-  height: 6rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 1.5rem;
   background-color: #005faf;
   /* background-color: transparent; */
@@ -748,8 +748,8 @@ iframe {
 
 .nps.floatingActionButton img {
   position: relative;
-  width: 6rem;
-  height: 6rem;
+  width: 5rem;
+  height: 5rem;
   background-color: transparent;
 }
 .nps.floatingActionButton:focus {
@@ -842,8 +842,8 @@ iframe {
           </li>
           <li class="dropdown"><a style="color: white;" href="#"><span>Data</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul class="dinamyc-color-header">
-              <li><a style="color: white;" href="#">Sebaran</a></li>
-              <li><a style="color: white;" href="#">Dataset</a></li>
+              <li><a style="color: white;" href="{{ route('datasebaran') }}">Sebaran</a></li>
+              <li><a style="color: white;" href="{{ route('dataset') }}">Dataset</a></li>
             </ul>
           </li>
           <li class="dropdown"><a style="color: white;" href="#"><span>Bantuan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -1095,7 +1095,7 @@ iframe {
       </div>
     </form>
   </div>
-  <a style="" class="nps floatingActionButton bounce"><img src="{{ asset('sample/rateus.png') }}" alt="Skytsunami"/></a>
+  <a style="z-index: 1000" class="nps floatingActionButton bounce"><img src="{{ asset('sample/rateus.png') }}" alt="Skytsunami"/></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>

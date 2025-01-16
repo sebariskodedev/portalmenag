@@ -161,6 +161,29 @@
           </li><!-- End Pelayanan Nav -->
 
           <li class="nav-item">
+            <a id="menu-data" class="nav-link animated collapsed" data-bs-target="#data-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-layout-text-window-reverse"></i><span>Data</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="data-nav" class="nav-content collapsed" data-bs-parent="#sidebar-nav">
+              <li>
+                <a href="/admin/data-provinsi">
+                  <i class="bi bi-circle"></i><span>Provinsi</span>
+                </a>
+              </li>
+              <li>
+                <a href="/admin/data-sebaran">
+                  <i class="bi bi-circle"></i><span>Data Sebaran</span>
+                </a>
+              </li>
+              <li>
+                <a href="/admin/data-set">
+                  <i class="bi bi-circle"></i><span>Dataset</span>
+                </a>
+              </li>
+            </ul>
+          </li><!-- End Bantuan Nav -->
+
+          <li class="nav-item">
             <a id="menu-bantuan" class="nav-link animated collapsed" data-bs-target="#bantuan-nav" data-bs-toggle="collapse" href="#">
               <i class="bi bi-layout-text-window-reverse"></i><span>Bantuan</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>

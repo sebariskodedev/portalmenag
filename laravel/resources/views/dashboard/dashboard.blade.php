@@ -141,7 +141,7 @@
               <div class="card info-card sales-card">
 
                 <div class="filter">
-                  <a href="{{ route('pengunjung-harian-website-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                  <a href="{{ route('pengunjung-harian-website-export.csv') }}" style="padding: 3px; font-size: 12px; margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
                 </div>
 
                 <div class="card-body">
@@ -167,7 +167,7 @@
               <div class="card info-card sales-card">
 
                 <div class="filter">
-                  <a href="{{ route('pengunjung-mingguan-website-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                  <a href="{{ route('pengunjung-mingguan-website-export.csv') }}" style="padding: 3px; font-size: 12px; margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
                 </div>
 
                 <div class="card-body">
@@ -193,7 +193,7 @@
               <div class="card info-card sales-card">
 
                 <div class="filter">
-                  <a href="{{ route('pengunjung-bulanan-website-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                  <a href="{{ route('pengunjung-bulanan-website-export.csv') }}" style="padding: 3px; font-size: 12px; margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
                 </div>
 
                 <div class="card-body">
@@ -219,7 +219,7 @@
               <div class="card info-card sales-card">
 
                 <div class="filter">
-                  <a href="{{ route('pengunjung-tahunan-website-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                  <a href="{{ route('pengunjung-tahunan-website-export.csv') }}" style="padding: 3px; font-size: 12px; margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
                 </div>
 
                 <div class="card-body">
@@ -245,7 +245,7 @@
               <div class="card info-card sales-card">
 
                 <div class="filter">
-                  <a href="{{ route('pengunjung-website-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                  <a href="{{ route('pengunjung-website-export.csv') }}" style="padding: 3px; font-size: 12px; margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
                 </div>
 
                 <div class="card-body">
@@ -271,7 +271,7 @@
               <div class="card info-card sales-card">
 
                 <div class="filter">
-                  <a href="{{ route('pengunjung-layanan-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                  <a href="{{ route('pengunjung-layanan-export.csv') }}" style="padding: 3px; font-size: 12px; margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
                 </div>
 
                 <div class="card-body">
@@ -297,7 +297,7 @@
               <div class="card info-card sales-card">
 
                 <div class="filter">
-                  <a href="{{ route('pengunjung-data-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                  <a href="{{ route('pengunjung-data-export.csv') }}" style="padding: 3px; font-size: 12px; margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
                 </div>
 
                 <div class="card-body">
@@ -323,7 +323,7 @@
               <div class="card info-card sales-card">
 
                 <div class="filter">
-                  <a href="{{ route('pengunjung-bantuan-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                  <a href="{{ route('pengunjung-bantuan-export.csv') }}" style="padding: 3px; font-size: 12px; margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
                 </div>
 
                 <div class="card-body">
@@ -349,7 +349,7 @@
               <div class="card info-card sales-card">
 
                 <div class="filter">
-                  <a href="{{ route('feedback-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                  <a href="{{ route('feedback-export.csv') }}" style="padding: 3px; font-size: 12px; margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
                 </div>
 
                 <div class="card-body">
@@ -375,7 +375,7 @@
               <div class="card info-card sales-card">
 
                 <div class="filter">
-                  <a href="{{ route('dumas-export.csv') }}" style="margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
+                  <a href="{{ route('dumas-export.csv') }}" style="padding: 3px; font-size: 12px; margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export</a>
                 </div>
 
                 <div class="card-body">

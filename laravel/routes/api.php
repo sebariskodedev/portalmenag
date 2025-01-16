@@ -12,6 +12,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\RenunganController;
 use App\Http\Controllers\MimbarController;
+use App\Http\Controllers\FiledataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +47,5 @@ Route::post('/post-feedback', [FeedbackController::class, 'add'])->name('post-ku
 Route::put('/update-status-informasi/{id}', [InformasiController::class, 'updateStatusInformasi']);
 Route::put('/update-status-renungan/{id}', [RenunganController::class, 'updateStatusRenungan']);
 Route::put('/update-status-mimbar/{id}', [MimbarController::class, 'updateStatusMimbar']);
+
+Route::get('data-file/{id}', [FiledataController::class, 'get']);

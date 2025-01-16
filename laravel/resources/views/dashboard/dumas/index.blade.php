@@ -113,7 +113,7 @@ th {
 	<table class="table table-bordered border-primarytable-striped table-class" id= "table-id" style="margin-top: 20px;">
         <thead>
             <tr>
-                <th scope="col"><b>Unit Kerja</b></th>
+                <th scope="col"><b>Kategori</b></th>
                 <th scope="col">Deskripsi</th>
                 <th scope="col">Action</th>
             </tr>

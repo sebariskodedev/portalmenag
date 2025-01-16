@@ -26,6 +26,10 @@ use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\KlikLayananController;
 use App\Http\Controllers\KlikDataController;
 use App\Http\Controllers\KlikBantuanController;
+use App\Http\Controllers\DatasetController;
+use App\Http\Controllers\SebaranController;
+use App\Http\Controllers\FiledataController;
+use App\Http\Controllers\ProvinsiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,6 +80,13 @@ Route::resource('/rb/kategori', KategoriRBController::class)->middleware('auth')
 Route::resource('/rb/data', ReformasiController::class)->middleware('auth');
 
 Route::resource('admin/informasi-regulasi', RegulasiController::class)->middleware('auth');
+
+Route::resource('admin/data-set', DatasetController::class)->middleware('auth');
+Route::post('admin/data-file', [FiledataController::class, 'store'])->middleware('auth');
+Route::post('admin/delete-file/{id}', [FiledataController::class, 'destroy'])->middleware('auth');
+
+Route::resource('/admin/data-provinsi', ProvinsiController::class)->middleware('auth');
+Route::resource('/admin/data-sebaran', SebaranController::class)->middleware('auth');
 
 
 Route::get('/pengunjung/website', [KunjunganController::class, 'kunjungan'])->middleware('auth');
@@ -141,3 +152,8 @@ Route::get('/struktur-organisasi/{id}', [StrukturController::class, 'getStruktur
 
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+Route::get('/datasebaran', [SebaranController::class, 'getData'])->name('datasebaran');
+Route::get('/dataset', [DatasetController::class, 'getData'])->name('dataset');
+Route::get('/dataset/{id}', [DatasetController::class, 'action'])->name('dataset-action');
+Route::get('/file-data', [DatasetController::class, 'showFileData'])->name('show-file');

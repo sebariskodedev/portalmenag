@@ -170,7 +170,7 @@ class ReformasiController extends Controller
 
     public function action($id)
     {
-        $reformasis = Reformasi::orderBy('id', 'asc')->get();
+        $reformasis = Reformasi::where('sub_rb', $id)->orderBy('id', 'asc')->get();
 
         return view('reformasi-birokrasi-action', [
             'reformasis' => $reformasis
