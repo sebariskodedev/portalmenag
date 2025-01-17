@@ -2,9 +2,9 @@
 @extends('template.user')
 
 @section('style')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <style type="text/css">
-<style>
 .containerx {
 	 max-width: 100%;
 	 padding: 1rem;
@@ -195,8 +195,9 @@
       <div class="container">
 
 
+	  	<!-- <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100"> -->
             <div class="containerx">
-                <div class="row">
+                <div class="row" style="">
                     <div class="search"><input type="search" id="data-search-regulasi" data-search="data-search-regulasi" placeholder="Cari ..." /><button class="search__clear search__clear-regulasi">&times;</button>
                     </div>
                     <div class="list" id="list-regulasi" data-searchable="data-searchable-regulasi">
@@ -213,6 +214,7 @@
 					</div>
                 </div>
             </div>
+		<!-- </div> -->
 
       </div>
 
@@ -222,6 +224,57 @@
 @endsection
 
 @section('script')
+
+<script>
+
+// Function to get client's IP using an external service
+async function getClientIp() {
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        return data.ip;
+    } catch (error) {
+        console.error('Error fetching IP:', error);
+        return null;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async function () {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    const ip = await getClientIp();
+
+    if (!ip) {
+        console.error('IP address is required');
+        return;
+    }
+
+    const data = { ip: ip };
+
+    try {
+        const response = await fetch('/api/post-klik-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log(result);
+        } else {
+            const errorResponse = await response.text();
+            console.error('Failed to add Kunjungan:', errorResponse);
+        }
+    } catch (error) {
+        console.error('Error during fetch:', error);
+    }
+});
+</script>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const listRegulasi = document.getElementById("list-regulasi");

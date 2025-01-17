@@ -2,6 +2,7 @@
 @extends('template.user')
 
 @section('style')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style type="text/css">
@@ -426,7 +427,59 @@ article:nth-child(even) {
 @endsection
 
 @section('script')
+
+<script>
+
+// Function to get client's IP using an external service
+async function getClientIp() {
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        return data.ip;
+    } catch (error) {
+        console.error('Error fetching IP:', error);
+        return null;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async function () {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    const ip = await getClientIp();
+
+    if (!ip) {
+        console.error('IP address is required');
+        return;
+    }
+
+    const data = { ip: ip };
+
+    try {
+        const response = await fetch('/api/post-klik-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log(result);
+        } else {
+            const errorResponse = await response.text();
+            console.error('Failed to add Kunjungan:', errorResponse);
+        }
+    } catch (error) {
+        console.error('Error during fetch:', error);
+    }
+});
+</script>
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
 		// Get the innerHTML of the span element
