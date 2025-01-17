@@ -22,11 +22,53 @@ class DumasMailable extends Mailable
     {
         $this->data = $data;
     }
-
+    
     public function build()
     {
-        return $this->subject('Subject of the Email')
-                    ->html('<h1>' . $this->data['name'] . '</h1><br><span>Aduan dari : ' . $this->data['sender'] . '</span><br><span>Pesan : '. $this->data['message'] . '</span>');
+        $email = $this->subject('Mail Info') // Set the email subject
+                    ->html('
+                        <html>
+                            <head>
+                                <title>Pengaduan Masyarakat</title> <!-- Email title -->
+                            </head>
+                            <body>
+                                <h1>Pengaduan Masyarakat</h1>
+                                <br>
+                                <span>Aduan dari : ' . $this->data['name'] . '(' . $this->data['sender'] . ')' . '</span>
+                                <br>
+                                <span>Pesan : ' . $this->data['message'] . '</span>
+                            </body>
+                        </html>
+                    ');
+
+        // Check if a file URL is provided
+        if (!empty($this->data['file_url'])) {
+            $fileUrl = $this->data['file_url'];
+
+            // Extract the file name and extension from the URL
+            $fileName = basename($fileUrl); // Get the file name
+            $extension = pathinfo($fileName, PATHINFO_EXTENSION); // Get the file extension
+
+            // Determine the MIME type based on the file extension
+            $mimeType = match (strtolower($extension)) {
+                'pdf' => 'application/pdf',
+                'jpg', 'jpeg' => 'image/jpeg',
+                'png' => 'image/png',
+                'txt' => 'text/plain',
+                'doc', 'docx' => 'application/msword',
+                'xls', 'xlsx' => 'application/vnd.ms-excel',
+                'zip' => 'application/zip',
+                default => 'application/octet-stream', // Fallback MIME type
+            };
+
+            // Attach the file
+            $email->attach($fileUrl, [
+                'as' => $fileName, // Use the extracted file name
+                'mime' => $mimeType, // Use the determined MIME type
+            ]);
+        }
+
+        return $email;
     }
 
     /**

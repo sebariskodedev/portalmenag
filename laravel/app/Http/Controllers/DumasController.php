@@ -70,6 +70,9 @@ class DumasController extends Controller
             $file->move(public_path($uploadPath), $fileName);
     
             // Save the data (example for a "Dumas" model)
+            // Optionally, you can generate a public URL for the uploaded file
+            $fileUrl = asset($uploadPath . '/' . $fileName);
+
             Dumas::create([
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
@@ -81,7 +84,8 @@ class DumasController extends Controller
             $data = [
                 'name' => 'Info Bimas Katolik',
                 'sender' => $request->input('email'),
-                'message' => $request->input('pesan')
+                'message' => $request->input('pesan'),
+                'file_url' => $fileUrl
             ];
 
             Mail::to('info.bimaskatolik@kemenag.go.id')->send(new YourMailable($data));
@@ -101,7 +105,8 @@ class DumasController extends Controller
             $data = [
                 'name' => 'Info Bimas Katolik',
                 'sender' => $request->input('email'),
-                'message' => $request->input('pesan')
+                'message' => $request->input('pesan'),
+                'file_url' => null
             ];
     
             Mail::to('info.bimaskatolik@kemenag.go.id')->send(new DumasMailable($data));

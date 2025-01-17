@@ -7,19 +7,24 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <style>
-
-
 .header_wrap {
-	padding: 30px 0;
+    padding: 30px 0;
 }
-/* Custom wrapper for dropdown icon */
+
+/* Flexbox container for dropdown and button */
+.dropdown-and-button {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds space between the dropdown and button */
+}
+
+/* Dropdown styling */
 .dropdown-wrapper {
     position: relative;
     display: inline-block;
-    width: 150px;
+    width: 200px; /* Adjust width as needed */
 }
 
-/* Custom select styling */
 .custom-select {
     appearance: none;
     -webkit-appearance: none;
@@ -28,6 +33,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px 10px;
+    width: 100%;
 }
 
 /* Font Awesome icon positioning */
@@ -37,6 +43,21 @@
     right: 10px;
     transform: translateY(-50%); /* Center the icon vertically */
     pointer-events: none; /* Prevent the icon from interfering with clicks */
+}
+
+/* Button styling */
+.btn-download {
+    background-color: #007bff; /* Primary blue */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-download:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }
 </style>
 @endsection
@@ -56,17 +77,20 @@
               {{$dataset->deskripsi}}
             </p>
             <div class="header_wrap">
-                <div class="num_rows">
-                    <div class="form-group">
-                        <div class="dropdown-wrapper">
-                            <select class="form-control" name="state" id="maxRows">
-                                @foreach ($files as $file)
-                                    <option value="{{ asset('filedata/' . $file->nama) }}">{{ $file->tahun }}</option>
-                                @endforeach
-                            </select>
-                            <i style="margin-left: 30px;" class="fa fa-chevron-down"></i> <!-- Font Awesome dropdown icon -->
+                <div class="dropdown-and-button">
+                    <div class="num_rows">
+                        <div class="form-group">
+                            <div class="dropdown-wrapper">
+                                <select class="form-control custom-select" name="state" id="maxRows">
+                                    @foreach ($files as $file)
+                                        <option value="{{ asset('filedata/' . $file->nama) }}">{{ $file->tahun }}</option>
+                                    @endforeach
+                                </select>
+                                <i class="fa fa-chevron-down"></i> <!-- Font Awesome dropdown icon -->
+                            </div>
                         </div>
                     </div>
+                    <button class="btn-download" onclick="downloadFile()">Download .CSV</button>
                 </div>
             </div>
             <div style="margin-top: 20px; width: 100%;" id="embed_table"></div>
@@ -82,6 +106,24 @@
 
 @section('script')
 <script>
+    function downloadFile() {
+        // Get the dropdown element
+        const dropdown = document.getElementById('maxRows');
+        // Get the selected value (file URL)
+        const selectedFileUrl = dropdown.value;
+
+        if (selectedFileUrl) {
+            // Create a temporary anchor element to trigger the download
+            const tempAnchor = document.createElement('a');
+            tempAnchor.href = selectedFileUrl; // Set the file URL as the anchor's href
+            tempAnchor.download = ''; // Optional: Specify the file name
+            document.body.appendChild(tempAnchor); // Append anchor to the document
+            tempAnchor.click(); // Programmatically click the anchor
+            document.body.removeChild(tempAnchor); // Clean up by removing the anchor
+        } else {
+            alert('Please select a file to download.');
+        }
+    }
     document.addEventListener("DOMContentLoaded", function () {
         // Get the select element
         const selectElement = document.getElementById('maxRows');

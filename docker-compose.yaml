@@ -1,18 +1,18 @@
 version: '4'
 services:
-    socket:
-      build:
-        context: .
-        dockerfile: ./docker/socket/Dockerfile
-      container_name: socket
-      ports:
-        - "3000:3000"
-      volumes:
-        - ./socket:/usr/src/app
-      environment:
-        - NODE_ENV=development
-      networks: 
-        - sample-app_network
+    # socket:
+    #   build:
+    #     context: .
+    #     dockerfile: ./docker/socket/Dockerfile
+    #   container_name: socket
+    #   ports:
+    #     - "3000:3000"
+    #   volumes:
+    #     - ./socket:/usr/src/app
+    #   environment:
+    #     - NODE_ENV=development
+    #   networks: 
+    #     - sample-app_network
         
     sample-app:
       build:

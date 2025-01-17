@@ -991,8 +991,8 @@ input#slideC:checked ~ .bullet-nav label#bulletC {
         <img src="{{ asset('images/Icon_Data.png') }}" />
       </div>
       <div class="child-card" style="margin-bottom: 10px;">
-        <div class="item"><a href="#">Sebaran</a></div>
-        <div class="item"><a href="#">Dataset</a></div>
+        <div class="item"><a href="{{ route('datasebaran') }}">Sebaran</a></div>
+        <div class="item"><a href="{{ route('dataset') }}">Dataset</a></div>
       </div>
       <div style="background-color: #005faf; width: 100%; height: 80px; display: flex; justify-content: center; align-items: center;">
       <div class="capt-title"><h4 style="color: white;">Data</h4></div>
