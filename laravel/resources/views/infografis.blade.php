@@ -29,11 +29,11 @@
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
             @foreach ($infografiss as $data)
-              <div style="backgroud-color: transparent; padding-bottom: 5px;" class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <div onclick="triggerClick(this)" style="backgroud-color: transparent; padding-bottom: 5px; cursor: pointer;" class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
                 <img style="box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); border-radius: 10px;" src="{{ asset('infografis/' . $data->gambar) }}" class="img-fluid" alt="">
                 <div style="border-radius: 0px 0px 10px 10px; margin-bottom: 5px;" class="portfolio-info dinamyc-color-card">
                   <h4 class="text-dinamyc-color-primary">{{ $data->judul }}</h4>
-                  <a href="{{ asset('infografis/' . $data->gambar) }}" title="{{ $data->judul }}" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in text-dinamyc-color"></i></a>
+                  <a href="{{ asset('infografis/' . $data->gambar) }}" title="{{ $data->judul }}" data-gallery="portfolio-gallery-product" class="glightbox preview-link">{{-- <i class="bi bi-zoom-in text-dinamyc-color"></i> --}}</a>
                   {{-- <a href="{{ route('detail-maklumat') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                 </div>
               </div><!-- End Portfolio Item -->
@@ -51,4 +51,13 @@
 @endsection
 
 @section('script')
+<script>
+        // JavaScript function to trigger click on the link inside the div
+        function triggerClick(element) {
+            const link = element.querySelector('a'); // Find the `a` tag inside the div
+            if (link) {
+                link.click(); // Trigger the click on the `a` tag
+            }
+        }
+</script>
 @endsection

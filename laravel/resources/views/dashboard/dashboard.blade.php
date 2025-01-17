@@ -40,6 +40,10 @@
             <div class="col-12">
               <div class="card">
 
+                <div class="filter">
+                  <button onclick="downloadRingkasan()" style="padding: 5px 10px; font-size: 14px; margin-right: 10px; background-color: green;" type="button" class="btn btn-primary btn-sm">Export Ringkasan</button>
+                </div>
+
                 <div class="card-body">
                   <h5 class="card-title">Statistik</h5>
 
@@ -57,7 +61,7 @@
 
                       if (response.ok) {
                           monthlyData = await response.json();
-                          console.log(monthlyData[0]);
+                          // console.log(monthlyData[0]);
                       } else {
                           const errorResponse = await response.text();
                           console.error('Failed to add Kunjungan:', errorResponse);
@@ -134,6 +138,23 @@
             $bantuanKlikCount = App\Models\KlikBantuan::count();
             $feedbackCount = App\Models\Feedback::count();
             $dumasCount = App\Models\Dumas::count();
+
+            // Prepare the associative array
+            $data = [
+                'todayVisitors' => $todayCount,
+                'thisWeekVisitors' => $thisWeekCount,
+                'thisMonthVisitors' => $thisMonthCount,
+                'thisYearVisitors' => $thisYearCount,
+                'totalVisitors' => $kunjunganCount,
+                'klikLayanan' => $layananKlikCount,
+                'klikData' => $dataKlikCount,
+                'klikBantuan' => $bantuanKlikCount,
+                'feedbackUser' => $feedbackCount,
+                'aduanMasyarakat' => $dumasCount,
+            ];
+
+            // Convert to JSON
+            $jsonData = json_encode($data);
           @endphp
 
             <!-- Visitors Card -->
@@ -402,4 +423,41 @@
       </div>
     </section>
 
+@endsection
+
+
+
+@section('script')
+<script>
+
+  // Function to convert JSON to CSV
+  function convertToCSV(objArray) {
+      const array = Array.isArray(objArray) ? objArray : [objArray];
+      const headers = Object.keys(array[0]).join(",") + "\n";
+      const rows = array
+          .map(obj => Object.values(obj).map(value => `"${value}"`).join(","))
+          .join("\n");
+      return headers + rows;
+  }
+
+  // Function to download CSV
+  function downloadCSV(csvContent, filename = "data.csv") {
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const link = document.createElement("a");
+      const url = URL.createObjectURL(blob);
+      link.href = url;
+      link.setAttribute("download", filename);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+  }
+
+  function downloadRingkasan(){
+    // Pass the JSON data to JavaScript
+    const data = {!! $jsonData !!};
+    const csvContent = convertToCSV(data);
+    downloadCSV(csvContent, "ringkasan_dashboard.csv");
+    // console.log(data);
+  }
+</script>
 @endsection
